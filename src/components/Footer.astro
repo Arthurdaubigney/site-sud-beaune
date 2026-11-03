@@ -34,20 +34,20 @@ const credits = creditLines(ALL_IMAGE_KEYS);
           {SITE.phone && <li><a href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</a></li>}
           {SITE.email && <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>}
         </ul>
-        <a class="btn btn--green f-cta" href={ESTIMATION_URL}>Demander une estimation <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn--gold f-cta" href={ESTIMATION_URL}>Demander une estimation <span class="arr" aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
   <div class="wrap f-word" style="width:100%">
-    <svg viewBox="0 0 1000 118" role="img" aria-label={SITE.wordmark}>
-      <text x="0" y="100" font-size="118" textLength="1000" lengthAdjust="spacingAndGlyphs">{SITE.wordmark}</text>
+    <svg viewBox="0 0 1000 100" role="img" aria-label={SITE.wordmark}>
+      <text x="0" y="78" font-size="84" textLength="1000" lengthAdjust="spacingAndGlyphs">{SITE.wordmark}</text>
     </svg>
     <details class="credits">
       <summary>Crédits photographiques</summary>
       <ul>{credits.map((c) => <li><a href={c.href} rel="noopener noreferrer">{c.text}</a></li>)}</ul>
     </details>
     <div class="f-legal">
-      <span>© {new Date().getFullYear()} {SITE.name}</span>
+      <span>© {new Date().getFullYear()} {SITE.name} – {SITE.tagline}</span>
       <span><a href="/mentions-legales/">Mentions légales</a> · <a href="/plan-du-site/">Plan du site</a></span>
     </div>
   </div>

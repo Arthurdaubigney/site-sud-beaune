@@ -1,16 +1,19 @@
 ---
 import Pic from './Pic.astro';
 interface Props { k?: string; title?: string; text?: string; label?: string; href?: string; }
-const { k = 'vezere', title = 'Faites estimer vos objets d’art', text = 'Envoyez quelques photographies : une première estimation gratuite vous est remise.', label = 'Estimation gratuite', href = '#estimation' } = Astro.props;
+const { k = 'vezere', title = 'Faites estimer vos objets d’art', text = 'Envoyez quelques photographies : une première estimation gratuite vous est remise, sans aucun engagement.', label = 'Estimation gratuite', href = '#estimation' } = Astro.props;
 ---
 <section class="cta-frame" aria-labelledby="cta-title">
   <div class="wrap">
-    <div class="grid cta-grid">
-      <div class="cta-img" data-reveal><Pic k={k} ratio="16-10" sizes="(max-width: 860px) 92vw, 58vw" /></div>
-      <div class="cta-copy" data-reveal style="--i:1">
-        <h2 id="cta-title">{title}</h2>
-        <p>{text}</p>
-        <a class="btn" href={href}>{label} <span class="arr" aria-hidden="true">→</span></a>
+    <div class="cta-card on-dark" data-reveal>
+      <div class="grid cta-grid">
+        <div class="cta-img"><Pic k={k} sizes="(max-width: 860px) 92vw, 50vw" /></div>
+        <div class="cta-copy">
+          <span class="kicker">Les Antiquités de Benjamin</span>
+          <h2 id="cta-title">{title}</h2>
+          <p>{text}</p>
+          <a class="btn btn--gold btn--lg" href={href}>{label} <span class="arr" aria-hidden="true">→</span></a>
+        </div>
       </div>
     </div>
   </div>

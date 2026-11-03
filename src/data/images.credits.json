@@ -286,5 +286,59 @@
   "license": "CC BY-SA 4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Cirque_de_Navacelles_(3).jpg",
   "via": "Wikimedia Commons"
+ },
+ "hero-urtubie": {
+  "w": 1400,
+  "h": 933,
+  "title": "Château d'Urtubie 2022 17",
+  "creator": "Chatsam",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_d%27Urtubie_2022_17.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "bibliotheque-chateau": {
+  "w": 1400,
+  "h": 1049,
+  "title": "Josselin Château de Josselin Intérieur Bibliothèque 5",
+  "creator": "Zairon",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Josselin_Ch%C3%A2teau_de_Josselin_Int%C3%A9rieur_Biblioth%C3%A8que_5.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "salle-chateau": {
+  "w": 1400,
+  "h": 1050,
+  "title": "Tapisserie @ Salle des Chevaliers @ Château de Montrottier @ Lovagny (50782940781)",
+  "creator": "Guilhem Vellut from Annecy, France",
+  "license": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tapisserie_@_Salle_des_Chevaliers_@_Ch%C3%A2teau_de_Montrottier_@_Lovagny_(50782940781).jpg",
+  "via": "Wikimedia Commons"
+ },
+ "cabinet-curiosites": {
+  "w": 1400,
+  "h": 937,
+  "title": "Clos Lucé - Cabinet de curiosités - Bibliothèque 2",
+  "creator": "Duch",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Clos_Luc%C3%A9_-_Cabinet_de_curiosit%C3%A9s_-_Biblioth%C3%A8que_2.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "boutique-antiquites": {
+  "w": 1400,
+  "h": 1050,
+  "title": "A Fine Thing, antiques shop (33181977861)",
+  "creator": "Ross Dunn - Thanks for 13 million + views",
+  "license": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:A_Fine_Thing,_antiques_shop_(33181977861).jpg",
+  "via": "Wikimedia Commons"
+ },
+ "bastide-arcades": {
+  "w": 1400,
+  "h": 933,
+  "title": "Monflanquin - Les arcades de la bastide",
+  "creator": "Renhour48",
+  "license": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Monflanquin_-_Les_arcades_de_la_bastide.jpg",
+  "via": "Wikimedia Commons"
  }
 }

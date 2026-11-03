@@ -63,7 +63,7 @@ if (reg) {
 const P = makePool();
 const heroKey = P.take(img);
 const pairKey = P.take(reg ? (reg.slug === 'occitanie' ? 'albi' : 'perigord-chateau') : undefined, reg ? 'place' : 'object');
-const bandKey = P.take(reg ? band : undefined, 'object');
+const bandKey = P.take(reg ? band : undefined, 'wide');
 const ctaKey = P.take(reg ? (reg.slug === 'occitanie' ? 'collioure' : 'biarritz') : undefined, 'place');
 const path = zoneUrl(slug!);
 const trail = [

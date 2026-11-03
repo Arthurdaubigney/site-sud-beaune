@@ -13,8 +13,9 @@ interface Props {
   trail?: { name: string; path: string }[];
   noindex?: boolean;
   preload?: string;
+  preloadHero?: boolean;
 }
-const { title, description, ogImage = 'commode-louis-xv', jsonLd = [], trail, noindex = false, preload } = Astro.props;
+const { title, description, ogImage = 'commode-louis-xv', jsonLd = [], trail, noindex = false, preload, preloadHero = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, SITE.url).toString();
 const og = new URL(`/img/${ogImage}-1400.webp`, SITE.url).toString();
 const isHome = Astro.url.pathname === '/';
@@ -30,7 +31,7 @@ if (trail && trail.length > 1) graph.push(breadcrumbSchema(trail));
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1'} />
-    <meta name="theme-color" content="#ebe5e3" />
+    <meta name="theme-color" content="#faf7f2" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE.name} />
@@ -45,6 +46,7 @@ if (trail && trail.length > 1) graph.push(breadcrumbSchema(trail));
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={og} />
     {preload && <link rel="preload" as="image" href={`/img/${preload}-1400.webp`} imagesrcset={`/img/${preload}-700.webp 700w, /img/${preload}-1400.webp 1400w`} imagesizes="(max-width: 860px) 72vw, 30vw" fetchpriority="high" />}
+    {preloadHero && <link rel="preload" as="image" href="/img/hero-urtubie-1400.webp" imagesrcset="/img/hero-urtubie-1400.webp 1400w, /img/hero-urtubie-2400.webp 2400w" imagesizes="100vw" fetchpriority="high" />}
     {graph.map((g) => <script type="application/ld+json" set:html={JSON.stringify(g)} />)}
     <script is:inline>document.documentElement.classList.add('js');</script>
   </head>

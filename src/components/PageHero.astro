@@ -18,9 +18,10 @@ const portrait = meta.h > meta.w * 1.05;
       <h1 class="mask-h"><span class="mask"><span>{h1}</span></span></h1>
       <div class:list={['ph-photo', portrait ? 'is-portrait' : 'is-landscape']} data-reveal><Pic k={img} alt={alt} ratio={portrait ? '4-5' : '4-3'} eager sizes="(max-width: 860px) 78vw, 30vw" /></div>
       <div class="ph-copy">
-        <p class="lead" style="max-width:34ch">{lead}</p>
+        <span class="kicker">Les Antiquités de Benjamin</span>
+        <p class="lead" style="max-width:36ch">{lead}</p>
         <div class="cta-row" style="margin-top:28px">
-          <a class="btn" href={ESTIMATION_URL}>{cta} <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn--terra" href={ESTIMATION_URL}>{cta} <span class="arr" aria-hidden="true">→</span></a>
           <a class="link" href="#faq-title">Questions fréquentes</a>
         </div>
       </div>

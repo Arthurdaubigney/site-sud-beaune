@@ -5,16 +5,16 @@ const cur = (href: string) => (path === href || (href !== '/' && path.startsWith
 ---
 <header class="site-header">
   <div class="wrap bar">
-    <a class="wordmark" href="/" aria-label={`${SITE.name} – accueil`}>{SITE.wordmark}</a>
+    <a class="wordmark" href="/" aria-label={`${SITE.name} – accueil`}><b>{SITE.wordmark}</b><small>Cabinet d’expertise &amp; antiquités</small></a>
     <nav class="nav" aria-label="Navigation principale">
       {NAV.map((n) => <a href={n.href} aria-current={cur(n.href)}>{n.label}</a>)}
     </nav>
-    <a class="btn head-cta" href={ESTIMATION_URL}>Estimation gratuite <span class="arr" aria-hidden="true">→</span></a>
+    <a class="btn btn--terra head-cta" href={ESTIMATION_URL}>Estimation gratuite <span class="arr" aria-hidden="true">→</span></a>
     <details class="menu">
       <summary aria-label="Ouvrir le menu">Menu</summary>
       <nav class="menu-panel" aria-label="Menu mobile">
         {NAV.map((n) => <a href={n.href} aria-current={cur(n.href)}>{n.label}</a>)}
-        <a class="btn" href={ESTIMATION_URL}>Estimation gratuite →</a>
+        <a class="btn btn--terra" href={ESTIMATION_URL}>Estimation gratuite →</a>
       </nav>
     </details>
   </div>

@@ -22,13 +22,13 @@ const faq = FAQ_GENERAL.slice(3, 6);
       <div class="cards">
         {SPECIALITES.map((s) => (
           <a class="mcard" href={`/antiquites/${s.slug}/`} data-reveal title={`${s.name} : estimation et rachat`}>
-            <Pic k={s.img} ratio="4-5" sizes="(max-width: 860px) 92vw, 40vw" />
+            <Pic k={s.img} ratio="4-3" sizes="(max-width: 860px) 92vw, 40vw" />
             <h3>{s.name}</h3>
             <p>{s.lead}</p>
           </a>
         ))}
         <a class="mcard" href="/rachat-succession/" data-reveal title="Rachat de succession : inventaire, estimation et rachat">
-          <Pic k="marqueterie-boulle" ratio="4-5" sizes="(max-width: 860px) 92vw, 40vw" />
+          <Pic k="boutique-antiquites" ratio="4-3" sizes="(max-width: 860px) 92vw, 40vw" />
           <h3>Rachat de succession</h3>
           <p>Inventaire, partage et rachat du contenu complet d’une maison, avec règlement sécurisé et enlèvement assuré.</p>
         </a>

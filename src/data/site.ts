@@ -3,10 +3,11 @@
  * mise en ligne (nom, domaine, formulaire Tally, coordonnées) se trouve ici.
  */
 export const SITE = {
-  name: 'Antiquaires et Experts du Sud-Ouest',
-  short: 'Antiquaires du Sud-Ouest',
-  wordmark: 'Antiquaires du Sud-Ouest',
-  url: 'https://www.antiquaires-sud-ouest.fr',
+  name: 'Les Antiquités de Benjamin',
+  short: 'Les Antiquités de Benjamin',
+  wordmark: 'Les Antiquités de Benjamin',
+  tagline: 'Cabinet d’Expertise & Antiquités du Sud-Ouest',
+  url: 'https://www.antiquites-de-benjamin.fr',
   locale: 'fr_FR',
   /** Identifiant du formulaire Tally (https://tally.so/r/<ID>). Vide = placeholder affiché. */
   tallyId: 'xVr1r5',

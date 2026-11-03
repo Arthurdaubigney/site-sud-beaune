@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Pic from '../components/Pic.astro';
+import Icon from '../components/Icon.astro';
 import Faq from '../components/Faq.astro';
 import TallyForm from '../components/TallyForm.astro';
 import CtaPhoto from '../components/CtaPhoto.astro';
@@ -27,38 +28,48 @@ const mapPts = [
   { n: 'Perpignan', lon: 2.9, lat: 42.7, d: 'pyrenees-orientales-66', a: 'start' },
 ].map((p) => ({ ...p, ...proj(p.lon, p.lat) }));
 const steps = [
-  { t: 'Vous nous écrivez', d: 'Quelques lignes et des photographies suffisent : décrivez vos objets, leur origine, leur lieu.', k: 'commode-wallace', g: 100 },
-  { t: 'Nous estimons', d: 'Un expert examine vos clichés et vous remet une première fourchette de valeur, gratuitement.', k: 'montre-gousset', g: 60 },
-  { t: 'Nous venons chez vous', d: 'Visite à domicile sans engagement, à l’heure qui vous convient, dans tout le Grand Sud-Ouest.', k: 'vase-porcelaine', g: 130 },
-  { t: 'Nous expertisons', d: 'Inventaire, datation, attribution : un rapport écrit si vous le souhaitez, pour votre notaire ou votre assurance.', k: 'tableau-corot', g: 80 },
-  { t: 'Nous vous proposons un rachat', d: 'Offre ferme, objet par objet ou en bloc. Vous décidez, sans pression.', k: 'bronze-sculpture', g: 110 },
-  { t: 'Nous réglons et enlevons', d: 'Paiement par virement sécurisé, enlèvement et transport assurés par nos soins.', k: 'marqueterie-boulle', g: 70 },
+  { t: 'Vous m’écrivez', d: 'Quelques lignes et des photographies suffisent : décrivez vos objets, leur origine, leur lieu.', i: 'camera' },
+  { t: 'J’estime', d: 'J’examine vos clichés et vous remets une première fourchette de valeur, gratuitement.', i: 'search' },
+  { t: 'Je viens chez vous', d: 'Visite à domicile sans engagement, à l’heure qui vous convient, dans tout le Grand Sud-Ouest.', i: 'door' },
+  { t: 'J’expertise', d: 'Inventaire, datation, attribution : un rapport écrit si vous le souhaitez, pour votre notaire ou votre assurance.', i: 'seal' },
+  { t: 'Je vous propose un rachat', d: 'Offre ferme, objet par objet ou en bloc. Vous décidez, sans pression.', i: 'coins' },
+  { t: 'Je règle et j’enlève', d: 'Paiement direct, enlèvement et transport assurés par mes soins.', i: 'truck' },
+];
+const specs = SPECIALITES.map((s) => ({ href: `/antiquites/${s.slug}/`, name: s.name, k: s.img, text: s.lead.split(':')[0], title: `${s.name} : expertise et estimation gratuite` }));
+specs.push({ href: '/rachat-succession/', name: 'Rachat de succession', k: 'boutique-antiquites', text: 'Inventaire, partage et rachat du contenu d’une maison', title: 'Rachat de succession : inventaire, estimation et rachat' });
+const gallery = ['salle-chateau', 'cabinet-curiosites', 'bibliotheque-chateau', 'marqueterie-boulle', 'pendule-xviii', 'commode-wallace'];
+const trust = [
+  { i: 'shield', b: 'Estimation gratuite', s: 'Sans engagement, à partir de vos photographies' },
+  { i: 'truck', b: 'Déplacement gratuit', s: 'Partout en Nouvelle-Aquitaine et en Occitanie' },
+  { i: 'coins', b: 'Paiement direct', s: 'Règlement à l’acceptation de l’offre' },
+  { i: 'lock', b: 'Discrétion garantie', s: 'Un interlocuteur unique, en toute confidentialité' },
 ];
 ---
 <Base
   title="Antiquaire expert Sud-Ouest : estimation gratuite, succession"
-  description="Antiquaires et experts en objets d’art de la Charente au Pays basque, Périgord, Bordeaux, Gard et Hérault : estimation gratuite, rachat de succession."
-  ogImage="commode-louis-xv"
-  preload="pendule-xviii"
+  description="Les Antiquités de Benjamin : antiquaire et cabinet d’expertise en Nouvelle-Aquitaine et Occitanie. Estimation gratuite, rachat de succession et d’objets d’art."
+  ogImage="hero-urtubie"
   jsonLd={[faqSchema(faq)]}
+  preloadHero
 >
-  <section class="hero">
-    <div class="wrap">
-      <div class="grid hero-grid">
-        <h1 class="hero-title">
-          <span class="mask l1"><span>Antiquaires</span></span>
-          <span class="mask l2"><span>du Sud-Ouest</span></span>
-        </h1>
-        <div class="hero-tall"><Pic k="pendule-xviii" ratio="4-5" eager sizes="(max-width: 860px) 78vw, 30vw" /></div>
-        <div class="hero-copy">
-          <p class="lead">Expertise, estimation gratuite et rachat de succession dans toute la Nouvelle-Aquitaine et toute l’Occitanie, de Bordeaux à Toulouse, de Limoges à Perpignan.</p>
-          <div class="cta-row">
-            <a class="btn" href={ESTIMATION_URL}>Estimation gratuite <span class="arr" aria-hidden="true">→</span></a>
-            <a class="link" href="/rachat-succession/">Rachat de succession</a>
-          </div>
-          <div class="hero-small"><Pic k="bordeaux-gravure" ratio="16-10" eager sizes="(max-width: 860px) 92vw, 44vw" /></div>
-        </div>
+  <section class="hero-full">
+    <img src="/img/hero-urtubie-2400.webp" srcset="/img/hero-urtubie-1400.webp 1400w, /img/hero-urtubie-2400.webp 2400w" sizes="100vw" width="2400" height="1600" alt="Salon d’un château du Pays basque avec tapisserie, pendule comtoise et mobilier ancien" title="Salon de château du Pays basque – antiquités et mobilier ancien" fetchpriority="high" decoding="sync" />
+    <div class="wrap hero-inner">
+      <span class="hero-badge glass"><i></i>Maison fondée dans le Sud-Ouest</span>
+      <h1 class="hero-title">
+        <span class="mask l1"><span>Antiquaire expert</span></span>
+        <span class="mask l2"><span>du Grand Sud-Ouest</span></span>
+      </h1>
+      <p class="hero-lead">Les Antiquités de Benjamin, cabinet d’expertise itinérant : estimation gratuite, rachat de succession et d’objets d’art dans toute la Nouvelle-Aquitaine et toute l’Occitanie, de la Charente au Pays basque, du Périgord au Gard et à l’Hérault.</p>
+      <div class="cta-row hero-cta">
+        <a class="btn btn--terra btn--lg" href={ESTIMATION_URL}>Estimation gratuite <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn--glass btn--lg" href="/rachat-succession/">Rachat de succession</a>
       </div>
+      <ul class="hero-trust">
+        {trust.map((t) => (
+          <li class="trust-item glass"><Icon name={t.i} /><div><b>{t.b}</b><span>{t.s}</span></div></li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -66,14 +77,16 @@ const steps = [
     <div class="wrap">
       <div class="grid">
         <div class="about-head" data-reveal>
+          <span class="kicker">Antiquaire passionné</span>
           <h2 class="h-section" id="h-about">Tout le Sud-Ouest, une seule expertise</h2>
-          <p class="lead">Vingt-cinq départements, une même exigence : estimer juste, racheter avec respect, accompagner les familles avec discrétion.</p>
+          <span class="ornament"></span>
+          <p class="lead" style="margin-top:26px">Vingt-cinq départements, une même exigence : estimer juste, racheter avec respect, accompagner les familles avec discrétion.</p>
         </div>
       </div>
       <div class="grid mosaic">
         <div class="mosaic-photo" data-reveal>
-          <Pic k="vezere" ratio="16-10" sizes="(max-width: 860px) 92vw, 62vw" />
-          <div class="paper-block"><p>De la Charente-Maritime aux Pyrénées-Orientales, nous connaissons les demeures, les ateliers et les marchés de chaque territoire. Nous estimons vos objets d’art avec la rigueur d’une étude d’expertise.</p></div>
+          <Pic k="vezere" sizes="(max-width: 860px) 92vw, 48vw" />
+          <div class="paper-block"><p>De la Charente-Maritime aux Pyrénées-Orientales, je connais les demeures, les ateliers et les marchés de chaque territoire. J’estime vos objets d’art avec la rigueur d’un cabinet d’expertise.</p></div>
         </div>
         <div class="mosaic-side" data-reveal style="--i:1">
           <div class="tile">
@@ -89,45 +102,50 @@ const steps = [
           </div>
         </div>
       </div>
-          <dl class="facts facts-row" data-reveal>
-            <div><dt>Départements couverts</dt><dd>Vingt-cinq</dd></div>
-            <div><dt>Régions</dt><dd>Deux</dd></div>
-            <div><dt>Estimation</dt><dd>Gratuite</dd></div>
-            <div><dt>Engagement</dt><dd>Aucun</dd></div>
-          </dl>
+      <dl class="facts" data-reveal>
+        <div><dt>Départements couverts</dt><dd>Vingt-cinq</dd></div>
+        <div><dt>Régions</dt><dd>Deux</dd></div>
+        <div><dt>Estimation</dt><dd>Gratuite</dd></div>
+        <div><dt>Engagement</dt><dd>Aucun</dd></div>
+      </dl>
     </div>
   </section>
 
   <section class="section" aria-labelledby="h-band">
     <div class="wrap band-head" data-reveal>
-      <h2 class="h-section" id="h-band" style="font-size:clamp(1.8rem,1.2rem + 2vw,2.75rem)">Dans toutes les grandes villes</h2>
+      <span class="kicker">Zones d’intervention</span>
+      <h2 class="h-section" id="h-band">Dans toutes les grandes villes</h2>
     </div>
-    <div class="band" data-reveal>
-      {[['gironde-33', 'bordeaux-bourse', 'Bordeaux'], ['haute-garonne-31', 'toulouse', 'Toulouse'], ['pyrenees-atlantiques-64', 'biarritz', 'Biarritz'], ['herault-34', 'montpellier', 'Montpellier']].map(([slug, k, city], i) => (
-        <a href={zoneUrl(slug)} style={`--g:${[5, 2, 3, 2][i]}`} title={`Antiquaire à ${city}`}>
-          <Pic k={k} sizes="(max-width: 860px) 60vw, 40vw" alt={`Antiquaire expert à ${city} : estimation gratuite et rachat`} />
-          <span class="scrim"></span>
-          <span class="cap">{city}</span>
-        </a>
-      ))}
+    <div class="wrap">
+      <div class="band" data-reveal>
+        {[['gironde-33', 'bordeaux-bourse', 'Bordeaux'], ['haute-garonne-31', 'toulouse', 'Toulouse'], ['pyrenees-atlantiques-64', 'biarritz', 'Biarritz'], ['herault-34', 'montpellier', 'Montpellier']].map(([slug, k, city], i) => (
+          <a href={zoneUrl(slug)} style={`--g:${[4, 3, 3, 3][i]}`} title={`Antiquaire à ${city}`}>
+            <Pic k={k} sizes="(max-width: 860px) 60vw, 40vw" alt={`Antiquaire expert à ${city} : estimation gratuite et rachat`} />
+            <span class="scrim"></span>
+            <span class="cap">{city}</span>
+          </a>
+        ))}
+      </div>
+      <p class="small muted band-note">Et dans tous les autres départements : <a href="/zones-intervention/">voir toutes les zones d’intervention</a>.</p>
     </div>
-    <div class="wrap band-note"><p class="small muted">Et dans tous les autres départements : <a href="/zones-intervention/">voir toutes nos zones d’intervention</a>.</p></div>
   </section>
 
   <section class="section" aria-labelledby="h-steps">
     <div class="wrap">
       <div class="steps-top" data-reveal>
-        <h2 class="h-section" id="h-steps" style="font-size:clamp(1.8rem,1.2rem + 2vw,2.75rem)">De votre message au règlement</h2>
+        <div>
+          <span class="kicker">Ma méthode</span>
+          <h2 class="h-section" id="h-steps">De votre message au règlement</h2>
+        </div>
         <div class="ctrl"><button class="sq" data-dir="-1" aria-label="Étape précédente">←</button><button class="sq" data-dir="1" aria-label="Étape suivante">→</button></div>
       </div>
       <div class="progress" aria-hidden="true"><i data-progress></i></div>
       <ol class="steps-row" data-steps tabindex="0" aria-label="Les étapes d’une estimation">
         {steps.map((s) => (
           <li class="step">
+            <span class="step-ico"><Icon name={s.i} /></span>
             <h3>{s.t}</h3>
             <p>{s.d}</p>
-            <div class="gap"></div>
-            <Pic k={s.k} ratio="4-5" sizes="(max-width: 860px) 72vw, 280px" />
           </li>
         ))}
       </ol>
@@ -136,22 +154,31 @@ const steps = [
 
   <section class="section" aria-labelledby="h-spec">
     <div class="wrap">
-      <h2 class="statement" id="h-spec" data-reveal>Ce que nous expertisons</h2>
-      <div class="grid table-wrap">
-        <div class="table-side" data-reveal><Pic k="commode-louis-xv" ratio="4-5" sizes="(max-width: 860px) 60vw, 22vw" /></div>
-        <p class="table-name">Spécialités</p>
-        <ul class="rows">
-          {SPECIALITES.map((s, i) => (
-            <li data-reveal style={`--i:${i % 3}`}>
-              <a href={`/antiquites/${s.slug}/`} title={`${s.name} : expertise et estimation gratuite`}>
-                <b>{s.name}</b>
-                <span class="arr" aria-hidden="true">→</span>
-                <span class="k">{s.lead.split(':')[0]}</span>
-              </a>
-            </li>
-          ))}
-          <li data-reveal><a href="/rachat-succession/"><b>Rachat de succession</b><span class="arr" aria-hidden="true">→</span><span class="k">Inventaire, partage et rachat du contenu d’une maison</span></a></li>
-        </ul>
+      <div data-reveal>
+        <span class="kicker">Spécialités</span>
+        <h2 class="h-section" id="h-spec">Ce que j’expertise</h2>
+        <span class="ornament"></span>
+      </div>
+      <div class="scards">
+        {specs.map((c, i) => (
+          <a class="scard" href={c.href} title={c.title} data-reveal style={`--i:${i % 3}`}>
+            <Pic k={c.k} ratio="4-3" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 30vw" />
+            <div class="scard-body"><h3>{c.name}</h3><p>{c.text}</p><span class="more">Découvrir <span class="arr" aria-hidden="true">→</span></span></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-gal">
+    <div class="wrap">
+      <div data-reveal>
+        <span class="kicker">Un regard d’antiquaire</span>
+        <h2 class="h-section" id="h-gal">Châteaux, bastides et belles demeures</h2>
+        <span class="ornament"></span>
+      </div>
+      <div class="gallery">
+        {gallery.map((k, i) => <div data-reveal style={`--i:${i % 3}`}><Pic k={k} ratio="4-3" sizes="(max-width: 520px) 92vw, (max-width: 800px) 46vw, 30vw" /></div>)}
       </div>
     </div>
   </section>
@@ -160,9 +187,10 @@ const steps = [
     <div class="wrap">
       <div class="grid zones-grid">
         <div class="zones-intro" data-reveal>
+          <span class="kicker">Partout chez vous</span>
           <h2 class="h-section" id="h-zones">Partout dans le Sud-Ouest</h2>
-          <p class="lead" style="margin-top:24px">Toute la Nouvelle-Aquitaine et toute l’Occitanie : choisissez votre département.</p>
-          <form class="finder" data-finder>
+          <p class="lead" style="margin-top:22px">Toute la Nouvelle-Aquitaine et toute l’Occitanie : choisissez votre département.</p>
+          <form class="finder card" data-finder>
             <label for="dep-select" class="finder-label">Votre département</label>
             <div class="finder-row">
               <select id="dep-select" name="dep">
@@ -179,7 +207,7 @@ const steps = [
         </div>
         <div class="zones-list">
           {REGIONS.map((r, i) => (
-            <div data-reveal style={`--i:${i}`}>
+            <div class="card" data-reveal style={`--i:${i}`}>
               <h3><a href={zoneUrl(r.slug)}>{r.name}</a></h3>
               <p>{deptsOf(r.slug).map((d, n, arr) => (<><a href={zoneUrl(d.slug)} title={`Antiquaire ${d.name} (${d.num}) : ${d.cities.slice(0, 3).join(', ')}`}>{d.name}</a>{n < arr.length - 1 ? ', ' : '.'}</>))}</p>
             </div>
@@ -189,7 +217,7 @@ const steps = [
     </div>
   </section>
 
-  <CtaPhoto k="perigord-chateau" title="Une succession à régler ?" text="Nous rachetons le contenu complet d’une maison : mobilier, tableaux, bijoux et objets d’art. Estimation gratuite, discrétion assurée." label="Parler de ma succession" href="/rachat-succession/" />
+  <CtaPhoto k="perigord-chateau" title="Une succession à régler ?" text="Je rachète le contenu complet d’une maison : mobilier, tableaux, bijoux et objets d’art. Estimation gratuite, discrétion assurée." label="Parler de ma succession" href="/rachat-succession/" />
   <Faq items={faq} title="Vos questions sur l’estimation" />
   <TallyForm />
 </Base>
