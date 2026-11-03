@@ -108,7 +108,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .pic { position: relative; overflow: hidden; background: var(--stone-2); border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); }
 .pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
 .pic:hover img, a:hover > .pic img, a:focus-visible > .pic img { transform: scale(1.04); }
-.r-16-10 { aspect-ratio: 16 / 10; } .r-4-5 { aspect-ratio: 4 / 5; } .r-3-4 { aspect-ratio: 3 / 4; } .r-4-3 { aspect-ratio: 4 / 3; } .r-1-1 { aspect-ratio: 1; } .r-21-9 { aspect-ratio: 21 / 9; } .r-5-2 { aspect-ratio: 5 / 2; }
+.r-16-10 { aspect-ratio: 16 / 10; } .r-4-5 { aspect-ratio: 4 / 5; } .r-3-4 { aspect-ratio: 3 / 4; } .r-4-3 { aspect-ratio: 4 / 3; } .r-1-1 { aspect-ratio: 1; } .r-5-4 { aspect-ratio: 5 / 4; } .r-21-9 { aspect-ratio: 21 / 9; } .r-5-2 { aspect-ratio: 5 / 2; }
 @media (max-width: 860px) { .r-5-2 { aspect-ratio: 16 / 9; } }
 
 /* ---------- en-tête ---------- */
@@ -293,8 +293,9 @@ details[open] .chev { transform: rotate(180deg); background: rgba(212, 175, 55, 
 .page-hero h1 { grid-column: 1 / 13; grid-row: 1; font-size: clamp(2.2rem, 1rem + 4.4vw, 5rem); line-height: 1.04; max-width: 20ch; }
 .page-hero .ph-copy { grid-column: 1 / 7; grid-row: 2; }
 .page-hero .ph-photo { grid-row: 2; align-self: start; }
-.page-hero .ph-photo.is-landscape { grid-column: 8 / 13; }
-.page-hero .ph-photo.is-portrait { grid-column: 9 / 13; }
+.page-hero .ph-photo.is-landscape, .page-hero .ph-photo.is-portrait { grid-column: 7 / 13; }
+.page-hero .ph-photo .pic { margin-top: 0; }
+.page-hero .ph-photo.is-portrait img { object-position: 50% 30%; }
 .page-hero .ph-copy .lead { margin-top: 0; }
 .crumbs { font-size: 0.875rem; color: var(--muted); padding-top: 10px; }
 .crumbs ol { display: flex; flex-wrap: wrap; gap: 4px 10px; }
@@ -414,3 +415,7 @@ a.chip:hover { transform: translateY(-2px); background: #fff; border-color: var(
 .f-cta { white-space: normal; text-align: center; }
 
 main > .page-hero:last-child { padding-bottom: 96px; }
+
+.page-hero .ph-copy .kicker { line-height: 1; margin-bottom: 22px; }
+.page-hero .ph-copy { padding-top: 0; }
+.page-hero .ph-copy .kicker { display: flex; }
