@@ -33,7 +33,7 @@ for (const s of SPECIALITES) take(`spec.${s.slug}.hero`, s.img, 'object');
 take('antiquites.rachatCard', 'boutique-antiquites', 'wide');
 // 2. Pages principales.
 const REQ: [string, string, Kind][] = [
-  ['a-propos.hero', 'bibliotheque-chateau', 'wide'], ['a-propos.band', 'wide'], ['a-propos.pairA', 'vezere', 'place'], ['a-propos.pairB', 'agen', 'place'], ['a-propos.cta', 'angouleme', 'place'],
+  ['a-propos.hero', 'bibliotheque-chateau', 'wide'], ['a-propos.band', 'saint-emilion', 'place'], ['a-propos.pairA', 'vezere', 'place'], ['a-propos.pairB', 'agen', 'place'], ['a-propos.cta', 'angouleme', 'place'],
   ['antiquites.hero', 'salle-chateau', 'wide'], ['antiquites.cta', 'nimes', 'place'],
   ['rachat.hero', 'perigord-chateau', 'place'], ['rachat.band', 'la-rochelle', 'place'], ['rachat.pair', 'marqueterie-boulle', 'object'], ['rachat.cta', 'bordeaux-gravure', 'place'],
   ['expertise.hero', 'cabinet-curiosites', 'wide'], ['expertise.band', 'albi', 'place'], ['expertise.pairA', 'commode-wallace', 'object'], ['expertise.pairB', 'pendule-xviii', 'object'], ['expertise.cta', 'pays-basque', 'place'],
