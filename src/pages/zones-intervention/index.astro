@@ -14,7 +14,7 @@ const trail = [{ name: 'Accueil', path: '/' }, { name: 'Zones d’intervention',
   description="Antiquaire et expert dans les 25 départements de Nouvelle-Aquitaine et d’Occitanie : estimation gratuite, rachat de succession et d’objets d’art à domicile."
   ogImage="bordeaux-bourse" trail={trail} jsonLd={[faqSchema(FAQ_GENERAL.slice(0, 3))]}
 >
-  <PageHero h1="Antiquaire dans tout le Sud-Ouest" lead="Nouvelle-Aquitaine et Occitanie : 25 départements, de la Charente-Maritime aux Pyrénées-Orientales. Choisissez le vôtre." img="bordeaux-bourse" trail={trail} alt="Place de la Bourse à Bordeaux – antiquaire expert dans le Sud-Ouest" />
+  <PageHero h1="Antiquaire dans tout le Sud-Ouest" lead="Nouvelle-Aquitaine et Occitanie : 25 départements, de la Charente-Maritime aux Pyrénées-Orientales. Choisissez le vôtre." img="la-rochelle" trail={trail} alt="Vieux port de La Rochelle – antiquaire expert dans le Sud-Ouest" />
   {REGIONS.map((r, i) => (
     <section class="section" aria-labelledby={`h-${r.slug}`}>
       <div class="wrap">
@@ -29,7 +29,7 @@ const trail = [{ name: 'Accueil', path: '/' }, { name: 'Zones d’intervention',
             </ul>
           </div>
         </div>
-        <div class="grid" style="margin-top:72px"><div style="grid-column:8/13" data-reveal><Pic k={r.img} ratio="16-10" sizes="(max-width: 860px) 92vw, 40vw" /></div></div>
+        <div class="grid" style="margin-top:72px"><div style="grid-column:7/13" data-reveal><Pic k={r.img} ratio="16-10" sizes="(max-width: 860px) 92vw, 40vw" /></div></div>
       </div>
     </section>
   ))}

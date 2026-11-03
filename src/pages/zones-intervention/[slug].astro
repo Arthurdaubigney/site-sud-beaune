@@ -78,7 +78,7 @@ const siblings = dep ? deptsOf(dep.region).filter((d) => d.slug !== dep.slug) : 
           <h2 id="h-zone" class="h-section">{reg ? `Le patrimoine de ${reg.name}` : `Antiquités : ${dep!.name}`}</h2>
           <div style="margin-top:32px" class="measure-wide">{paragraphs.map((p) => <p>{p}</p>)}</div>
         </div>
-        <div class="b" data-reveal style="--i:1"><Pic k={reg ? (reg.slug === 'occitanie' ? 'albi' : 'perigord-chateau') : band} ratio="3-4" sizes="(max-width: 860px) 70vw, 28vw" /></div>
+        <div class="b" data-reveal style="--i:1"><Pic k={reg ? (reg.slug === 'occitanie' ? 'albi' : 'perigord-chateau') : ['bronze-sculpture', 'tableau-corot', 'vase-porcelaine', 'montre-gousset', 'pendule-xviii'][Number(dep!.num) % 5]} ratio="3-4" sizes="(max-width: 860px) 70vw, 28vw" /></div>
       </div>
 
       <Band k={band} />
