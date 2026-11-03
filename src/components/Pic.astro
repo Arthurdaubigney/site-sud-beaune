@@ -1,0 +1,20 @@
+---
+import { img } from '../data/images';
+interface Props { k: string; ratio?: string; sizes?: string; eager?: boolean; class?: string; alt?: string; title?: string; }
+const { k, ratio, sizes = '(max-width: 860px) 92vw, 50vw', eager = false, class: cls = '', alt, title } = Astro.props;
+const i = img(k);
+---
+<div class:list={['pic', ratio && `r-${ratio}`, cls]}>
+  <img
+    src={`/img/${k}-1400.webp`}
+    srcset={`/img/${k}-700.webp 700w, /img/${k}-1400.webp 1400w`}
+    sizes={sizes}
+    width={i.w}
+    height={i.h}
+    alt={alt ?? i.alt}
+    title={title ?? i.title}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding={eager ? 'sync' : 'async'}
+    fetchpriority={eager ? 'high' : undefined}
+  />
+</div>

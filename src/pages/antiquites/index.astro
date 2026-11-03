@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Pic from '../../components/Pic.astro';
+import Faq from '../../components/Faq.astro';
+import TallyForm from '../../components/TallyForm.astro';
+import CtaPhoto from '../../components/CtaPhoto.astro';
+import { SPECIALITES, FAQ_GENERAL } from '../../data/site';
+import { faqSchema } from '../../lib/schema';
+const trail = [{ name: 'Accueil', path: '/' }, { name: 'Spécialités', path: '/antiquites/' }];
+const faq = FAQ_GENERAL.slice(3, 6);
+---
+<Base
+  title="Antiquités à vendre ou estimer : tableaux, bronzes, bijoux"
+  description="Expertise et rachat d’antiquités : tableaux anciens, bronzes, bijoux, montres, mobilier d’époque, porcelaines. Estimation gratuite dans tout le Sud-Ouest."
+  ogImage="tableau-corot" trail={trail} jsonLd={[faqSchema(faq)]}
+>
+  <PageHero h1="Antiquités et objets d’art à estimer" lead="Tableau ancien, bronze, bijoux, mobilier d’époque ou porcelaine : chaque objet est examiné par un spécialiste." img="tableau-corot" ratio="4-5" trail={trail} />
+  <section class="section" aria-labelledby="h-specs">
+    <div class="wrap">
+      <h2 class="h-section" id="h-specs" data-reveal style="margin-bottom:72px">Cinq familles d’objets</h2>
+      <div class="cards">
+        {SPECIALITES.map((s) => (
+          <a class="mcard" href={`/antiquites/${s.slug}/`} data-reveal title={`${s.name} : estimation et rachat`}>
+            <Pic k={s.img} ratio="4-5" sizes="(max-width: 860px) 92vw, 40vw" />
+            <h3>{s.name}</h3>
+            <p>{s.lead}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <Faq items={faq} />
+  <TallyForm />
+  <CtaPhoto k="perigueux" />
+</Base>

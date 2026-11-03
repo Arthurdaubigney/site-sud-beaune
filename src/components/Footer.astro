@@ -1,0 +1,53 @@
+---
+import { SITE, MAISONS, EXTENSION, SPECIALITES, ESTIMATION_URL } from '../data/site';
+import { creditLines, ALL_IMAGE_KEYS } from '../data/images';
+const credits = creditLines(ALL_IMAGE_KEYS);
+---
+<footer class="site-footer">
+  <div class="wrap" style="width:100%">
+    <div class="f-cols">
+      <div>
+        <b>Nos maisons</b>
+        <ul>
+          {MAISONS.map((m) => <li><a href={`/nos-maisons/${m.slug}/`}>{m.name}</a></li>)}
+          <li><a href={`/nos-maisons/${EXTENSION.slug}/`}>Gard et Hérault</a></li>
+        </ul>
+      </div>
+      <div>
+        <b>Spécialités</b>
+        <ul>{SPECIALITES.map((s) => <li><a href={`/antiquites/${s.slug}/`}>{s.name}</a></li>)}</ul>
+      </div>
+      <div>
+        <b>Services</b>
+        <ul>
+          <li><a href="/rachat-succession/">Rachat de succession</a></li>
+          <li><a href="/expertise-estimation/">Expertise d’objets d’art</a></li>
+          <li><a href={ESTIMATION_URL}>Estimation gratuite</a></li>
+          <li><a href="/la-maison/">La maison</a></li>
+        </ul>
+      </div>
+      <div>
+        <b>Nous écrire</b>
+        <ul>
+          <li>Grand Sud-Ouest, de la Charente au Pays basque, du Périgord au Gard et à l’Hérault.</li>
+          {SITE.phone && <li><a href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</a></li>}
+          {SITE.email && <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>}
+        </ul>
+        <a class="btn btn--green f-cta" href={ESTIMATION_URL}>Demander une estimation <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap f-word" style="width:100%">
+    <svg viewBox="0 0 1000 118" role="img" aria-label={SITE.wordmark}>
+      <text x="0" y="100" font-size="118" textLength="1000" lengthAdjust="spacingAndGlyphs">{SITE.wordmark}</text>
+    </svg>
+    <details class="credits">
+      <summary>Crédits photographiques</summary>
+      <ul>{credits.map((c) => <li><a href={c.href} rel="noopener noreferrer">{c.text}</a></li>)}</ul>
+    </details>
+    <div class="f-legal">
+      <span>© {new Date().getFullYear()} {SITE.name}</span>
+      <span><a href="/mentions-legales/">Mentions légales</a> · <a href="/plan-du-site/">Plan du site</a></span>
+    </div>
+  </div>
+</footer>

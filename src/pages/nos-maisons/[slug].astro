@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Pic from '../../components/Pic.astro';
+import Band from '../../components/Band.astro';
+import Prose from '../../components/Prose.astro';
+import Faq from '../../components/Faq.astro';
+import TallyForm from '../../components/TallyForm.astro';
+import CtaPhoto from '../../components/CtaPhoto.astro';
+import { MAISONS, EXTENSION, SPECIALITES, FAQ_GENERAL } from '../../data/site';
+import { maisonSchema, faqSchema } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return [...MAISONS.map((m) => ({ params: { slug: m.slug } })), { params: { slug: EXTENSION.slug } }];
+}
+const { slug } = Astro.params;
+const m = MAISONS.find((x) => x.slug === slug);
+const isExt = !m;
+const d = m ?? {
+  name: EXTENSION.name, short: 'Gard et Hérault', deps: EXTENSION.deps, depList: ['Gard (30)', 'Hérault (34)'], region: 'Gard et Hérault',
+  cities: EXTENSION.cities, img: EXTENSION.img, imgSecond: 'nimes', lead: EXTENSION.lead, paragraphs: EXTENSION.paragraphs,
+  objets: ['Mobilier provençal et languedocien', 'Faïences de Moustiers et de Montpellier', 'Tableaux de l’école de Nîmes', 'Argenterie et bijoux anciens', 'Livres et objets de collection'],
+  titleTag: EXTENSION.titleTag, metaDesc: EXTENSION.metaDesc, h1: EXTENSION.h1, faq: EXTENSION.faq,
+};
+const bandKey = { 'maison-charente': 'commode-wallace', 'maison-perigord': 'marqueterie-boulle', 'maison-bordelaise': 'pendule-xviii', 'maison-pays-basque': 'commode-louis-xv', 'gard-herault': 'vase-porcelaine' }[slug!] ?? 'commode-wallace';
+const faq = [...d.faq, ...FAQ_GENERAL.slice(0, 2)];
+const trail = [
+  { name: 'Accueil', path: '/' },
+  { name: 'Nos maisons', path: '/nos-maisons/' },
+  { name: d.name, path: `/nos-maisons/${slug}/` },
+];
+const others = [...MAISONS.filter((x) => x.slug !== slug), ...(isExt ? [] : [{ slug: EXTENSION.slug, name: 'Gard et Hérault', short: 'Gard et Hérault' }])];
+---
+<Base title={d.titleTag} description={d.metaDesc} ogImage={d.img} trail={trail} jsonLd={[maisonSchema(slug!), faqSchema(faq)]}>
+  <PageHero h1={d.h1} lead={d.lead} img={d.img} ratio="4-5" trail={trail} />
+
+  <section class="section" aria-labelledby="h-zone">
+    <div class="wrap">
+      <div class="grid pair pair-wide">
+        <div class="a" data-reveal>
+          <h2 id="h-zone" class="h-section">{isExt ? 'Le patrimoine du Languedoc' : `Le patrimoine de ${d.short}`}</h2>
+          <div style="margin-top:32px" class="measure-wide">{d.paragraphs.map((p) => <p>{p}</p>)}</div>
+        </div>
+        <div class="b" data-reveal style="--i:1"><Pic k={d.imgSecond} ratio="3-4" sizes="(max-width: 860px) 70vw, 30vw" /></div>
+      </div>
+
+      <Band k={bandKey} />
+      <Prose h={`Zones d’intervention`}>
+        <p>Nous nous déplaçons gratuitement en {d.depList.join(' et ')} pour estimer vos objets d’art, notamment à :</p>
+        <ul class="citylist">{d.cities.map((c) => <li><span class="chip">Antiquaire {c}</span></li>)}</ul>
+      </Prose>
+
+      {!isExt && (
+        <Prose h="Objets que nous estimons et rachetons">
+          <ul class="points" style="grid-column:auto">{d.objets.map((o) => <li>{o}</li>)}</ul>
+          <p class="small muted" style="margin-top:20px">Chaque pièce est examinée, datée et estimée par un spécialiste de la période.</p>
+        </Prose>
+      )}
+
+      <Prose h="Les spécialités de la maison">
+        <p>Notre équipe s’appuie sur des experts par famille d’objets :</p>
+        <ul class="related">{SPECIALITES.map((s) => <li><a class="chip" href={`/antiquites/${s.slug}/`}>{s.name}</a></li>)}</ul>
+        <p style="margin-top:28px">Pour une succession, consultez notre page sur le <a href="/rachat-succession/">rachat de succession</a>.</p>
+      </Prose>
+
+      <Prose h="Nos autres maisons">
+        <ul class="related">{others.map((o) => <li><a class="chip" href={`/nos-maisons/${o.slug}/`}>{o.short === o.name ? o.name : o.name}</a></li>)}</ul>
+      </Prose>
+    </div>
+  </section>
+
+  <Faq items={faq} title={`Questions fréquentes : ${d.short}`} />
+  <TallyForm title={`Estimation gratuite – ${d.short}`} id="estimation" />
+  <CtaPhoto k={d.imgSecond} title="Une succession à régler ?" text="Parlons-en : la maison la plus proche de chez vous vous répond sous 48 heures." label="Parler à un expert" />
+</Base>

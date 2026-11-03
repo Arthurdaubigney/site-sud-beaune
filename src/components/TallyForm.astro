@@ -1,0 +1,47 @@
+---
+/**
+ * Composant réutilisable du formulaire Tally.
+ * 1. Créer le formulaire sur https://tally.so puis copier son identifiant (https://tally.so/r/<ID>).
+ * 2. Renseigner `tallyId` dans src/data/site.ts (ou passer la prop `formId`).
+ * Tant qu'aucun identifiant n'est défini, un placeholder accessible est affiché.
+ */
+import { SITE } from '../data/site';
+interface Props { formId?: string; title?: string; intro?: string; id?: string; heading?: 'h2' | 'h3'; }
+const {
+  formId = SITE.tallyId,
+  title = 'Demandez votre estimation gratuite',
+  intro = 'Décrivez vos objets, joignez quelques photographies : nous vous répondons sous 48 heures.',
+  id = 'estimation',
+  heading = 'h2',
+} = Astro.props;
+const H = heading;
+const src = formId
+  ? `https://tally.so/embed/${formId}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`
+  : '';
+---
+<section class="tally-section" id={id} aria-labelledby={`${id}-title`}>
+  <div class="wrap">
+    <div class="grid tally-grid">
+      <div class="tally-intro" data-reveal>
+        <H id={`${id}-title`} class="h-section">{title}</H>
+        <p class="lead" style="margin-top:24px">{intro}</p>
+        <ul>
+          <li>Estimation gratuite et sans engagement</li>
+          <li>Déplacement à domicile dans tout le Grand Sud-Ouest</li>
+          <li>Rachat de succession, paiement sécurisé</li>
+          <li>Discrétion et confidentialité garanties</li>
+        </ul>
+      </div>
+      <div class="tally-box" data-reveal style="--i:1">
+        {src ? (
+          <iframe data-tally-src={src} src={src} loading="lazy" title="Formulaire de demande d’estimation gratuite" width="100%" height="560"></iframe>
+        ) : (
+          <div class="tally-placeholder" role="note">
+            <h3>Formulaire Tally à intégrer ici</h3>
+            <p class="muted">Renseignez l’identifiant du formulaire dans <code>src/data/site.ts</code> (<code>tallyId</code>) : l’iframe Tally s’affichera automatiquement dans ce conteneur responsive.</p>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

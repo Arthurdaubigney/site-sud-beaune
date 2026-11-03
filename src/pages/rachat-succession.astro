@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Pic from '../components/Pic.astro';
+import Band from '../components/Band.astro';
+import Prose from '../components/Prose.astro';
+import Faq from '../components/Faq.astro';
+import TallyForm from '../components/TallyForm.astro';
+import CtaPhoto from '../components/CtaPhoto.astro';
+import { MAISONS, EXTENSION } from '../data/site';
+import { serviceSchema, faqSchema } from '../lib/schema';
+const path = '/rachat-succession/';
+const trail = [{ name: 'Accueil', path: '/' }, { name: 'Rachat de succession', path }];
+const faq = [
+  { q: 'Que faire du contenu d’une maison après un décès ?', a: 'Ne jetez rien avant de nous consulter. Nous réalisons un inventaire, identifions les objets de valeur, rachetons ce qui présente un intérêt et pouvons organiser le débarras du reste.' },
+  { q: 'Travaillez-vous avec les notaires et les héritiers ?', a: 'Oui. Nous remettons une estimation écrite exploitable par le notaire pour le partage, et nous adaptons à la présence de plusieurs héritiers.' },
+  { q: 'Le rachat est-il immédiat ?', a: 'Après l’estimation et la visite, une proposition ferme est remise. En cas d’accord, l’enlèvement est organisé et le paiement effectué par virement sécurisé.' },
+  { q: 'Dois-je trier avant votre visite ?', a: 'Non. Laissez les objets en place : nous les voyons dans leur contexte, ce qui aide à les dater et à les attribuer.' },
+];
+const desc = 'Rachat de succession et de contenu de maison : inventaire, estimation gratuite et paiement sécurisé en Charente, Périgord, Gironde, Pays basque, Gard.';
+---
+<Base title="Rachat de succession : antiquités et objets d’art à domicile" description={desc} ogImage="perigord-chateau" trail={trail} jsonLd={[serviceSchema('Rachat de succession d’antiquités', desc, path), faqSchema(faq)]}>
+  <PageHero h1="Rachat de succession et de contenu de maison" lead="Une succession demande du temps et de la discrétion : nous inventorions, estimons et rachetons les objets d’art de la famille." img="perigord-chateau" ratio="4-5" trail={trail} cta="Parler de ma succession" />
+  <section class="section" aria-labelledby="s-0">
+    <div class="wrap">
+      <Prose h="Un accompagnement pensé pour les familles" id="s-0">
+        <p>Qu’il s’agisse d’une maison de famille, d’un appartement ou d’un château, nous intervenons avec respect et sans précipitation. Notre rôle : déterminer ce qui a de la valeur, expliquer pourquoi et proposer un rachat transparent.</p>
+        <p>Nous travaillons avec les héritiers, les notaires, les mandataires judiciaires et les administrateurs de biens, dans les huit départements de notre zone.</p>
+      </Prose>
+      <Prose h="Ce que nous rachetons">
+        <p>Mobilier ancien, tableaux, bronzes, sculptures, bijoux, montres, pendules, porcelaines, argenterie, livres anciens, tapis, souvenirs de famille et objets de collection.</p>
+        <p><a href="/antiquites/">Voir toutes nos spécialités</a></p>
+      </Prose>
+      <Band k="la-rochelle" />
+      <div class="grid pair" style="margin-top:96px">
+        <div class="a" data-reveal><Pic k="marqueterie-boulle" ratio="4-5" sizes="(max-width: 860px) 80vw, 33vw" /></div>
+        <div class="b" data-reveal style="--i:1">
+          <h2 style="font-size:clamp(1.8rem,1.1rem + 2vw,2.75rem)">Une succession près de chez vous</h2>
+          <ul class="related">
+            {MAISONS.map((m) => <li><a class="chip" href={`/nos-maisons/${m.slug}/`}>Succession {m.short}</a></li>)}
+            <li><a class="chip" href={`/nos-maisons/${EXTENSION.slug}/`}>Succession Gard et Hérault</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Faq items={faq} title="Questions fréquentes sur le rachat de succession" />
+  <TallyForm title="Parlez-nous de votre succession" intro="Quelques lignes et des photographies : nous revenons vers vous sous 48 heures." />
+  <CtaPhoto k="vezere" />
+</Base>

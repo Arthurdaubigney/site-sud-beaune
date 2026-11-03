@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import { MAISONS, EXTENSION, SPECIALITES } from '../data/site';
+---
+<Base title="Plan du site – antiquaires et experts d’art Sud-Ouest" description="Plan du site : maisons d’antiquaires, spécialités d’expertise, rachat de succession et estimation gratuite dans le Sud-Ouest, le Gard et l’Hérault.">
+  <section class="page-hero"><div class="wrap">
+    <h1 style="font-size:clamp(2.2rem,1rem + 4vw,4.5rem)">Plan du site</h1>
+    <div class="grid" style="margin-top:48px;row-gap:40px">
+      <div style="grid-column:span 4">
+        <h2 style="font-size:1.6rem;margin-bottom:12px"><a href="/nos-maisons/">Nos maisons</a></h2>
+        <ul>{MAISONS.map((m) => <li style="padding:4px 0"><a href={`/nos-maisons/${m.slug}/`}>{m.name}</a></li>)}<li style="padding:4px 0"><a href={`/nos-maisons/${EXTENSION.slug}/`}>Gard et Hérault</a></li></ul>
+      </div>
+      <div style="grid-column:span 4">
+        <h2 style="font-size:1.6rem;margin-bottom:12px"><a href="/antiquites/">Spécialités</a></h2>
+        <ul>{SPECIALITES.map((s) => <li style="padding:4px 0"><a href={`/antiquites/${s.slug}/`}>{s.name}</a></li>)}</ul>
+      </div>
+      <div style="grid-column:span 4">
+        <h2 style="font-size:1.6rem;margin-bottom:12px">Services</h2>
+        <ul>
+          <li style="padding:4px 0"><a href="/rachat-succession/">Rachat de succession</a></li>
+          <li style="padding:4px 0"><a href="/expertise-estimation/">Expertise et estimation</a></li>
+          <li style="padding:4px 0"><a href="/estimation-gratuite/">Estimation gratuite</a></li>
+          <li style="padding:4px 0"><a href="/la-maison/">La maison</a></li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+</Base>

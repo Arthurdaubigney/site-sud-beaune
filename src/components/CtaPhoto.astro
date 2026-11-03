@@ -1,0 +1,17 @@
+---
+import { img } from '../data/images';
+import { ESTIMATION_URL } from '../data/site';
+interface Props { k?: string; title?: string; text?: string; label?: string; href?: string; }
+const { k = 'vezere', title = 'Faites estimer vos objets d’art', text = 'Envoyez quelques photographies : une première estimation gratuite vous est remise sous 48 heures.', label = 'Estimation gratuite', href = ESTIMATION_URL } = Astro.props;
+const i = img(k);
+---
+<section class="cta-photo" aria-labelledby="cta-title">
+  <img src={`/img/${k}-1400.webp`} srcset={`/img/${k}-700.webp 700w, /img/${k}-1400.webp 1400w`} sizes="100vw" width={i.w} height={i.h} alt={i.alt} title={i.title} loading="lazy" decoding="async" />
+  <div class="wrap grid" style="width:100%">
+    <div class="cta-copy" data-reveal>
+      <h2 id="cta-title">{title}</h2>
+      <p>{text}</p>
+      <a class="btn btn--paper" href={href}>{label} <span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

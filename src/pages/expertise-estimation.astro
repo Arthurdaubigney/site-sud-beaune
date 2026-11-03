@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Pic from '../components/Pic.astro';
+import Band from '../components/Band.astro';
+import Prose from '../components/Prose.astro';
+import Faq from '../components/Faq.astro';
+import TallyForm from '../components/TallyForm.astro';
+import CtaPhoto from '../components/CtaPhoto.astro';
+import { SPECIALITES } from '../data/site';
+import { serviceSchema, faqSchema } from '../lib/schema';
+const path = '/expertise-estimation/';
+const trail = [{ name: 'Accueil', path: '/' }, { name: 'Expertise et estimation', path }];
+const faq = [
+  { q: 'Quelle différence entre estimation et expertise ?', a: 'L’estimation donne une fourchette de valeur ; l’expertise approfondit l’identification, la datation et l’attribution et peut faire l’objet d’un rapport écrit.' },
+  { q: 'Puis-je obtenir un rapport pour mon assurance ?', a: 'Oui. Nous établissons des rapports d’expertise détaillés pour l’assurance, la donation ou le partage.' },
+  { q: 'L’estimation sur photographies est-elle fiable ?', a: 'Elle donne une première fourchette. Elle est confirmée lors de l’examen de l’objet, sans engagement.' },
+];
+const desc = 'Expertise d’objets d’art et estimation d’antiquités gratuite : tableaux, bronzes, bijoux, mobilier. Rapports écrits pour succession, assurance et partage.';
+---
+<Base title="Expertise d’objets d’art et estimation d’antiquités" description={desc} ogImage="montre-gousset" trail={trail} jsonLd={[serviceSchema('Expertise d’objets d’art et estimation d’antiquités', desc, path), faqSchema(faq)]}>
+  <PageHero h1="Expertise d’objets d’art et d’antiquités" lead="Datation, attribution, valeur de marché : des experts qui regardent vos objets de près et vous répondent par écrit." img="montre-gousset" ratio="4-5" trail={trail} />
+  <section class="section" aria-labelledby="e-0">
+    <div class="wrap">
+      <Prose h="Une méthode en trois temps" id="e-0">
+        <p>Nous examinons l’objet (matière, fabrication, marques), le comparons aux références du marché, puis vous remettons une estimation motivée.</p>
+        <p>Pour une succession, une assurance ou une donation, un rapport d’expertise écrit et détaillé peut être produit.</p>
+      </Prose>
+      <Prose h="Nos domaines d’expertise">
+        <ul class="related">{SPECIALITES.map((s) => <li><a class="chip" href={`/antiquites/${s.slug}/`}>{s.name}</a></li>)}</ul>
+      </Prose>
+      <Band k="vezere" />
+      <div class="grid pair pair-wide" style="margin-top:96px">
+        <div class="a" data-reveal><Pic k="commode-wallace" ratio="16-10" sizes="(max-width: 860px) 92vw, 58vw" /></div>
+        <div class="b" data-reveal style="--i:1"><Pic k="vase-porcelaine" ratio="3-4" sizes="(max-width: 860px) 70vw, 30vw" /></div>
+      </div>
+    </div>
+  </section>
+  <Faq items={faq} title="Questions fréquentes sur l’expertise d’objets d’art" />
+  <TallyForm />
+  <CtaPhoto k="biarritz" />
+</Base>

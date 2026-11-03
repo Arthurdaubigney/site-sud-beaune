@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Pic from '../../components/Pic.astro';
+import TallyForm from '../../components/TallyForm.astro';
+import CtaPhoto from '../../components/CtaPhoto.astro';
+import { MAISONS, EXTENSION, CITIES_BY_DEP } from '../../data/site';
+const trail = [{ name: 'Accueil', path: '/' }, { name: 'Nos maisons', path: '/nos-maisons/' }];
+---
+<Base
+  title="Nos maisons d’antiquaires : Charente, Périgord, Bordeaux"
+  description="Quatre maisons d’antiquaires et d’experts : Charente, Périgord, Bordelaise et Pays basque, avec extension dans le Gard et l’Hérault. Trouvez la plus proche."
+  ogImage="bordeaux-bourse" trail={trail}
+>
+  <PageHero h1="Nos maisons d’antiquaires du Sud-Ouest" lead="Quatre maisons régionales, un seul réseau : choisissez celle qui intervient près de chez vous." img="bordeaux-bourse" ratio="4-5" trail={trail} />
+  <section class="section" aria-labelledby="h-maisons">
+    <div class="wrap">
+      <h2 class="h-section" id="h-maisons" data-reveal style="margin-bottom:72px">Les quatre maisons régionales</h2>
+      <div class="cards">
+        {[...MAISONS, null].map((m) => m ? (
+          <a class="mcard" href={`/nos-maisons/${m.slug}/`} data-reveal title={`${m.name} – antiquaire ${m.region}`}>
+            <Pic k={m.img} ratio="16-10" sizes="(max-width: 860px) 92vw, 45vw" />
+            <h3>{m.name}</h3>
+            <p>{m.region} ({m.deps.replace(' · ', ' et ')}) : {m.cities.slice(0, 4).join(', ')}.</p>
+          </a>
+        ) : (
+          <a class="mcard" href={`/nos-maisons/${EXTENSION.slug}/`} data-reveal title="Antiquaire dans le Gard et l’Hérault">
+            <Pic k={EXTENSION.img} ratio="16-10" sizes="(max-width: 860px) 92vw, 45vw" />
+            <h3>Gard et Hérault</h3>
+            <p>Extension de notre réseau (30 et 34) : {EXTENSION.cities.slice(0, 4).join(', ')}.</p>
+          </a>
+        ))}
+        <div class="mcard-note" data-reveal>
+          <p class="lead">Vous ne savez pas quelle maison vous répondra ? Indiquez votre commune : nous orientons votre demande vers l’expert le plus proche.</p>
+          <a class="btn" href="/estimation-gratuite/">Estimation gratuite <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="h-deps">
+    <div class="wrap">
+      <div class="grid">
+        <h2 class="h-section" id="h-deps" style="grid-column:1/-1;margin-bottom:56px" data-reveal>Antiquaire par département</h2>
+        <div class="dep-side" data-reveal><Pic k="bordeaux-gravure" ratio="4-5" sizes="(max-width: 860px) 70vw, 24vw" /></div>
+        <ul class="dep-table">
+          {CITIES_BY_DEP.map((d) => (
+            <li data-reveal><a href={`/nos-maisons/${d.maison}/`} title={`Antiquaire ${d.label} (${d.dep})`}><span class="d">{d.dep}</span><span class="n">{d.label}</span><span class="arr" aria-hidden="true">→</span><span class="c">{d.cities}</span></a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+  <TallyForm />
+  <CtaPhoto k="la-rochelle" />
+</Base>

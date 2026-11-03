@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Pic from '../../components/Pic.astro';
+import Band from '../../components/Band.astro';
+import Prose from '../../components/Prose.astro';
+import Faq from '../../components/Faq.astro';
+import TallyForm from '../../components/TallyForm.astro';
+import CtaPhoto from '../../components/CtaPhoto.astro';
+import { SPECIALITES, MAISONS, EXTENSION, FAQ_GENERAL } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../lib/schema';
+
+export function getStaticPaths() { return SPECIALITES.map((s) => ({ params: { slug: s.slug } })); }
+const { slug } = Astro.params;
+const s = SPECIALITES.find((x) => x.slug === slug)!;
+const faq = [...s.faq, FAQ_GENERAL[1]];
+const trail = [{ name: 'Accueil', path: '/' }, { name: 'Spécialités', path: '/antiquites/' }, { name: s.name, path: `/antiquites/${s.slug}/` }];
+const path = `/antiquites/${s.slug}/`;
+const second = ['commode-wallace', 'marqueterie-boulle', 'pendule-xviii', 'tableau-paysage'].find((k) => k !== s.img)!;
+---
+<Base title={s.titleTag} description={s.metaDesc} ogImage={s.img} trail={trail} jsonLd={[serviceSchema(s.h1, s.metaDesc, path), faqSchema(faq)]}>
+  <PageHero h1={s.h1} lead={s.lead} img={s.img} trail={trail} />
+  <section class="section" aria-labelledby="sec-0">
+    <div class="wrap">
+      {s.sections.map((sec, i) => (
+        <Prose h={sec.h} id={`sec-${i}`}>{sec.p.map((p) => <p>{p}</p>)}</Prose>
+      ))}
+      <Band k={['bordeaux-bourse','perigord-chateau','la-rochelle','pays-basque','vezere'][SPECIALITES.findIndex((x)=>x.slug===slug)]} />
+      <div class="grid prose-row" style="margin-top:96px">
+        <h2 data-reveal>Ce que nous estimons et rachetons</h2>
+        <ul class="points" data-reveal style="--i:1">{s.points.map((p) => <li>{p}</li>)}</ul>
+      </div>
+      <div class="grid pair" style="margin-top:96px">
+        <div class="a" data-reveal><Pic k={second} ratio="3-4" sizes="(max-width: 860px) 80vw, 33vw" /></div>
+        <div class="b" data-reveal style="--i:1">
+          <h2 style="font-size:clamp(1.8rem,1.1rem + 2vw,2.75rem)">Estimation près de chez vous</h2>
+          <p style="margin-top:20px">Nos maisons se déplacent gratuitement pour estimer vos objets :</p>
+          <ul class="related">
+            {MAISONS.map((m) => <li><a class="chip" href={`/nos-maisons/${m.slug}/`}>{s.kw} – {m.short}</a></li>)}
+            <li><a class="chip" href={`/nos-maisons/${EXTENSION.slug}/`}>{s.kw} – Gard et Hérault</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Faq items={faq} title={`Questions fréquentes : ${s.kw}`} />
+  <TallyForm />
+  <CtaPhoto k="bordeaux-bourse" />
+</Base>

@@ -1,0 +1,6 @@
+---
+import Pic from './Pic.astro';
+interface Props { k: string; }
+const { k } = Astro.props;
+---
+<div class="band-photo" data-reveal><Pic k={k} ratio="21-9" sizes="(max-width: 860px) 92vw, 88vw" /></div>

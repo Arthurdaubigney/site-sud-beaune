@@ -1,0 +1,26 @@
+---
+import Pic from './Pic.astro';
+import { ESTIMATION_URL } from '../data/site';
+interface Props { h1: string; lead: string; img: string; ratio?: string; trail: { name: string; path: string }[]; cta?: string; }
+const { h1, lead, img, ratio = '4-5', trail, cta = 'Estimation gratuite' } = Astro.props;
+---
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Fil d’Ariane">
+      <ol>
+        {trail.map((t, i) => <li>{i < trail.length - 1 ? <a href={t.path}>{t.name}</a> : <span aria-current="page">{t.name}</span>}</li>)}
+      </ol>
+    </nav>
+    <div class="grid" style="margin-top:40px">
+      <h1 class="mask-h"><span class="mask"><span>{h1}</span></span></h1>
+      <div class="ph-photo" data-reveal><Pic k={img} ratio={ratio} eager sizes="(max-width: 860px) 78vw, 30vw" /></div>
+      <div class="ph-copy">
+        <p class="lead" style="max-width:34ch">{lead}</p>
+        <div class="cta-row" style="margin-top:28px">
+          <a class="btn" href={ESTIMATION_URL}>{cta} <span class="arr" aria-hidden="true">→</span></a>
+          <a class="link" href="#faq-title">Questions fréquentes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

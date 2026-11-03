@@ -1,0 +1,8 @@
+---
+interface Props { h: string; id?: string; }
+const { h, id } = Astro.props;
+---
+<div class="grid prose-row" style="margin-top:96px">
+  <h2 id={id} data-reveal>{h}</h2>
+  <div class="body" data-reveal style="--i:1"><slot /></div>
+</div>
