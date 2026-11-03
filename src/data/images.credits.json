@@ -162,13 +162,13 @@
   "via": "Met Open Access"
  },
  "tableau-paysage": {
-  "w": 843,
-  "h": 658,
-  "title": "Italian Landscape, Camille Corot, c. 1866",
-  "creator": "The Art Institute of Chicago",
+  "w": 1400,
+  "h": 1057,
+  "title": "Jalais Hill, Pontoise, Camille Pissarro, 1867",
+  "creator": "The Metropolitan Museum of Art",
   "license": "CC0",
-  "page": "https://www.artic.edu/artworks/87033",
-  "via": "Art Institute of Chicago"
+  "page": "https://www.metmuseum.org/art/collection/search/437299",
+  "via": "Met Open Access"
  },
  "toulouse": {
   "w": 1400,
@@ -181,11 +181,11 @@
  },
  "carcassonne": {
   "w": 1400,
-  "h": 357,
-  "title": "Carcassonne Cite",
-  "creator": "Benh LIEU SONG ( Flickr )",
-  "license": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Carcassonne_Cite.jpg",
+  "h": 388,
+  "title": "Ciudadela, Carcasona, Francia, 2023-01-07, DD 216-218 HDR",
+  "creator": "Diego Delso",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ciudadela,_Carcasona,_Francia,_2023-01-07,_DD_216-218_HDR.jpg",
   "via": "Wikimedia Commons"
  },
  "albi": {
