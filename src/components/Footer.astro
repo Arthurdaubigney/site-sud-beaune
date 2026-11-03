@@ -1,5 +1,6 @@
 ---
-import { SITE, MAISONS, EXTENSION, SPECIALITES, ESTIMATION_URL } from '../data/site';
+import { SITE, SPECIALITES, ESTIMATION_URL } from '../data/site';
+import { REGIONS, FEATURED, zoneUrl } from '../data/territoires';
 import { creditLines, ALL_IMAGE_KEYS } from '../data/images';
 const credits = creditLines(ALL_IMAGE_KEYS);
 ---
@@ -7,10 +8,10 @@ const credits = creditLines(ALL_IMAGE_KEYS);
   <div class="wrap" style="width:100%">
     <div class="f-cols">
       <div>
-        <b>Nos maisons</b>
+        <b>Zones d’intervention</b>
         <ul>
-          {MAISONS.map((m) => <li><a href={`/nos-maisons/${m.slug}/`}>{m.name}</a></li>)}
-          <li><a href={`/nos-maisons/${EXTENSION.slug}/`}>Gard et Hérault</a></li>
+          {REGIONS.map((r) => <li><a href={zoneUrl(r.slug)}>{r.name}</a></li>)}
+          {FEATURED.map((d) => <li><a href={zoneUrl(d.slug)}>Antiquaire {d.name} ({d.num})</a></li>)}
         </ul>
       </div>
       <div>
@@ -23,13 +24,13 @@ const credits = creditLines(ALL_IMAGE_KEYS);
           <li><a href="/rachat-succession/">Rachat de succession</a></li>
           <li><a href="/expertise-estimation/">Expertise d’objets d’art</a></li>
           <li><a href={ESTIMATION_URL}>Estimation gratuite</a></li>
-          <li><a href="/la-maison/">La maison</a></li>
+          <li><a href="/a-propos/">À propos</a></li>
         </ul>
       </div>
       <div>
         <b>Nous écrire</b>
         <ul>
-          <li>Grand Sud-Ouest, de la Charente au Pays basque, du Périgord au Gard et à l’Hérault.</li>
+          <li>Toute la Nouvelle-Aquitaine et toute l’Occitanie, 25 départements.</li>
           {SITE.phone && <li><a href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</a></li>}
           {SITE.email && <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>}
         </ul>

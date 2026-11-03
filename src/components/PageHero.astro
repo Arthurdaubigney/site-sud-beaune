@@ -1,8 +1,8 @@
 ---
 import Pic from './Pic.astro';
 import { ESTIMATION_URL } from '../data/site';
-interface Props { h1: string; lead: string; img: string; ratio?: string; trail: { name: string; path: string }[]; cta?: string; }
-const { h1, lead, img, ratio = '4-5', trail, cta = 'Estimation gratuite' } = Astro.props;
+interface Props { alt?: string; h1: string; lead: string; img: string; ratio?: string; trail: { name: string; path: string }[]; cta?: string; }
+const { alt, h1, lead, img, ratio = '4-5', trail, cta = 'Estimation gratuite' } = Astro.props;
 ---
 <section class="page-hero">
   <div class="wrap">
@@ -13,7 +13,7 @@ const { h1, lead, img, ratio = '4-5', trail, cta = 'Estimation gratuite' } = Ast
     </nav>
     <div class="grid" style="margin-top:40px">
       <h1 class="mask-h"><span class="mask"><span>{h1}</span></span></h1>
-      <div class="ph-photo" data-reveal><Pic k={img} ratio={ratio} eager sizes="(max-width: 860px) 78vw, 30vw" /></div>
+      <div class="ph-photo" data-reveal><Pic k={img} alt={alt} ratio={ratio} eager sizes="(max-width: 860px) 78vw, 30vw" /></div>
       <div class="ph-copy">
         <p class="lead" style="max-width:34ch">{lead}</p>
         <div class="cta-row" style="margin-top:28px">

@@ -2,28 +2,28 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Pic from '../components/Pic.astro';
-import Band from '../components/Band.astro';
 import Prose from '../components/Prose.astro';
+import Band from '../components/Band.astro';
 import Faq from '../components/Faq.astro';
 import TallyForm from '../components/TallyForm.astro';
 import CtaPhoto from '../components/CtaPhoto.astro';
 import { FAQ_GENERAL } from '../data/site';
 import { faqSchema } from '../lib/schema';
-const trail = [{ name: 'Accueil', path: '/' }, { name: 'La maison', path: '/la-maison/' }];
+const trail = [{ name: 'Accueil', path: '/' }, { name: 'À propos', path: '/a-propos/' }];
 const faq = FAQ_GENERAL.slice(0, 3);
 ---
-<Base title="La maison : antiquaires et experts d’art en Sud-Ouest" description="Une maison d’antiquaires et d’experts en objets d’art, présente de la Charente au Pays basque, en Périgord, en Gironde, dans le Gard et l’Hérault." ogImage="pendule-xviii" trail={trail} jsonLd={[faqSchema(faq)]}>
-  <PageHero h1="La maison d’antiquaires du Sud-Ouest" lead="Un réseau de spécialistes qui connaissent les demeures, les ateliers et les marchés de leur région." img="pendule-xviii" ratio="4-5" trail={trail} />
+<Base title="À propos : antiquaires et experts d’art du Sud-Ouest" description="Antiquaires et experts en objets d’art présents dans toute la Nouvelle-Aquitaine et toute l’Occitanie : estimation gratuite, expertise et rachat de succession." ogImage="pendule-xviii" trail={trail} jsonLd={[faqSchema(faq)]}>
+  <PageHero h1="Des antiquaires dans tout le Sud-Ouest" lead="Une équipe de spécialistes qui connaît les demeures, les ateliers et les marchés de la Nouvelle-Aquitaine et de l’Occitanie." img="pendule-xviii" trail={trail} />
   <section class="section" aria-labelledby="a-0">
     <div class="wrap">
       <Prose h="Notre engagement" id="a-0">
         <p>Estimer juste, expliquer clairement, racheter avec respect. Notre approche repose sur trois principes : la transparence de l’estimation, la discrétion et la rapidité de réponse.</p>
-        <p>Nos quatre maisons régionales travaillent ensemble : lorsqu’un objet requiert un spécialiste, nous sollicitons l’expert le plus pertinent du réseau.</p>
+        <p>Lorsqu’un objet requiert un spécialiste précis (tableau, bronze, horlogerie, argenterie), nous sollicitons l’expert le plus pertinent de notre réseau.</p>
       </Prose>
-      <Prose h="Un ancrage territorial">
-        <p>Charente et Charente-Maritime, Dordogne, Gironde, Landes, Pyrénées-Atlantiques, puis Gard et Hérault : <a href="/nos-maisons/">découvrez nos maisons</a>.</p>
+      <Band k="vezere" />
+      <Prose h="Un territoire complet">
+        <p>Nous intervenons dans les douze départements de Nouvelle-Aquitaine et les treize d’Occitanie : <a href="/zones-intervention/">consultez nos zones d’intervention</a>.</p>
       </Prose>
-      <Band k="bordeaux-gravure" />
       <div class="grid pair" style="margin-top:96px">
         <div class="a" data-reveal><Pic k="tableau-corot" ratio="4-5" sizes="(max-width: 860px) 80vw, 33vw" /></div>
         <div class="b" data-reveal style="--i:1"><Pic k="bronze-sculpture" ratio="1-1" sizes="(max-width: 860px) 70vw, 30vw" /></div>

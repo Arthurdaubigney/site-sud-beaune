@@ -16,7 +16,7 @@ for (const f of pages) {
   const noAlt = imgs.filter((i) => !/ alt="[^"]{12,}"/.test(i) || !/ title="[^"]{8,}"/.test(i)).length;
   const ld = (h.match(/application\/ld\+json/g) || []).length;
   const problems = [];
-  if (!title || title.length < 45 || title.length > 62) problems.push(`title ${title?.length}`);
+  if (!title || (!/404|mentions|plan-du-site/.test(f) && (title.length < 45 || title.length > 62))) problems.push(`title ${title?.length}`);
   if (titles.has(title)) problems.push('title dupliqué'); titles.add(title);
   const utility = /404|mentions|plan-du-site/.test(f);
   if (!utility && (!desc || desc.length < 135 || desc.length > 160)) problems.push(`description ${desc?.length}`);

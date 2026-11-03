@@ -1,4 +1,4 @@
-import { SITE, MAISONS, EXTENSION } from '../data/site';
+import { SITE } from '../data/site';
 
 const abs = (p: string) => new URL(p, SITE.url).toString();
 const clean = <T extends Record<string, unknown>>(o: T) =>
@@ -13,19 +13,19 @@ export function organisationSchema() {
     '@id': ORG_ID,
     additionalType: 'https://en.wikipedia.org/wiki/Antique_shop',
     name: SITE.name,
-    alternateName: 'Maisons d’Antiquaires et d’Expertise d’Art',
+    alternateName: 'Antiquaires et Experts d’Art du Sud-Ouest',
     url: SITE.url,
     logo: abs('/favicon.svg'),
     image: abs('/img/commode-louis-xv-1400.webp'),
     description:
-      'Réseau d’antiquaires et d’experts en objets d’art : estimation gratuite, expertise, rachat de succession et d’antiquités de la Charente au Pays basque, dans le Périgord, la Gironde, le Gard et l’Hérault.',
+      'Réseau d’antiquaires et d’experts en objets d’art : estimation gratuite, expertise, rachat de succession et d’antiquités dans toute la Nouvelle-Aquitaine et toute l’Occitanie.',
     telephone: SITE.phone,
     email: SITE.email,
     priceRange: 'Estimation gratuite',
     address: { '@type': 'PostalAddress', addressRegion: 'Nouvelle-Aquitaine', addressCountry: 'FR' },
     areaServed: [
-      ...['Charente', 'Charente-Maritime', 'Dordogne', 'Gironde', 'Landes', 'Pyrénées-Atlantiques', 'Gard', 'Hérault'].map((n) => ({ '@type': 'AdministrativeArea', name: n })),
-      ...['Bordeaux', 'Biarritz', 'Périgueux', 'Angoulême', 'La Rochelle', 'Nîmes', 'Montpellier'].map((n) => ({ '@type': 'City', name: n })),
+      ...['Nouvelle-Aquitaine', 'Occitanie'].map((n) => ({ '@type': 'AdministrativeArea', name: n })),
+      ...['Bordeaux', 'Toulouse', 'Montpellier', 'Poitiers', 'Limoges', 'Biarritz', 'Périgueux', 'Angoulême', 'La Rochelle', 'Nîmes', 'Perpignan', 'Albi'].map((n) => ({ '@type': 'City', name: n })),
     ],
     knowsAbout: ['Antiquités', 'Expertise d’objets d’art', 'Rachat de succession', 'Tableaux anciens', 'Bronzes', 'Bijoux anciens', 'Mobilier d’époque'],
     makesOffer: {
@@ -49,22 +49,18 @@ export function websiteSchema() {
   };
 }
 
-export function maisonSchema(slug: string) {
-  const m = MAISONS.find((x) => x.slug === slug);
-  const name = m ? m.name : `Antiquaire ${EXTENSION.name}`;
-  const cities = m ? m.cities : EXTENSION.cities;
-  const region = m ? m.region : EXTENSION.name;
+export function zoneSchema(slug: string, name: string, areas: string[], kind: 'AdministrativeArea' | 'City' = 'City') {
   return {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'ProfessionalService', 'Store'],
-    '@id': abs(`/nos-maisons/${slug}/#maison`),
+    '@id': abs(`/zones-intervention/${slug}/#zone`),
     additionalType: 'https://en.wikipedia.org/wiki/Antique_shop',
-    name,
-    url: abs(`/nos-maisons/${slug}/`),
+    name: `${SITE.name} – ${name}`,
+    url: abs(`/zones-intervention/${slug}/`),
     parentOrganization: { '@id': ORG_ID },
-    description: `Antiquaire et expert en objets d’art : estimation gratuite, rachat de succession et d’antiquités – ${region}.`,
-    address: { '@type': 'PostalAddress', addressRegion: region, addressCountry: 'FR' },
-    areaServed: cities.map((n) => ({ '@type': 'City', name: n })),
+    description: `Antiquaire et expert en objets d’art : estimation gratuite, rachat de succession et d’antiquités – ${name}.`,
+    address: { '@type': 'PostalAddress', addressRegion: name, addressCountry: 'FR' },
+    areaServed: areas.map((n) => ({ '@type': kind, name: n })),
     priceRange: 'Estimation gratuite',
   };
 }
@@ -77,7 +73,7 @@ export function serviceSchema(name: string, description: string, path: string) {
     description,
     url: abs(path),
     provider: { '@id': ORG_ID },
-    areaServed: ['Charente', 'Charente-Maritime', 'Dordogne', 'Gironde', 'Landes', 'Pyrénées-Atlantiques', 'Gard', 'Hérault'].map((n) => ({ '@type': 'AdministrativeArea', name: n })),
+    areaServed: ['Nouvelle-Aquitaine', 'Occitanie'].map((n) => ({ '@type': 'AdministrativeArea', name: n })),
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', description: 'Estimation gratuite et sans engagement' },
   };
 }

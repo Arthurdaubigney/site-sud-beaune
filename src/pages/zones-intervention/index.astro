@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Pic from '../../components/Pic.astro';
+import TallyForm from '../../components/TallyForm.astro';
+import CtaPhoto from '../../components/CtaPhoto.astro';
+import { REGIONS, deptsOf, zoneUrl } from '../../data/territoires';
+import { faqSchema } from '../../lib/schema';
+import { FAQ_GENERAL } from '../../data/site';
+const trail = [{ name: 'Accueil', path: '/' }, { name: 'Zones d’intervention', path: '/zones-intervention/' }];
+---
+<Base
+  title="Antiquaire Sud-Ouest : zones d’intervention, 25 départements"
+  description="Antiquaire et expert dans les 25 départements de Nouvelle-Aquitaine et d’Occitanie : estimation gratuite, rachat de succession et d’objets d’art à domicile."
+  ogImage="bordeaux-bourse" trail={trail} jsonLd={[faqSchema(FAQ_GENERAL.slice(0, 3))]}
+>
+  <PageHero h1="Antiquaire dans tout le Sud-Ouest" lead="Nouvelle-Aquitaine et Occitanie : 25 départements, de la Charente-Maritime aux Pyrénées-Orientales. Choisissez le vôtre." img="bordeaux-bourse" trail={trail} alt="Place de la Bourse à Bordeaux – antiquaire expert dans le Sud-Ouest" />
+  {REGIONS.map((r, i) => (
+    <section class="section" aria-labelledby={`h-${r.slug}`}>
+      <div class="wrap">
+        <div class="grid prose-row">
+          <h2 id={`h-${r.slug}`} data-reveal><a href={zoneUrl(r.slug)} style="text-decoration:none">{r.name}</a></h2>
+          <div class="body" data-reveal style="--i:1">
+            <p class="lead" style="max-width:34ch">{r.lead}</p>
+            <ul class="dep-list">
+              {deptsOf(r.slug).map((d) => (
+                <li><a href={zoneUrl(d.slug)} title={`Antiquaire ${d.name} (${d.num}) : ${d.cities.slice(0, 3).join(', ')}`}><span class="n">{d.name} ({d.num})</span><span class="c">{d.cities.slice(0, 3).join(', ')}</span></a></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div class="grid" style="margin-top:72px"><div style={i % 2 ? 'grid-column:1/6' : 'grid-column:8/13'} data-reveal><Pic k={r.img} ratio="16-10" sizes="(max-width: 860px) 92vw, 40vw" /></div></div>
+      </div>
+    </section>
+  ))}
+  <TallyForm />
+  <CtaPhoto k="toulouse" />
+</Base>

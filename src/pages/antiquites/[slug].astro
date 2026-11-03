@@ -7,7 +7,8 @@ import Prose from '../../components/Prose.astro';
 import Faq from '../../components/Faq.astro';
 import TallyForm from '../../components/TallyForm.astro';
 import CtaPhoto from '../../components/CtaPhoto.astro';
-import { SPECIALITES, MAISONS, EXTENSION, FAQ_GENERAL } from '../../data/site';
+import { SPECIALITES, FAQ_GENERAL } from '../../data/site';
+import { REGIONS, FEATURED, zoneUrl } from '../../data/territoires';
 import { serviceSchema, faqSchema } from '../../lib/schema';
 
 export function getStaticPaths() { return SPECIALITES.map((s) => ({ params: { slug: s.slug } })); }
@@ -34,10 +35,10 @@ const second = ['commode-wallace', 'marqueterie-boulle', 'pendule-xviii', 'table
         <div class="a" data-reveal><Pic k={second} ratio="3-4" sizes="(max-width: 860px) 80vw, 33vw" /></div>
         <div class="b" data-reveal style="--i:1">
           <h2 style="font-size:clamp(1.8rem,1.1rem + 2vw,2.75rem)">Estimation près de chez vous</h2>
-          <p style="margin-top:20px">Nos maisons se déplacent gratuitement pour estimer vos objets :</p>
+          <p style="margin-top:20px">Nous nous déplaçons gratuitement dans toute la Nouvelle-Aquitaine et toute l’Occitanie :</p>
           <ul class="related">
-            {MAISONS.map((m) => <li><a class="chip" href={`/nos-maisons/${m.slug}/`}>{s.kw} – {m.short}</a></li>)}
-            <li><a class="chip" href={`/nos-maisons/${EXTENSION.slug}/`}>{s.kw} – Gard et Hérault</a></li>
+            {REGIONS.map((r) => <li><a class="chip" href={zoneUrl(r.slug)}>{s.kw} – {r.name}</a></li>)}
+            {FEATURED.map((d) => <li><a class="chip" href={zoneUrl(d.slug)}>{s.kw} – {d.name}</a></li>)}
           </ul>
         </div>
       </div>

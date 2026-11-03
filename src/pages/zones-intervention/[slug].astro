@@ -1,0 +1,117 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Pic from '../../components/Pic.astro';
+import Prose from '../../components/Prose.astro';
+import Band from '../../components/Band.astro';
+import Faq from '../../components/Faq.astro';
+import TallyForm from '../../components/TallyForm.astro';
+import CtaPhoto from '../../components/CtaPhoto.astro';
+import { SPECIALITES, FAQ_GENERAL } from '../../data/site';
+import { REGIONS, DEPTS, region, deptsOf, zoneUrl, fitText } from '../../data/territoires';
+import { zoneSchema, faqSchema } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return [...REGIONS.map((r) => ({ params: { slug: r.slug } })), ...DEPTS.map((d) => ({ params: { slug: d.slug } }))];
+}
+const { slug } = Astro.params;
+const reg = REGIONS.find((r) => r.slug === slug);
+const dep = DEPTS.find((d) => d.slug === slug);
+
+// --- contenu commun ---
+let h1 = '', titleTag = '', metaDesc = '', lead = '', img = '', place = '', paragraphs: string[] = [], name = '', short = '';
+let areas: string[] = [], areaKind: 'City' | 'AdministrativeArea' = 'City';
+let parent = null as null | { name: string; slug: string };
+let children = [] as typeof DEPTS;
+let faq: { q: string; a: string }[] = [];
+let band = 'commode-wallace';
+
+if (reg) {
+  ({ h1, titleTag, metaDesc, lead, img, place, paragraphs, name } = reg);
+  short = reg.name;
+  children = deptsOf(reg.slug);
+  areas = children.map((d) => d.name); areaKind = 'AdministrativeArea';
+  band = reg.slug === 'occitanie' ? 'marqueterie-boulle' : 'commode-wallace';
+  faq = [
+    { q: `Dans quels départements intervenez-vous en ${reg.name} ?`, a: `Dans les ${children.length} départements : ${children.map((d) => `${d.name} (${d.num})`).join(', ')}.` },
+    ...FAQ_GENERAL.slice(0, 3),
+  ];
+} else if (dep) {
+  const r = region(dep.region);
+  name = dep.name; short = dep.name; img = dep.img; place = dep.place; areas = dep.cities;
+  parent = { name: r.name, slug: r.slug };
+  const c = dep.cities;
+  h1 = `Antiquaire expert ${dep.in} (${dep.num})`;
+  const titles = [`Antiquaire ${dep.name} (${dep.num}) : estimation gratuite, rachat`, `Antiquaire ${dep.name} (${dep.num}) : expertise et estimation gratuite`, `Antiquaire ${dep.name} (${dep.num}) : estimation et rachat gratuit`, `Antiquaire expert ${dep.name} (${dep.num}) : estimation gratuite`, `Antiquaire ${dep.name} (${dep.num}) : estimation gratuite`];
+  titleTag = titles.filter((t) => t.length >= 50 && t.length <= 60)[0] ?? titles.sort((a, b) => Math.abs(a.length - 55) - Math.abs(b.length - 55))[0];
+  metaDesc = fitText(`Antiquaire et expert à ${c[0]}, ${c[1]} et ${c[2]} : estimation gratuite, rachat de succession et d’objets d’art ${dep.in} (${dep.num}).`, [' Réponse sous 48 h.', ' Déplacement gratuit.'], 140, 155);
+  lead = `${dep.pref} et tout le département : nous estimons, expertisons et rachetons mobilier, tableaux, bronzes, bijoux et objets d’art ${dep.in}.`;
+  paragraphs = [
+    dep.heritage,
+    `Nous nous déplaçons gratuitement à ${c.slice(0, -1).join(', ')} et ${c[c.length - 1]}, ainsi que dans toutes les communes ${dep.in} (${dep.num}). Succession, partage entre héritiers, déménagement ou vente de collection : chaque dossier débute par une estimation gratuite à partir de vos photographies, puis par une visite à domicile sans engagement.`,
+    `Après l’inventaire, nous remettons une estimation écrite et, si vous le souhaitez, une proposition de rachat ferme avec règlement sécurisé et enlèvement assuré.`,
+  ];
+  faq = [
+    { q: `Intervenez-vous à ${c[0]} et dans tout le département ${dep.in} ?`, a: `Oui. Nous couvrons ${c[0]}, ${c[1]}, ${c[2]} et l’ensemble des communes ${dep.in} (${dep.num}). Le déplacement pour l’estimation est gratuit.` },
+    { q: `Rachetez-vous le contenu d’une succession ${dep.in} ?`, a: `Oui. Nous rachetons le contenu complet d’une maison ou seulement les pièces d’intérêt, après inventaire et estimation écrite.` },
+    ...FAQ_GENERAL.slice(0, 2),
+  ];
+  band = ['commode-louis-xv', 'pendule-xviii', 'marqueterie-boulle', 'commode-wallace', 'vase-porcelaine'][Number(dep.num) % 5];
+}
+
+const path = zoneUrl(slug!);
+const trail = [
+  { name: 'Accueil', path: '/' },
+  { name: 'Zones d’intervention', path: '/zones-intervention/' },
+  ...(parent ? [{ name: parent.name, path: zoneUrl(parent.slug) }] : []),
+  { name: reg ? reg.name : `${dep!.name} (${dep!.num})`, path },
+];
+const siblings = dep ? deptsOf(dep.region).filter((d) => d.slug !== dep.slug) : [];
+---
+<Base title={titleTag} description={metaDesc} ogImage={img} trail={trail} jsonLd={[zoneSchema(slug!, reg ? reg.name : dep!.name, areas, areaKind), faqSchema(faq)]}>
+  <PageHero h1={h1} lead={lead} img={img} trail={trail} alt={`${place} – antiquaire expert ${reg ? 'en ' + reg.name : dep!.in}`} />
+
+  <section class="section" aria-labelledby="h-zone">
+    <div class="wrap">
+      <div class="grid pair pair-wide">
+        <div class="a" data-reveal>
+          <h2 id="h-zone" class="h-section">{reg ? `Le patrimoine de ${reg.name}` : `Antiquités : ${dep!.name}`}</h2>
+          <div style="margin-top:32px" class="measure-wide">{paragraphs.map((p) => <p>{p}</p>)}</div>
+        </div>
+        <div class="b" data-reveal style="--i:1"><Pic k={reg ? (reg.slug === 'occitanie' ? 'albi' : 'perigord-chateau') : band} ratio="3-4" sizes="(max-width: 860px) 70vw, 28vw" /></div>
+      </div>
+
+      <Band k={band} />
+
+      {reg && (
+        <Prose h={`Les ${children.length} départements`}>
+          <ul class="related">{children.map((d) => <li><a class="chip" href={zoneUrl(d.slug)} title={`Antiquaire ${d.name} (${d.num})`}>{d.name} ({d.num})</a></li>)}</ul>
+        </Prose>
+      )}
+      {dep && (
+        <Prose h="Villes où nous intervenons">
+          <p>Estimation gratuite à domicile notamment à :</p>
+          <ul class="citylist">{dep.cities.map((c) => <li><span class="chip">Antiquaire {c}</span></li>)}</ul>
+        </Prose>
+      )}
+
+      <Prose h="Ce que nous estimons">
+        <p>Notre équipe s’appuie sur des spécialistes par famille d’objets :</p>
+        <ul class="related">{SPECIALITES.map((s) => <li><a class="chip" href={`/antiquites/${s.slug}/`}>{s.name}</a></li>)}</ul>
+        <p style="margin-top:28px">Pour une succession, consultez notre page sur le <a href="/rachat-succession/">rachat de succession</a>.</p>
+      </Prose>
+
+      <Prose h={dep ? `Autres départements en ${region(dep.region).name}` : 'Autre région'}>
+        <ul class="related">
+          {dep && siblings.map((d) => <li><a class="chip" href={zoneUrl(d.slug)}>{d.name} ({d.num})</a></li>)}
+          {dep && <li><a class="chip" href={zoneUrl(parent!.slug)}>Toute la {parent!.name}</a></li>}
+          {reg && REGIONS.filter((r) => r.slug !== reg.slug).map((r) => <li><a class="chip" href={zoneUrl(r.slug)}>Antiquaire en {r.name}</a></li>)}
+        </ul>
+      </Prose>
+    </div>
+  </section>
+
+  <Faq items={faq} title={`Questions fréquentes : ${short}`} />
+  <TallyForm title={`Estimation gratuite – ${short}`} />
+  <CtaPhoto k={reg ? img : band} />
+</Base>

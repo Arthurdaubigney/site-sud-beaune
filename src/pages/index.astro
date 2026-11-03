@@ -4,19 +4,28 @@ import Pic from '../components/Pic.astro';
 import Faq from '../components/Faq.astro';
 import TallyForm from '../components/TallyForm.astro';
 import CtaPhoto from '../components/CtaPhoto.astro';
-import { MAISONS, EXTENSION, SPECIALITES, FAQ_GENERAL, ESTIMATION_URL, CITIES_BY_DEP } from '../data/site';
+import { SPECIALITES, FAQ_GENERAL, ESTIMATION_URL } from '../data/site';
+import { REGIONS, DEPTS, FEATURED, deptsOf, zoneUrl } from '../data/territoires';
 import { faqSchema } from '../lib/schema';
 
 const faq = FAQ_GENERAL;
+// Projection simple longitude/latitude -> SVG (viewBox 300 x 262)
+const proj = (lon: number, lat: number) => ({ x: Math.round((lon + 2.2) * 48), y: Math.round((47 - lat) * 66) + 8 });
 const mapPts = [
-  { n: 'La Rochelle', x: 22, y: 30, h: 'maison-charente' },
-  { n: 'Angoulême', x: 72, y: 52, h: 'maison-charente' },
-  { n: 'Périgueux', x: 118, y: 84, h: 'maison-perigord' },
-  { n: 'Bordeaux', x: 62, y: 118, h: 'maison-bordelaise' },
-  { n: 'Biarritz', x: 26, y: 196, h: 'maison-pays-basque' },
-  { n: 'Nîmes', x: 238, y: 164, h: 'gard-herault', ext: true },
-  { n: 'Montpellier', x: 214, y: 188, h: 'gard-herault', ext: true },
-];
+  { n: 'Poitiers', lon: 0.34, lat: 46.58, d: 'vienne-86', a: 'start' },
+  { n: 'La Rochelle', lon: -1.15, lat: 46.16, d: 'charente-maritime-17', a: 'start' },
+  { n: 'Limoges', lon: 1.26, lat: 45.83, d: 'haute-vienne-87', a: 'start' },
+  { n: 'Périgueux', lon: 0.72, lat: 45.18, d: 'dordogne-24', a: 'start' },
+  { n: 'Bordeaux', lon: -0.58, lat: 44.84, d: 'gironde-33', a: 'end' },
+  { n: 'Cahors', lon: 1.44, lat: 44.45, d: 'lot-46', a: 'end' },
+  { n: 'Rodez', lon: 2.57, lat: 44.35, d: 'aveyron-12', a: 'start' },
+  { n: 'Biarritz', lon: -1.56, lat: 43.48, d: 'pyrenees-atlantiques-64', a: 'start' },
+  { n: 'Toulouse', lon: 1.44, lat: 43.6, d: 'haute-garonne-31', a: 'end' },
+  { n: 'Albi', lon: 2.15, lat: 43.93, d: 'tarn-81', a: 'start' },
+  { n: 'Nîmes', lon: 4.36, lat: 43.84, d: 'gard-30', a: 'start' },
+  { n: 'Montpellier', lon: 3.88, lat: 43.61, d: 'herault-34', a: 'end' },
+  { n: 'Perpignan', lon: 2.9, lat: 42.7, d: 'pyrenees-orientales-66', a: 'start' },
+].map((p) => ({ ...p, ...proj(p.lon, p.lat) }));
 const steps = [
   { t: 'Vous nous écrivez', d: 'Quelques lignes et des photographies suffisent : décrivez vos objets, leur origine, leur lieu.', k: 'commode-wallace', g: 100 },
   { t: 'Nous estimons sous 48 h', d: 'Un expert examine vos clichés et vous remet une première fourchette de valeur, gratuitement.', k: 'montre-gousset', g: 60 },
@@ -43,16 +52,15 @@ const steps = [
         </h1>
         <div class="hero-tall"><Pic k="pendule-xviii" ratio="4-5" eager sizes="(max-width: 860px) 72vw, 30vw" /></div>
         <div class="hero-copy">
-          <p class="lead">Expertise, estimation gratuite et rachat de succession, de la Charente au Pays basque, du Périgord à Bordeaux, jusqu’au Gard et à l’Hérault.</p>
+          <p class="lead">Expertise, estimation gratuite et rachat de succession dans toute la Nouvelle-Aquitaine et toute l’Occitanie, de Bordeaux à Toulouse, de Limoges à Perpignan.</p>
           <div class="cta-row">
             <a class="btn" href={ESTIMATION_URL}>Estimation gratuite <span class="arr" aria-hidden="true">→</span></a>
             <a class="link" href="/rachat-succession/">Rachat de succession</a>
           </div>
-          <div class="dep-chips" role="list" aria-label="Choisir votre département">
-            {CITIES_BY_DEP.map((d) => (
-              <a class="chip" role="listitem" href={`/nos-maisons/${d.maison}/`} title={`Antiquaire en ${d.label} (${d.dep}) : ${d.cities}`}>{d.dep} {d.label}</a>
-            ))}
-          </div>
+          <ul class="dep-chips" aria-label="Choisir votre zone">
+            {REGIONS.map((r) => <li><a class="chip chip--strong" href={zoneUrl(r.slug)} title={`Antiquaire en ${r.name}`}>{r.name}</a></li>)}
+            {FEATURED.map((d) => <li><a class="chip" href={zoneUrl(d.slug)} title={`Antiquaire ${d.name} (${d.num}) : ${d.cities.slice(0, 3).join(', ')}`}>{d.name} ({d.num})</a></li>)}
+          </ul>
         </div>
       </div>
     </div>
@@ -62,30 +70,30 @@ const steps = [
     <div class="wrap">
       <div class="grid">
         <div class="about-head" data-reveal>
-          <h2 class="h-section" id="h-about">Une maison, quatre territoires</h2>
-          <p class="lead">Quatre maisons régionales d’antiquaires et d’experts, une même exigence : estimer juste, racheter avec respect, accompagner les familles avec discrétion.</p>
+          <h2 class="h-section" id="h-about">Tout le Sud-Ouest, une seule expertise</h2>
+          <p class="lead">Vingt-cinq départements, une même exigence : estimer juste, racheter avec respect, accompagner les familles avec discrétion.</p>
         </div>
       </div>
       <div class="grid mosaic">
         <div class="mosaic-photo" data-reveal>
           <Pic k="vezere" ratio="16-10" sizes="(max-width: 860px) 92vw, 62vw" />
-          <div class="paper-block"><p>Entre Charente, Périgord, Gironde et Pays basque, notre réseau connaît les demeures, les ateliers et les marchés de chaque territoire. Nous estimons vos objets d’art avec la même rigueur qu’une étude d’expertise.</p></div>
+          <div class="paper-block"><p>De la Charente-Maritime aux Pyrénées-Orientales, nous connaissons les demeures, les ateliers et les marchés de chaque territoire. Nous estimons vos objets d’art avec la rigueur d’une étude d’expertise.</p></div>
         </div>
         <div class="mosaic-side" data-reveal style="--i:1">
           <div class="tile">
-            <svg class="map" viewBox="0 0 300 230" role="img" aria-label="Carte des zones d’intervention : La Rochelle, Angoulême, Périgueux, Bordeaux, Biarritz, Nîmes et Montpellier">
+            <svg class="map" viewBox="0 0 360 300" role="img" aria-label="Carte des zones d’intervention en Nouvelle-Aquitaine et en Occitanie">
               {mapPts.map((p) => (
-                <a href={`/nos-maisons/${p.h}/`} class={p.ext ? 'dot-ext' : ''}>
+                <a href={zoneUrl(p.d)}>
                   <title>{`Antiquaire à ${p.n}`}</title>
-                  <circle cx={p.x} cy={p.y} r="5" />
-                  <text x={p.x + 10} y={p.y + 4}>{p.n}</text>
+                  <circle cx={p.x} cy={p.y} r="4.5" />
+                  <text x={p.a === 'end' ? p.x - 9 : p.x + 9} y={p.y + 4} text-anchor={p.a}>{p.n}</text>
                 </a>
               ))}
             </svg>
           </div>
           <dl class="facts">
-            <div><dt>Départements couverts</dt><dd>Huit</dd></div>
-            <div><dt>Maisons régionales</dt><dd>Quatre</dd></div>
+            <div><dt>Départements couverts</dt><dd>Vingt-cinq</dd></div>
+            <div><dt>Régions</dt><dd>Deux</dd></div>
             <div><dt>Estimation</dt><dd>Gratuite</dd></div>
             <div><dt>Première réponse</dt><dd>Sous 48 h</dd></div>
           </dl>
@@ -96,18 +104,18 @@ const steps = [
 
   <section class="section" aria-labelledby="h-band">
     <div class="wrap band-head" data-reveal style="max-width:none;padding-right:var(--m)">
-      <h2 class="h-section" id="h-band" style="font-size:clamp(1.8rem,1.2rem + 2vw,2.75rem)">Choisissez votre maison</h2>
+      <h2 class="h-section" id="h-band" style="font-size:clamp(1.8rem,1.2rem + 2vw,2.75rem)">Dans toutes les grandes villes</h2>
     </div>
     <div class="band" data-reveal>
-      {[MAISONS[0], MAISONS[1], MAISONS[2], MAISONS[3]].map((m, i) => (
-        <a href={`/nos-maisons/${m.slug}/`} style={`--g:${[5, 2, 3, 2][i]}`} title={`${m.name} – ${m.region}`}>
-          <Pic k={m.img} sizes="(max-width: 860px) 60vw, 40vw" class="" alt={`${m.name} : ${m.cities.slice(0, 3).join(', ')}`} />
+      {[['gironde-33', 'bordeaux-bourse', 'Bordeaux'], ['haute-garonne-31', 'toulouse', 'Toulouse'], ['pyrenees-atlantiques-64', 'biarritz', 'Biarritz'], ['herault-34', 'montpellier', 'Montpellier']].map(([slug, k, city], i) => (
+        <a href={zoneUrl(slug)} style={`--g:${[5, 2, 3, 2][i]}`} title={`Antiquaire à ${city}`}>
+          <Pic k={k} sizes="(max-width: 860px) 60vw, 40vw" alt={`Antiquaire expert à ${city} : estimation gratuite et rachat`} />
           <span class="scrim"></span>
-          <span class="cap">{m.short}<small>{m.deps}</small></span>
+          <span class="cap">{city}</span>
         </a>
       ))}
     </div>
-    <div class="wrap band-note"><p class="small muted">Et au-delà : <a href={`/nos-maisons/${EXTENSION.slug}/`}>Gard et Hérault</a> (Nîmes, Montpellier, Uzès, Sète).</p></div>
+    <div class="wrap band-note"><p class="small muted">Et dans tous les autres départements : <a href="/zones-intervention/">voir toutes nos zones d’intervention</a>.</p></div>
   </section>
 
   <section class="section" aria-labelledby="h-steps">
@@ -154,19 +162,15 @@ const steps = [
 
   <section class="section" aria-labelledby="h-zones">
     <div class="wrap">
-      <div class="grid">
-        <h2 class="h-section" id="h-zones" style="grid-column:1/-1;margin-bottom:56px" data-reveal>Partout dans le Grand Sud-Ouest</h2>
-        <ul class="dep-table">
-          {CITIES_BY_DEP.map((d, i) => (
-            <li data-reveal style={`--i:${i % 3}`}>
-              <a href={`/nos-maisons/${d.maison}/`} title={`Antiquaire ${d.label} (${d.dep}) : ${d.cities}`}>
-                <span class="d">{d.dep}</span><span class="n">Antiquaire {d.in}</span><span class="arr" aria-hidden="true">→</span>
-                <span class="c">{d.cities}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <h2 class="h-section" id="h-zones" data-reveal style="margin-bottom:56px">Partout dans le Sud-Ouest</h2>
+      {REGIONS.map((r) => (
+        <div class="grid prose-row region-block" data-reveal>
+          <h3 style="grid-column:1/6;font-size:clamp(1.5rem,1.1rem + 1.4vw,2.25rem)"><a href={zoneUrl(r.slug)} style="text-decoration:none">{r.name}</a></h3>
+          <ul class="related" style="grid-column:6/13;margin-top:0">
+            {deptsOf(r.slug).map((d) => <li><a class="chip" href={zoneUrl(d.slug)} title={`Antiquaire ${d.name} (${d.num}) : ${d.cities.slice(0, 3).join(', ')}`}>{d.name} ({d.num})</a></li>)}
+          </ul>
+        </div>
+      ))}
     </div>
   </section>
 

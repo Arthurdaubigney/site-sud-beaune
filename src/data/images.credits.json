@@ -169,5 +169,122 @@
   "license": "CC0",
   "page": "https://www.artic.edu/artworks/87033",
   "via": "Art Institute of Chicago"
+ },
+ "toulouse": {
+  "w": 1400,
+  "h": 841,
+  "title": "Toulouse Capitole Night Wikimedia Commons",
+  "creator": "Benh LIEU SONG",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Toulouse_Capitole_Night_Wikimedia_Commons.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "carcassonne": {
+  "w": 1400,
+  "h": 357,
+  "title": "Carcassonne Cite",
+  "creator": "Benh LIEU SONG ( Flickr )",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Carcassonne_Cite.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "albi": {
+  "w": 1400,
+  "h": 1162,
+  "title": "Catedral de Santa Cecilia, Albi, Francia, 2023-01-07, DD 146",
+  "creator": "Diego Delso",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Catedral_de_Santa_Cecilia,_Albi,_Francia,_2023-01-07,_DD_146.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "limoges": {
+  "w": 1400,
+  "h": 1050,
+  "title": "Gare de Limoges Bénédictins",
+  "creator": "Le train, c'est trop bien",
+  "license": "CC BY 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Gare_de_Limoges_B%C3%A9n%C3%A9dictins.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "poitiers": {
+  "w": 1400,
+  "h": 934,
+  "title": "Poitiers - Église Notre-Dame la Grande - 09",
+  "creator": "Benjamin Smith",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Poitiers_-_%C3%89glise_Notre-Dame_la_Grande_-_09.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "pau": {
+  "w": 1400,
+  "h": 1050,
+  "title": "Henri IV enfant (château de Pau)",
+  "creator": "fredpanassac",
+  "license": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Henri_IV_enfant_(ch%C3%A2teau_de_Pau).jpg",
+  "via": "Wikimedia Commons"
+ },
+ "collioure": {
+  "w": 1024,
+  "h": 680,
+  "title": "Collioure 002",
+  "creator": "Doronenko",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Collioure_002.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "rocamadour": {
+  "w": 1400,
+  "h": 1050,
+  "title": "Rocamadour, Lot, Midi-Pyrénées, france",
+  "creator": "Dynamosquito from France",
+  "license": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Rocamadour,_Lot,_Midi-Pyr%C3%A9n%C3%A9es,_france.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "cahors": {
+  "w": 1400,
+  "h": 934,
+  "title": "Cahors - Pont Valentré - 02",
+  "creator": "Benjamin Smith",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cahors_-_Pont_Valentr%C3%A9_-_02.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "gavarnie": {
+  "w": 1400,
+  "h": 700,
+  "title": "Cirque de Gavarnie, Haute-Pyrénées, France",
+  "creator": "Benh LIEU SONG",
+  "license": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cirque_de_Gavarnie,_Haute-Pyr%C3%A9n%C3%A9es,_France.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "montpellier": {
+  "w": 1400,
+  "h": 1050,
+  "title": "L'opéra Comédie à Montpellier",
+  "creator": "Andreas Sandberg",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:L%27op%C3%A9ra_Com%C3%A9die_%C3%A0_Montpellier.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "agen": {
+  "w": 1400,
+  "h": 1050,
+  "title": "Agen, Lot-et-Garonne, France",
+  "creator": "Florent Pécassou",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Agen,_Lot-et-Garonne,_France.JPG",
+  "via": "Wikimedia Commons"
+ },
+ "navacelles": {
+  "w": 1400,
+  "h": 422,
+  "title": "Cirque de Navacelles (3)",
+  "creator": "Krzysztof Golik",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cirque_de_Navacelles_(3).jpg",
+  "via": "Wikimedia Commons"
  }
 }
