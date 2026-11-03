@@ -20,10 +20,11 @@ export const SITE = {
 export const ESTIMATION_URL = '/estimation-gratuite/';
 
 export const NAV = [
-  { href: '/zones-intervention/', label: 'Zones d’intervention' },
+  { href: '/zones-intervention/', label: 'Zones' },
   { href: '/antiquites/', label: 'Spécialités' },
   { href: '/rachat-succession/', label: 'Succession' },
   { href: '/expertise-estimation/', label: 'Expertise' },
+  { href: '/conseils/', label: 'Conseils' },
   { href: '/a-propos/', label: 'À propos' },
 ];
 
@@ -121,7 +122,7 @@ export const SPECIALITES: Specialite[] = [
       {
         h: 'Bijoux anciens : métal, pierres, poinçons',
         p: [
-          'Nous contrôlons les poinçons (tête d’aigle, tête de cheval, poinçons de maître), identifions les pierres et jugeons la taille, la couleur et la pureté. Un bijou signé d’une grande maison ou d’une époque recherchée (Art nouveau, Art déco) vaut souvent bien plus que son poids d’or.',
+          'Nous contrôlons les poinçons (tête d’aigle, tête de chien, Minerve, poinçons de maître), identifions les pierres et jugeons la taille, la couleur et la pureté. Un bijou signé d’une grande maison ou d’une époque recherchée (Art nouveau, Art déco) vaut souvent bien plus que son poids d’or.',
         ],
       },
       {

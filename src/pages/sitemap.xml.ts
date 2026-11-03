@@ -1,10 +1,17 @@
 import type { APIRoute } from 'astro';
 import { SITE, SPECIALITES } from '../data/site';
 import { REGIONS, DEPTS, zoneUrl } from '../data/territoires';
+import { SERVICES } from '../data/services';
+import { CITIES } from '../data/cities';
+import { GUIDES } from '../data/guides';
 
 export const GET: APIRoute = () => {
   const paths = [
     '/', '/zones-intervention/', '/antiquites/', '/rachat-succession/', '/expertise-estimation/', '/estimation-gratuite/', '/a-propos/', '/plan-du-site/',
+    '/conseils/',
+    ...SERVICES.map((x) => `/${x.slug}/`),
+    ...CITIES.map((c) => `/${c.slug}/`),
+    ...GUIDES.map((g) => `/conseils/${g.slug}/`),
     ...REGIONS.map((r) => zoneUrl(r.slug)),
     ...DEPTS.map((d) => zoneUrl(d.slug)),
     ...SPECIALITES.map((s) => `/antiquites/${s.slug}/`),

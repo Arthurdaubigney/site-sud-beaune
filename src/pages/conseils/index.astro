@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Faq from '../../components/Faq.astro';
+import TallyForm from '../../components/TallyForm.astro';
+import CtaPhoto from '../../components/CtaPhoto.astro';
+import { GUIDES, GUIDE_CLUSTERS } from '../../data/guides';
+import { FAQ_GENERAL } from '../../data/site';
+import { IMG, different } from '../../lib/imageMap';
+import { faqSchema } from '../../lib/schema';
+const trail = [{ name: 'Accueil', path: '/' }, { name: 'Conseils', path: '/conseils/' }];
+const clusters = Object.keys(GUIDE_CLUSTERS) as (keyof typeof GUIDE_CLUSTERS)[];
+const faq = FAQ_GENERAL.slice(0, 4);
+---
+<Base
+  title="Conseils antiquités : estimer, vendre, succession, héritage"
+  description="Guides pratiques d’un antiquaire expert : estimer un meuble ancien, vendre une succession, reconnaître argenterie, bijoux, tableaux et bronzes avant de vendre."
+  ogImage={IMG('conseils.hero')} trail={trail} jsonLd={[faqSchema(faq)]}
+>
+  <PageHero h1="Conseils d’antiquaire : estimer et vendre" lead="Des guides clairs pour savoir ce que vaut un objet, quoi faire d’une succession et comment vendre au bon prix." img={IMG('conseils.hero')} trail={trail} />
+  {clusters.map((c) => (
+    <section class="section" aria-labelledby={`g-${c}`}>
+      <div class="wrap">
+        <h2 class="h-section" id={`g-${c}`} data-reveal>{GUIDE_CLUSTERS[c]}</h2>
+        <div class="gcards">
+          {GUIDES.filter((g) => g.cluster === c).map((g, i) => (
+            <a class="gcard" href={`/conseils/${g.slug}/`} data-reveal style={`--i:${i % 3}`}>
+              <span class="gmeta">{g.minutes} min de lecture</span>
+              <h3>{g.h1}</h3>
+              <p>{g.lead}</p>
+              <span class="more">Lire le guide <span class="arr" aria-hidden="true">→</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+  <CtaPhoto k={different(IMG('conseils.cta'), IMG('conseils.hero'))} />
+  <Faq items={faq} />
+  <TallyForm />
+</Base>

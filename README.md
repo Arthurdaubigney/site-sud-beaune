@@ -10,6 +10,8 @@ npm run dev                   # http://localhost:4321
 npm run build                 # génère dist/
 node scripts/check-seo.mjs    # contrôle title, description, h1 unique, alt/title, JSON-LD
 node scripts/check-images.mjs # aucune photo en double sur une page
+node scripts/check-links.mjs  # liens internes
+
 ```
 
 ## À personnaliser avant la mise en ligne (`src/data/site.ts`)
@@ -30,3 +32,8 @@ node scripts/check-images.mjs # aucune photo en double sur une page
   estimation-gratuite, la-maison, mentions légales, plan du site, 404, `sitemap.xml`.
 - `public/img/` : images WebP (700/1400 px) libres de droits ; crédits dans `src/data/images.credits.json`
   et affichés en pied de page.
+
+## Contenu SEO
+
+- `src/data/guides.ts` : guides « Conseils » (informationnel) ; `src/data/services.ts` : pages service (transactionnel) ; `src/data/cities.ts` : pages « antiquaire + ville ».
+- Stratégie et mots-clés : `docs/strategie-seo.md`.

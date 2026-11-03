@@ -2,6 +2,9 @@
 import Base from '../layouts/Base.astro';
 import { SPECIALITES } from '../data/site';
 import { REGIONS, DEPTS, zoneUrl } from '../data/territoires';
+import { SERVICES } from '../data/services';
+import { CITIES } from '../data/cities';
+import { GUIDES } from '../data/guides';
 ---
 <Base title="Plan du site – antiquaires et experts d’art Sud-Ouest" description="Plan du site : zones d’intervention, spécialités d’expertise, rachat de succession et estimation gratuite en Nouvelle-Aquitaine et en Occitanie.">
   <section class="page-hero"><div class="wrap">
@@ -22,7 +25,16 @@ import { REGIONS, DEPTS, zoneUrl } from '../data/territoires';
           <li style="padding:4px 0"><a href="/expertise-estimation/">Expertise et estimation</a></li>
           <li style="padding:4px 0"><a href="/estimation-gratuite/">Estimation gratuite</a></li>
           <li style="padding:4px 0"><a href="/a-propos/">À propos</a></li>
+          {SERVICES.map((x) => <li style="padding:4px 0"><a href={`/${x.slug}/`}>{x.h1}</a></li>)}
         </ul>
+      </div>
+      <div style="grid-column:span 4">
+        <h2 style="font-size:1.6rem;margin-bottom:12px"><a href="/conseils/">Conseils</a></h2>
+        <ul>{GUIDES.map((g) => <li style="padding:4px 0"><a href={`/conseils/${g.slug}/`}>{g.h1}</a></li>)}</ul>
+      </div>
+      <div style="grid-column:span 4">
+        <h2 style="font-size:1.6rem;margin-bottom:12px">Antiquaire par ville</h2>
+        <ul>{CITIES.map((c) => <li style="padding:4px 0"><a href={`/${c.slug}/`}>Antiquaire {c.name}</a></li>)}</ul>
       </div>
     </div>
   </div></section>

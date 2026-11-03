@@ -1,0 +1,8 @@
+---
+interface Props { title?: string; text?: string; label?: string; href?: string; }
+const { title = 'Un objet à faire estimer ?', text = 'Envoyez quelques photos : estimation gratuite, sans engagement, par un antiquaire expert.', label = 'Estimation gratuite', href = '#estimation' } = Astro.props;
+---
+<aside class="inline-cta card" data-reveal aria-label="Demander une estimation">
+  <div><b>{title}</b><p>{text}</p></div>
+  <a class="btn btn--terra" href={href}>{label} <span class="arr" aria-hidden="true">→</span></a>
+</aside>

@@ -1,6 +1,7 @@
 ---
 import { SITE, SPECIALITES, ESTIMATION_URL } from '../data/site';
-import { REGIONS, FEATURED, zoneUrl } from '../data/territoires';
+import { REGIONS, zoneUrl } from '../data/territoires';
+import { CITIES } from '../data/cities';
 import { creditLines, ALL_IMAGE_KEYS } from '../data/images';
 const credits = creditLines(ALL_IMAGE_KEYS);
 ---
@@ -11,7 +12,7 @@ const credits = creditLines(ALL_IMAGE_KEYS);
         <b>Zones d’intervention</b>
         <ul>
           {REGIONS.map((r) => <li><a href={zoneUrl(r.slug)}>{r.name}</a></li>)}
-          {FEATURED.map((d) => <li><a href={zoneUrl(d.slug)}>Antiquaire {d.name} ({d.num})</a></li>)}
+          {CITIES.slice(0, 7).map((c) => <li><a href={`/${c.slug}/`}>Antiquaire {c.name}</a></li>)}
         </ul>
       </div>
       <div>

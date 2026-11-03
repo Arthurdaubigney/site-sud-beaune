@@ -426,3 +426,44 @@ main > .page-hero:last-child { padding-bottom: 96px; }
   .ph-left h1 { font-size: clamp(1.9rem, 8vw, 3rem); max-width: none; }
   .ph-photo { min-height: 0; aspect-ratio: 16 / 10; }
 }
+
+/* ---------- contenu SEO : conseils, services, villes ---------- */
+.article-grid { align-items: start; row-gap: 28px; }
+.toc { grid-column: 1 / 4; position: sticky; top: calc(var(--header-h) + 24px); padding: 24px 26px; }
+.toc b { font-family: var(--display); font-size: 1.2rem; color: var(--pine); display: block; margin-bottom: 12px; }
+.toc ol { display: grid; gap: 8px; counter-reset: toc; }
+.toc li { font-size: 0.9688rem; line-height: 1.4; }
+.toc a { text-decoration: none; color: #2a2723; }
+.toc a:hover { color: var(--terra-btn); text-decoration: underline; }
+.article { grid-column: 5 / 13; max-width: 68ch; }
+.article section { margin-bottom: 56px; }
+.article h2 { font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.3rem); margin-bottom: 18px; }
+.article p { font-size: 1.125rem; line-height: 1.8; color: #2c2925; }
+.article-more { padding-top: 10px; font-weight: 600; }
+.tick { display: grid; gap: 8px; margin: 18px 0; }
+.tick li { position: relative; padding-left: 28px; font-size: 1.0625rem; line-height: 1.6; }
+.tick li::before { content: ''; position: absolute; left: 4px; top: 0.7em; width: 10px; height: 10px; background: linear-gradient(135deg, var(--gold-l), var(--gold)); transform: rotate(45deg); border-radius: 2px; }
+.inline-cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 26px 30px; margin: 34px 0 6px; background: linear-gradient(135deg, rgba(245, 239, 230, 0.95), rgba(235, 226, 211, 0.9)); }
+.inline-cta b { font-family: var(--display); font-size: 1.35rem; color: var(--pine); display: block; line-height: 1.2; }
+.inline-cta p { margin: 6px 0 0; font-size: 1rem; color: var(--muted); max-width: 44ch; }
+.inline-cta .btn { flex: none; }
+.gcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 40px; }
+.gcard { display: flex; flex-direction: column; gap: 10px; padding: 28px; text-decoration: none; background: rgba(255, 255, 255, 0.78); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-soft); transition: transform 0.45s var(--ease), box-shadow 0.45s, border-color 0.3s; }
+.gcard:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--gold); }
+.gcard h3 { font-size: 1.4rem; line-height: 1.15; }
+.gcard p { margin: 0; font-size: 0.9688rem; line-height: 1.6; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.gcard .more { margin-top: auto; padding-top: 8px; font-weight: 700; color: var(--terra-btn); font-size: 0.9688rem; }
+.gcard .more .arr { display: inline-block; transition: transform 0.35s var(--ease); }
+.gcard:hover .more .arr { transform: translateX(6px); }
+.gmeta { font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+.mini-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); margin-top: 72px; }
+.mini-step { padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 6px; }
+.mini-step b { font-family: var(--display); font-size: 1.2rem; color: var(--pine); }
+.mini-step span { font-size: 0.9688rem; color: var(--muted); line-height: 1.55; }
+.sticky-cta { display: none; }
+@media (max-width: 1000px) { .toc { grid-column: 1 / -1; position: static; } .article { grid-column: 1 / -1; max-width: none; } .gcards { grid-template-columns: 1fr 1fr; } .mini-steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 860px) {
+  .gcards { grid-template-columns: 1fr; } .inline-cta { flex-direction: column; align-items: flex-start; padding: 22px; } .mini-steps { grid-template-columns: 1fr; }
+  .sticky-cta { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 70; justify-content: center; box-shadow: 0 18px 40px -10px rgba(0,0,0,.45), var(--glow-terra); }
+  body { padding-bottom: 76px; }
+}

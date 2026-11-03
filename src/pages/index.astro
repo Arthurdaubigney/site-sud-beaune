@@ -8,6 +8,9 @@ import CtaPhoto from '../components/CtaPhoto.astro';
 import { SPECIALITES, FAQ_GENERAL, ESTIMATION_URL } from '../data/site';
 import { REGIONS, DEPTS, FEATURED, deptsOf, zoneUrl } from '../data/territoires';
 import { faqSchema } from '../lib/schema';
+import { CITIES } from '../data/cities';
+import { GUIDES } from '../data/guides';
+import { SERVICES } from '../data/services';
 
 const faq = FAQ_GENERAL;
 // Projection simple longitude/latitude -> SVG (viewBox 300 x 262)
@@ -212,6 +215,49 @@ const trust = [
               <p>{deptsOf(r.slug).map((d, n, arr) => (<><a href={zoneUrl(d.slug)} title={`Antiquaire ${d.name} (${d.num}) : ${d.cities.slice(0, 3).join(', ')}`}>{d.name}</a>{n < arr.length - 1 ? ', ' : '.'}</>))}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-guides">
+    <div class="wrap">
+      <div data-reveal>
+        <span class="kicker">Conseils d’antiquaire</span>
+        <h2 class="h-section" id="h-guides">Les questions que se posent les héritiers</h2>
+        <span class="ornament"></span>
+      </div>
+      <div class="gcards">
+        {GUIDES.slice(0, 3).map((g, i) => (
+          <a class="gcard" href={`/conseils/${g.slug}/`} data-reveal style={`--i:${i}`}>
+            <span class="gmeta">{g.minutes} min de lecture</span>
+            <h3>{g.h1}</h3>
+            <p>{g.lead}</p>
+            <span class="more">Lire le guide <span class="arr" aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+      <p class="band-note" style="margin-top:28px"><a class="link" href="/conseils/">Tous nos conseils (meubles, bijoux, argenterie, tableaux…) →</a></p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-cities">
+    <div class="wrap">
+      <div class="grid zones-grid">
+        <div class="zones-intro" data-reveal>
+          <span class="kicker">Antiquaire près de chez vous</span>
+          <h2 class="h-section" id="h-cities">Antiquaire dans votre ville</h2>
+          <p class="lead" style="margin-top:22px">Estimation gratuite et rachat à domicile dans les principales villes du Sud-Ouest, et dans toutes les communes alentour.</p>
+        </div>
+        <div class="zones-list">
+          <div class="card" data-reveal>
+            <h3>Villes desservies</h3>
+            <p>{CITIES.map((c, n) => (<><a href={`/${c.slug}/`}>{c.name}</a>{n < CITIES.length - 1 ? ', ' : '.'}</>))}</p>
+          </div>
+          <div class="card" data-reveal style="--i:1">
+            <h3>Ce que je fais pour vous</h3>
+            <p>{SERVICES.map((x, n) => (<><a href={`/${x.slug}/`}>{x.h1}</a>{n < SERVICES.length - 1 ? ', ' : '.'}</>))}</p>
+          </div>
         </div>
       </div>
     </div>

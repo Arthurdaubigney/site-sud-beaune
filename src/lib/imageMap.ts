@@ -6,6 +6,9 @@
  * par la première photo libre du même type.
  */
 import { SPECIALITES } from '../data/site';
+import { SERVICES } from '../data/services';
+import { GUIDES } from '../data/guides';
+import { CITIES } from '../data/cities';
 
 const OBJECTS = ['commode-wallace', 'pendule-xviii', 'marqueterie-boulle', 'tableau-paysage', 'vase-porcelaine', 'commode-louis-xv', 'bronze-sculpture', 'montre-gousset'];
 const WIDE = ['salle-chateau', 'cabinet-curiosites', 'bibliotheque-chateau', 'boutique-antiquites'];
@@ -17,6 +20,7 @@ const used = new Set<string>();
 const count = new Map<string, number>();
 const protectedKeys = new Set<string>(); // photos des pages principales : jamais réutilisées en repli
 const MAP: Record<string, string> = {};
+let protecting = true;
 function take(slot: string, pref: string | undefined, kind: Kind) {
   let k: string | undefined = pref && !used.has(pref) ? pref : LISTS[kind].find((x) => !used.has(x));
   if (!k) {
@@ -25,7 +29,7 @@ function take(slot: string, pref: string | undefined, kind: Kind) {
     k = all.sort((x, y) => (count.get(x) ?? 0) - (count.get(y) ?? 0))[0];
   }
   used.add(k); count.set(k, (count.get(k) ?? 0) + 1); MAP[slot] = k;
-  if (!slot.startsWith('spec.') || slot.endsWith('.hero')) protectedKeys.add(k);
+  if (protecting && (!slot.startsWith('spec.') || slot.endsWith('.hero'))) protectedKeys.add(k);
 }
 
 // 1. Photos imposées : spécialités (têtes de page) et carte « rachat » de la page Spécialités.
@@ -49,8 +53,18 @@ for (const s of SPECIALITES) {
   take(`spec.${s.slug}.cta`, undefined, 'place');
 }
 
+protecting = false;
+// 3. Pages de contenu SEO (services, conseils, villes) : photos réparties au mieux parmi celles qui restent.
+take('conseils.hero', undefined, 'wide'); take('conseils.cta', undefined, 'wide');
+for (const sv of SERVICES) { take(`service.${sv.slug}.hero`, undefined, 'wide'); take(`service.${sv.slug}.cta`, undefined, 'wide'); }
+for (const g of GUIDES) { take(`guide.${g.slug}.hero`, undefined, g.cluster === 'meubles' || g.cluster === 'objets' ? 'object' : 'wide'); take(`guide.${g.slug}.cta`, undefined, 'wide'); }
+for (const c of CITIES) take(`city.${c.slug}.cta`, undefined, 'wide');
+
 export const IMG = (slot: string) => {
   const k = MAP[slot];
   if (!k) throw new Error(`Emplacement photo inconnu : ${slot}`);
   return k;
 };
+
+/** Garantit qu'une photo secondaire n'est pas identique à celles déjà présentes sur la page. */
+export const different = (k: string, ...avoid: string[]) => (avoid.includes(k) ? WIDE.find((x) => !avoid.includes(x))! : k);

@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Faq from '../../components/Faq.astro';
+import TallyForm from '../../components/TallyForm.astro';
+import CtaPhoto from '../../components/CtaPhoto.astro';
+import InlineCta from '../../components/InlineCta.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import { GUIDES } from '../../data/guides';
+import { SERVICES } from '../../data/services';
+import { SPECIALITES } from '../../data/site';
+import { IMG, different } from '../../lib/imageMap';
+import { articleSchema, faqSchema } from '../../lib/schema';
+
+export function getStaticPaths() { return GUIDES.map((g) => ({ params: { slug: g.slug } })); }
+const { slug } = Astro.params;
+const g = GUIDES.find((x) => x.slug === slug)!;
+const path = `/conseils/${g.slug}/`;
+const trail = [{ name: 'Accueil', path: '/' }, { name: 'Conseils', path: '/conseils/' }, { name: g.h1, path }];
+const hero = IMG(`guide.${g.slug}.hero`);
+const sp = SPECIALITES.find((s) => s.slug === g.service);
+const sv = SERVICES.find((s) => s.slug === g.service);
+const linkTo = sp ? { href: `/antiquites/${sp.slug}/`, label: sp.name } : sv ? { href: `/${sv.slug}/`, label: sv.h1 } : g.service === 'rachat-succession' ? { href: '/rachat-succession/', label: 'Rachat de succession' } : null;
+const toc = g.sections.map((s, i) => ({ id: `p${i + 1}`, h: s.h }));
+---
+<Base title={g.title} description={g.desc} ogImage={hero} trail={trail} jsonLd={[articleSchema(g.h1, g.desc, path, hero), faqSchema(g.faq)]}>
+  <PageHero h1={g.h1} lead={g.lead} img={hero} trail={trail} cta="Estimation gratuite" />
+  <section class="section" aria-label="Article">
+    <div class="wrap">
+      <div class="grid article-grid">
+        <aside class="toc card" aria-label="Sommaire" data-reveal>
+          <b>Dans ce guide</b>
+          <ol>{toc.map((t) => <li><a href={`#${t.id}`}>{t.h}</a></li>)}<li><a href="#faq-title">Questions fréquentes</a></li></ol>
+          <p class="small muted">{g.minutes} min de lecture</p>
+        </aside>
+        <article class="article">
+          {g.sections.map((s, i) => (
+            <section id={`p${i + 1}`} data-reveal>
+              <h2>{s.h}</h2>
+              {s.p.map((p) => <p>{p}</p>)}
+              {s.ul && <ul class="tick">{s.ul.map((li) => <li>{li}</li>)}</ul>}
+              {i === 1 && <InlineCta />}
+            </section>
+          ))}
+          {linkTo && <p class="article-more">Pour aller plus loin : <a href={linkTo.href}>{linkTo.label}</a>.</p>}
+        </article>
+      </div>
+    </div>
+  </section>
+  <RelatedGuides slugs={g.related} />
+  <CtaPhoto k={different(IMG(`guide.${g.slug}.cta`), hero)} title="Un objet à faire estimer ?" text="Envoyez quelques photos : estimation gratuite et sans engagement, par un antiquaire expert." />
+  <Faq items={g.faq} title="Questions fréquentes" />
+  <TallyForm />
+</Base>

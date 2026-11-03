@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Prose from '../components/Prose.astro';
+import Faq from '../components/Faq.astro';
+import TallyForm from '../components/TallyForm.astro';
+import CtaPhoto from '../components/CtaPhoto.astro';
+import InlineCta from '../components/InlineCta.astro';
+import RelatedGuides from '../components/RelatedGuides.astro';
+import Icon from '../components/Icon.astro';
+import { SERVICES } from '../data/services';
+import { CITIES } from '../data/cities';
+import { GUIDES } from '../data/guides';
+import { SPECIALITES, FAQ_GENERAL } from '../data/site';
+import { DEPTS, zoneUrl, fitText } from '../data/territoires';
+import { IMG, different } from '../lib/imageMap';
+import { serviceSchema, faqSchema, zoneSchema } from '../lib/schema';
+
+export function getStaticPaths() {
+  return [...SERVICES.map((s) => ({ params: { slug: s.slug } })), ...CITIES.map((c) => ({ params: { slug: c.slug } }))];
+}
+const { slug } = Astro.params;
+const svc = SERVICES.find((s) => s.slug === slug);
+const cty = CITIES.find((c) => c.slug === slug);
+const path = `/${slug}/`;
+
+let h1 = '', title = '', desc = '', lead = '', cta = '', hero = '', heroAlt: string | undefined, faq: { q: string; a: string }[] = [], ld: object[] = [];
+let tallyTitle: string | undefined, tallyIntro: string | undefined, guides: string[] = [];
+let trail = [{ name: 'Accueil', path: '/' }] as { name: string; path: string }[];
+
+if (svc) {
+  ({ h1, title, desc, lead, cta, faq, guides, tallyTitle, tallyIntro } = svc);
+  hero = IMG(`service.${svc.slug}.hero`);
+  trail.push({ name: h1, path });
+  ld = [serviceSchema(h1, desc, path), faqSchema(faq)];
+} else if (cty) {
+  const dep = DEPTS.find((d) => d.slug === cty.dep)!;
+  h1 = `Antiquaire expert ${cty.prep}`;
+  const titles = [`Antiquaire ${cty.name} : estimation gratuite et rachat`, `Antiquaire ${cty.name} : estimation gratuite, rachat succession`, `Antiquaire expert ${cty.name} : estimation et rachat gratuit`];
+  title = titles.filter((t) => t.length >= 50 && t.length <= 60)[0] ?? [...titles].sort((a, b) => Math.abs(a.length - 55) - Math.abs(b.length - 55))[0];
+  desc = fitText(`Antiquaire et expert ${cty.prep} : estimation gratuite de meubles anciens, tableaux, bijoux et objets d’art, rachat de succession à domicile (${dep.num}).`, [' Déplacement gratuit.', ' Paiement direct.'], 140, 155);
+  lead = cty.intro;
+  cta = 'Estimation gratuite ' + cty.prep.replace('à ', 'à ');
+  hero = cty.img; heroAlt = `${cty.place[0].toUpperCase() + cty.place.slice(1)} – antiquaire expert ${cty.prep}`;
+  faq = [
+    { q: `Intervenez-vous ${cty.prep} et dans les communes voisines ?`, a: `Oui. Je me déplace ${cty.prep} et dans toute l’agglomération, notamment à ${cty.nearby.slice(0, -1).join(', ')} et ${cty.nearby[cty.nearby.length - 1]}. Le déplacement est gratuit.` },
+    { q: `L’estimation d’antiquités ${cty.prep} est-elle gratuite ?`, a: `Oui. L’estimation à partir de photographies et la première visite à domicile sont gratuites et sans engagement.` },
+    { q: `Rachetez-vous le contenu d’une succession ${cty.prep} ?`, a: `Oui. Après inventaire et estimation, je peux racheter les pièces d’intérêt ou l’ensemble du contenu, avec paiement direct et enlèvement.` },
+    FAQ_GENERAL[3],
+  ];
+  trail.push({ name: 'Zones d’intervention', path: '/zones-intervention/' }, { name: `${dep.name} (${dep.num})`, path: zoneUrl(dep.slug) }, { name: cty.name, path });
+  ld = [zoneSchema(`${slug}`, `${cty.name}`, [cty.name, ...cty.nearby]), faqSchema(faq)];
+  guides = ['estimer-le-mobilier-d-une-succession', 'ou-vendre-des-meubles-anciens', 'que-faire-des-meubles-apres-un-deces'];
+}
+const dep = cty ? DEPTS.find((d) => d.slug === cty.dep)! : null;
+---
+<Base title={title} description={desc} ogImage={hero} trail={trail} jsonLd={ld}>
+  <PageHero h1={h1} lead={lead} img={hero} alt={heroAlt} trail={trail} cta={cta} />
+
+  {svc && (
+    <section class="section" aria-labelledby="s-0">
+      <div class="wrap">
+        {svc.sections.map((sec, i) => (
+          <Prose h={sec.h} id={i === 0 ? 's-0' : undefined}>
+            {sec.p.map((p) => <p>{p}</p>)}
+            {sec.ul && <ul class="tick">{sec.ul.map((li) => <li>{li}</li>)}</ul>}
+          </Prose>
+        ))}
+        {svc.steps && (
+          <div class="mini-steps" data-reveal>
+            {svc.steps.map((st, i) => (<div class="mini-step card"><b>{st.t}</b><span>{st.d}</span></div>))}
+          </div>
+        )}
+        <InlineCta title="Prêt à faire estimer ?" text="C’est gratuit et sans engagement : quelques photos suffisent." label={svc.cta} />
+      </div>
+    </section>
+  )}
+
+  {cty && dep && (
+    <section class="section" aria-labelledby="c-0">
+      <div class="wrap">
+        <Prose h={`Le patrimoine ${cty.prep}`} id="c-0">
+          {cty.heritage.map((p) => <p>{p}</p>)}
+        </Prose>
+        <Prose h={`Ce que j’estime et rachète ${cty.prep}`}>
+          <ul class="tick">{cty.objects.map((o) => <li>{o}</li>)}</ul>
+          <p style="margin-top:18px">Retrouvez aussi nos pages <a href="/rachat-succession/">rachat de succession</a> et <a href="/rachat-antiquites-a-domicile/">rachat d’antiquités à domicile</a>.</p>
+        </Prose>
+        <Prose h="Communes desservies">
+          <p>Estimation gratuite à domicile {cty.prep} et notamment à :</p>
+          <ul class="citylist">{cty.nearby.map((n) => <li><span class="chip">{n}</span></li>)}</ul>
+          <p style="margin-top:22px">Toute l’activité sur {dep.in} : <a href={zoneUrl(dep.slug)}>antiquaire {dep.name} ({dep.num})</a>.</p>
+        </Prose>
+        <Prose h="Spécialités">
+          <ul class="related">{SPECIALITES.map((s) => <li><a class="chip" href={`/antiquites/${s.slug}/`}>{s.name}</a></li>)}</ul>
+        </Prose>
+        <InlineCta title={`Un objet à faire estimer ${cty.prep} ?`} text="Estimation gratuite à domicile, offre ferme et paiement direct." label="Demander une estimation" />
+      </div>
+    </section>
+  )}
+
+  <RelatedGuides slugs={svc ? guides : guides} title={svc ? 'Nos conseils pour bien vendre' : 'Conseils pratiques'} />
+  <CtaPhoto k={different(IMG(svc ? `service.${svc.slug}.cta` : `city.${cty!.slug}.cta`), hero)} title={svc ? 'Faites estimer vos objets d’art' : `Faites estimer vos objets ${cty!.prep}`} />
+  <Faq items={faq} title={svc ? 'Questions fréquentes' : `Questions fréquentes : ${cty!.name}`} />
+  <TallyForm title={tallyTitle ?? `Estimation gratuite ${cty!.prep}`} intro={tallyIntro} />
+</Base>

@@ -97,3 +97,19 @@ export function breadcrumbSchema(trail: { name: string; path: string }[]) {
     itemListElement: trail.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t.name, item: abs(t.path) })),
   };
 }
+
+export function articleSchema(headline: string, description: string, path: string, imageKey: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline,
+    description,
+    inLanguage: 'fr-FR',
+    datePublished: '2026-11-03',
+    dateModified: '2026-11-03',
+    mainEntityOfPage: abs(path),
+    image: abs(`/img/${imageKey}-1400.webp`),
+    author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+    publisher: { '@id': ORG_ID },
+  };
+}

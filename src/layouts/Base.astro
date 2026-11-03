@@ -55,6 +55,7 @@ if (trail && trail.length > 1) graph.push(breadcrumbSchema(trail));
     <Header />
     <main id="contenu"><slot /></main>
     <Footer />
+    {Astro.url.pathname !== '/estimation-gratuite/' && <a class="btn btn--terra sticky-cta" href="/estimation-gratuite/" data-sticky-cta>Estimation gratuite <span class="arr" aria-hidden="true">→</span></a>}
     <script is:inline>
       (function () {
         var els = document.querySelectorAll('[data-reveal]');
@@ -65,6 +66,7 @@ if (trail && trail.length > 1) graph.push(breadcrumbSchema(trail));
           en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
         els.forEach(function (e) { io.observe(e); });
+        var sc = document.querySelector('[data-sticky-cta]'); if (sc && document.getElementById('estimation')) sc.setAttribute('href', '#estimation');
         // Sélecteur de département
         var fd = document.querySelector('[data-finder]');
         if (fd) { fd.addEventListener('submit', function (e) { e.preventDefault(); var v = fd.querySelector('select').value; if (v) location.href = v; else location.href = '/zones-intervention/'; });

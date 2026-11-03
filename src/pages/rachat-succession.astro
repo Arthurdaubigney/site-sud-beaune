@@ -9,10 +9,14 @@ import TallyForm from '../components/TallyForm.astro';
 import CtaPhoto from '../components/CtaPhoto.astro';
 import { REGIONS, FEATURED, zoneUrl } from '../data/territoires';
 import { IMG } from '../lib/imageMap';
+import InlineCta from '../components/InlineCta.astro';
+import RelatedGuides from '../components/RelatedGuides.astro';
 import { serviceSchema, faqSchema } from '../lib/schema';
 const path = '/rachat-succession/';
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Rachat de succession', path }];
 const faq = [
+  { q: 'Combien rachetez-vous le contenu d’une maison ?', a: 'Le prix dépend de la nature, de l’époque et de l’état des objets : il est établi après estimation, objet par objet. Une estimation gratuite à partir de photos permet d’avoir un premier ordre d’idée.' },
+  { q: 'Que se passe-t-il si les héritiers sont en désaccord ?', a: 'Une estimation écrite et neutre sert de base de discussion. Nous ne procédons à aucun rachat sans l’accord de l’ensemble des héritiers concernés.' },
   { q: 'Que faire du contenu d’une maison après un décès ?', a: 'Ne jetez rien avant de nous consulter. Nous réalisons un inventaire, identifions les objets de valeur, rachetons ce qui présente un intérêt et pouvons organiser le débarras du reste.' },
   { q: 'Travaillez-vous avec les notaires et les héritiers ?', a: 'Oui. Nous remettons une estimation écrite exploitable par le notaire pour le partage, et nous adaptons à la présence de plusieurs héritiers.' },
   { q: 'Comment se déroule le rachat ?', a: 'Après l’estimation et la visite, une proposition ferme est remise. En cas d’accord, l’enlèvement est organisé et le paiement effectué par virement sécurisé.' },
@@ -32,6 +36,19 @@ const desc = 'Rachat de succession et de contenu de maison : inventaire, estimat
         <p>Mobilier ancien, tableaux, bronzes, sculptures, bijoux, montres, pendules, porcelaines, argenterie, livres anciens, tapis, souvenirs de famille et objets de collection.</p>
         <p><a href="/antiquites/">Voir toutes nos spécialités</a></p>
       </Prose>
+      <Prose h="Comment se déroule le rachat d’une succession">
+        <p>La démarche est simple et se fait à votre rythme. Vous nous contactez avec quelques photos du contenu de la maison. Nous vous remettons une première estimation gratuite, puis nous nous rendons sur place pour examiner les pièces, repérer les estampilles, signatures et marques, et établir un inventaire.</p>
+        <p>Nous formulons ensuite une proposition de rachat ferme, objet par objet ou en bloc. Si elle vous convient, le règlement est direct et l’enlèvement est organisé et assuré. Si vous préférez garder certaines pièces ou en confier d’autres à une vente publique, l’estimation écrite vous sert de référence.</p>
+      </Prose>
+      <Prose h="Pourquoi faire appel à un antiquaire plutôt qu’à une entreprise de débarras">
+        <p>Une entreprise de débarras vide les lieux, souvent pour un prix global, sans examiner chaque objet. Un antiquaire expert identifie les pièces de valeur, les estime une à une et les rachète à leur juste prix. Pour une maison de famille, la différence peut être considérable.</p>
+        <ul class="tick"><li>Estimation objet par objet, écrite et détaillée</li><li>Rachat des pièces d’intérêt avec paiement direct</li><li>Document exploitable par le notaire et les héritiers</li><li>Enlèvement des objets achetés</li></ul>
+      </Prose>
+      <Prose h="Documents et informations utiles">
+        <p>Aucun document n’est indispensable pour une première estimation. Si vous les avez, tout ce qui éclaire l’histoire des objets est précieux : factures anciennes, certificats, inventaires, photographies de la maison. Indiquez simplement la commune, le type de bien et les contraintes de calendrier liées à la succession.</p>
+        <p>Pour aller plus loin : <a href="/debarras-maison-succession/">estimer avant un débarras</a>, <a href="/inventaire-succession-estimation/">inventaire de succession</a>, <a href="/notaires-heritiers-estimation-mobilier/">service notaires et héritiers</a>.</p>
+      </Prose>
+      <InlineCta title="Une succession à régler ?" text="Parlez-nous de votre dossier : estimation gratuite, sans engagement, en toute discrétion." label="Parler de ma succession" />
       <Band k={IMG('rachat.band')} />
       <div class="grid pair" style="margin-top:96px">
         <div class="a" data-reveal><Pic k={IMG('rachat.pair')} ratio="4-5" sizes="(max-width: 860px) 80vw, 33vw" /></div>
@@ -45,6 +62,7 @@ const desc = 'Rachat de succession et de contenu de maison : inventaire, estimat
       </div>
     </div>
   </section>
+  <RelatedGuides slugs={['que-faire-des-meubles-apres-un-deces', 'estimer-le-mobilier-d-une-succession', 'vendre-une-collection-heritee']} title="Guides pour les héritiers" />
   <CtaPhoto k={IMG('rachat.cta')} />
   <Faq items={faq} title="Questions fréquentes sur le rachat de succession" />
   <TallyForm title="Parlez-nous de votre succession" intro="Quelques lignes et des photographies : nous revenons vers vous." />

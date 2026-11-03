@@ -10,6 +10,7 @@ import CtaPhoto from '../../components/CtaPhoto.astro';
 import { SPECIALITES, FAQ_GENERAL } from '../../data/site';
 import { REGIONS, DEPTS, region, deptsOf, zoneUrl, fitText } from '../../data/territoires';
 import { zoneSchema, faqSchema } from '../../lib/schema';
+import { CITIES } from '../../data/cities';
 import { makePool } from '../../lib/pool';
 import { IMG } from '../../lib/imageMap';
 
@@ -102,6 +103,16 @@ const siblings = dep ? deptsOf(dep.region).filter((d) => d.slug !== dep.slug) : 
         </Prose>
       )}
 
+      {dep && CITIES.filter((c) => c.dep === dep.slug).length > 0 && (
+        <Prose h="Antiquaire par ville">
+          <ul class="related">{CITIES.filter((c) => c.dep === dep.slug).map((c) => <li><a class="chip" href={`/${c.slug}/`}>Antiquaire {c.name}</a></li>)}</ul>
+        </Prose>
+      )}
+      {reg && (
+        <Prose h="Antiquaire dans les grandes villes">
+          <ul class="related">{CITIES.filter((c) => DEPTS.find((d) => d.slug === c.dep)!.region === reg.slug).map((c) => <li><a class="chip" href={`/${c.slug}/`}>Antiquaire {c.name}</a></li>)}</ul>
+        </Prose>
+      )}
       <Prose h="Ce que nous estimons">
         <p>Notre équipe s’appuie sur des spécialistes par famille d’objets :</p>
         <ul class="related">{SPECIALITES.map((s) => <li><a class="chip" href={`/antiquites/${s.slug}/`}>{s.name}</a></li>)}</ul>

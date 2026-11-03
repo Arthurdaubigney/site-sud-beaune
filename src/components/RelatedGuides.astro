@@ -1,0 +1,23 @@
+---
+import { guide } from '../data/guides';
+interface Props { slugs: string[]; title?: string; }
+const { slugs, title = 'À lire aussi' } = Astro.props;
+const items = slugs.map(guide).filter(Boolean);
+---
+{items.length > 0 && (
+  <section class="section" aria-labelledby="related-guides">
+    <div class="wrap">
+      <span class="kicker">Conseils</span>
+      <h2 class="h-section" id="related-guides" data-reveal>{title}</h2>
+      <div class="gcards">
+        {items.map((g, i) => (
+          <a class="gcard" href={`/conseils/${g.slug}/`} data-reveal style={`--i:${i % 3}`}>
+            <h3>{g.h1}</h3>
+            <p>{g.desc}</p>
+            <span class="more">Lire le guide <span class="arr" aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
