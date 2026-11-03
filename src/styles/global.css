@@ -187,7 +187,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- FAQ ---------- */
 .faq-head { max-width: 24ch; font-size: clamp(1.9rem, 1rem + 3.2vw, 3.75rem); line-height: 1; }
-.faq-list { margin: 64px 0 0; grid-column: 7 / 13; }
+.faq-grid { align-items: start; row-gap: 40px; }
+.faq-grid .faq-head { grid-column: 1 / 6; position: sticky; top: 110px; }
+.faq-list { margin: 0; grid-column: 7 / 13; }
 .faq-list details { margin-bottom: 36px; }
 .faq-list summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px; font-size: clamp(1.25rem, 1.05rem + 0.6vw, 1.5rem); line-height: 1.25; min-height: 48px; }
 .faq-list summary::-webkit-details-marker { display: none; }
@@ -201,7 +203,7 @@ details[open] .chev { transform: rotate(225deg) translate(-2px, -2px); }
 .cta-frame { padding-top: var(--space); }
 .cta-grid { align-items: center; row-gap: 32px; }
 .cta-img { grid-column: 1 / 7; max-height: 560px; overflow: hidden; }
-.cta-copy { grid-column: 7 / 13; padding-left: clamp(0px, 3vw, 48px); }
+.cta-copy { grid-column: 7 / 13; }
 .cta-copy h2 { font-size: clamp(1.9rem, 1.1rem + 2.4vw, 3.25rem); }
 .cta-copy p { margin: 22px 0 28px; font-size: 1.0625rem; max-width: 38ch; }
 
@@ -223,8 +225,10 @@ details[open] .chev { transform: rotate(225deg) translate(-2px, -2px); }
 
 .page-hero .grid { row-gap: 48px; align-items: start; }
 .page-hero h1 { grid-column: 1 / 13; grid-row: 1; font-size: clamp(2rem, 1rem + 4.6vw, 5.2rem); line-height: 1; max-width: 22ch; }
-.page-hero .ph-photo { grid-column: 7 / 13; grid-row: 2; align-self: start; }
-@media (min-width: 861px) { .page-hero .ph-photo .pic { aspect-ratio: 4 / 3; } }
+.page-hero .ph-photo { grid-row: 2; align-self: start; }
+.page-hero .ph-photo.is-landscape { grid-column: 8 / 13; }
+.page-hero .ph-photo.is-portrait { grid-column: 9 / 13; }
+.r-4-3 { aspect-ratio: 4 / 3; }
 .page-hero .ph-copy { grid-column: 1 / 6; grid-row: 2; }
 .crumbs { font-size: var(--step-small); color: var(--muted); padding-top: 12px; }
 .crumbs ol { display: flex; flex-wrap: wrap; gap: 4px 10px; }
@@ -263,7 +267,7 @@ details[open] .chev { transform: rotate(225deg) translate(-2px, -2px); }
 .dep-table a:hover .n { text-decoration: underline; }
 
 /* ---------- pied de page ---------- */
-.site-footer { background: var(--ink); color: var(--bg); margin-top: var(--space); min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto; padding-block: 56px 28px; }
+.site-footer { background: var(--ink); color: var(--bg); margin-top: var(--space); min-height: 80svh; display: grid; grid-template-rows: auto 1fr auto; padding-block: 56px 28px; }
 .f-cols { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 40px var(--gap); font-size: 1.0625rem; }
 .f-cols > div { grid-column: span 3; }
 .f-cols b { display: block; font-weight: 600; margin-bottom: 6px; color: #fff; }
@@ -301,7 +305,7 @@ details[open] .chev { transform: rotate(225deg) translate(-2px, -2px); }
   .statement { padding-left: 0; font-size: 9.5vw; }
   .table-wrap { margin-top: 48px; row-gap: 28px; } .table-name { display: none; }
   .table-side { width: 60%; }
-  .faq-list { margin-top: 40px; } .faq-list details[open] { margin-inline: calc(var(--m) * -1); padding-inline: var(--m); }
+  .faq-grid .faq-head { position: static; } .faq-list details[open] { margin-inline: calc(var(--m) * -1); padding-inline: var(--m); }
   .tally-intro { position: static; }
   .page-hero h1 { font-size: clamp(1.5rem, 6.4vw, 3rem); }
   .cards > * { grid-column: 1 / -1 !important; margin-top: 24px; }
@@ -315,6 +319,8 @@ details[open] .chev { transform: rotate(225deg) translate(-2px, -2px); }
   .pair .a { width: 100%; }
   .dep-table a { grid-template-columns: 3.2rem 1fr auto; gap: 4px 14px; }
   .f-cols > div { grid-column: span 6; }
+  .f-cols > div:last-child { grid-column: 1 / -1; }
+  .f-cta { width: 100%; justify-content: center; }
   .site-footer { min-height: 0; }
   .f-word { margin-top: 18vh; }
 }
@@ -383,3 +389,5 @@ details[open] .chev { transform: rotate(225deg) translate(-2px, -2px); }
   .mosaic-photo .pic { aspect-ratio: 4 / 3; height: auto; min-height: 0; }
   .step p { min-height: 0; }
 }
+
+[id] { scroll-margin-top: 100px; }

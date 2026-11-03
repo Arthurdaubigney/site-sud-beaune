@@ -10,6 +10,7 @@ import CtaPhoto from '../../components/CtaPhoto.astro';
 import { SPECIALITES, FAQ_GENERAL } from '../../data/site';
 import { REGIONS, FEATURED, zoneUrl } from '../../data/territoires';
 import { serviceSchema, faqSchema } from '../../lib/schema';
+import { makePool } from '../../lib/pool';
 
 export function getStaticPaths() { return SPECIALITES.map((s) => ({ params: { slug: s.slug } })); }
 const { slug } = Astro.params;
@@ -17,7 +18,11 @@ const s = SPECIALITES.find((x) => x.slug === slug)!;
 const faq = [...s.faq, FAQ_GENERAL[1]];
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Spécialités', path: '/antiquites/' }, { name: s.name, path: `/antiquites/${s.slug}/` }];
 const path = `/antiquites/${s.slug}/`;
-const second = ['commode-wallace', 'marqueterie-boulle', 'pendule-xviii', 'tableau-paysage'].find((k) => k !== s.img)!;
+const P = makePool();
+P.take(s.img);
+const second = P.take(undefined, 'object');
+const bandKey = P.take(['bordeaux-bourse','perigord-chateau','la-rochelle','pays-basque','vezere'][SPECIALITES.findIndex((x)=>x.slug===slug)]);
+const ctaKey = P.take('toulouse');
 ---
 <Base title={s.titleTag} description={s.metaDesc} ogImage={s.img} trail={trail} jsonLd={[serviceSchema(s.h1, s.metaDesc, path), faqSchema(faq)]}>
   <PageHero h1={s.h1} lead={s.lead} img={s.img} trail={trail} />
@@ -26,7 +31,7 @@ const second = ['commode-wallace', 'marqueterie-boulle', 'pendule-xviii', 'table
       {s.sections.map((sec, i) => (
         <Prose h={sec.h} id={`sec-${i}`}>{sec.p.map((p) => <p>{p}</p>)}</Prose>
       ))}
-      <Band k={['bordeaux-bourse','perigord-chateau','la-rochelle','pays-basque','vezere'][SPECIALITES.findIndex((x)=>x.slug===slug)]} />
+      <Band k={bandKey} />
       <div class="grid prose-row" style="margin-top:96px">
         <h2 data-reveal>Ce que nous estimons et rachetons</h2>
         <ul class="points" data-reveal style="--i:1">{s.points.map((p) => <li>{p}</li>)}</ul>
@@ -44,7 +49,7 @@ const second = ['commode-wallace', 'marqueterie-boulle', 'pendule-xviii', 'table
       </div>
     </div>
   </section>
+  <CtaPhoto k={ctaKey} />
   <Faq items={faq} title={`Questions fréquentes : ${s.kw}`} />
   <TallyForm />
-  <CtaPhoto k="bordeaux-bourse" />
 </Base>

@@ -4,8 +4,8 @@ const { items, title = 'Questions fréquentes' } = Astro.props;
 ---
 <section class="section" aria-labelledby="faq-title">
   <div class="wrap">
-    <h2 class="faq-head" id="faq-title" data-reveal>{title}</h2>
-    <div class="grid">
+    <div class="grid faq-grid">
+      <h2 class="faq-head" id="faq-title" data-reveal>{title}</h2>
       <div class="faq-list">
         {items.map((it, n) => (
           <details data-reveal style={`--i:${n % 3}`}>

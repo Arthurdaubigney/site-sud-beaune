@@ -1,8 +1,7 @@
 ---
 import Pic from './Pic.astro';
-import { ESTIMATION_URL } from '../data/site';
 interface Props { k?: string; title?: string; text?: string; label?: string; href?: string; }
-const { k = 'vezere', title = 'Faites estimer vos objets d’art', text = 'Envoyez quelques photographies : une première estimation gratuite vous est remise.', label = 'Estimation gratuite', href = ESTIMATION_URL } = Astro.props;
+const { k = 'vezere', title = 'Faites estimer vos objets d’art', text = 'Envoyez quelques photographies : une première estimation gratuite vous est remise.', label = 'Estimation gratuite', href = '#estimation' } = Astro.props;
 ---
 <section class="cta-frame" aria-labelledby="cta-title">
   <div class="wrap">

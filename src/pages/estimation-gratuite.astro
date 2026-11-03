@@ -2,7 +2,6 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Pic from '../components/Pic.astro';
-import CtaPhoto from '../components/CtaPhoto.astro';
 import TallyForm from '../components/TallyForm.astro';
 import Faq from '../components/Faq.astro';
 import { FAQ_GENERAL } from '../data/site';
@@ -13,7 +12,7 @@ const desc = 'Demandez une estimation gratuite de vos antiquités et objets d’
 const faq = FAQ_GENERAL.slice(0, 4);
 ---
 <Base title="Estimation gratuite d’antiquités : formulaire en ligne" description={desc} ogImage="commode-louis-xv" trail={trail} jsonLd={[serviceSchema('Estimation gratuite d’antiquités', desc, path), faqSchema(faq)]}>
-  <PageHero h1="Estimation gratuite de vos antiquités" lead="Décrivez vos objets, joignez des photographies : un expert vous répond, sans engagement." img="commode-louis-xv" ratio="4-5" trail={trail} cta="Remplir le formulaire" />
+  <PageHero h1="Estimation gratuite de vos antiquités" lead="Décrivez vos objets, joignez des photographies : un expert vous répond, sans engagement." img="commode-louis-xv" trail={trail} cta="Remplir le formulaire" />
   <TallyForm title="Votre demande d’estimation" heading="h2" />
   <section class="section" aria-label="Quelques objets que nous estimons">
     <div class="wrap">
@@ -24,5 +23,4 @@ const faq = FAQ_GENERAL.slice(0, 4);
     </div>
   </section>
   <Faq items={faq} />
-  <CtaPhoto k="la-rochelle" />
 </Base>

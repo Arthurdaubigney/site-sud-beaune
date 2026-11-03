@@ -10,6 +10,7 @@ import CtaPhoto from '../../components/CtaPhoto.astro';
 import { SPECIALITES, FAQ_GENERAL } from '../../data/site';
 import { REGIONS, DEPTS, region, deptsOf, zoneUrl, fitText } from '../../data/territoires';
 import { zoneSchema, faqSchema } from '../../lib/schema';
+import { makePool } from '../../lib/pool';
 
 export function getStaticPaths() {
   return [...REGIONS.map((r) => ({ params: { slug: r.slug } })), ...DEPTS.map((d) => ({ params: { slug: d.slug } }))];
@@ -59,6 +60,11 @@ if (reg) {
   band = ['commode-louis-xv', 'pendule-xviii', 'marqueterie-boulle', 'commode-wallace', 'vase-porcelaine'][Number(dep.num) % 5];
 }
 
+const P = makePool();
+const heroKey = P.take(img);
+const pairKey = P.take(reg ? (reg.slug === 'occitanie' ? 'albi' : 'perigord-chateau') : undefined, reg ? 'place' : 'object');
+const bandKey = P.take(reg ? band : undefined, 'object');
+const ctaKey = P.take(reg ? (reg.slug === 'occitanie' ? 'collioure' : 'biarritz') : undefined, 'place');
 const path = zoneUrl(slug!);
 const trail = [
   { name: 'Accueil', path: '/' },
@@ -69,7 +75,7 @@ const trail = [
 const siblings = dep ? deptsOf(dep.region).filter((d) => d.slug !== dep.slug) : [];
 ---
 <Base title={titleTag} description={metaDesc} ogImage={img} trail={trail} jsonLd={[zoneSchema(slug!, reg ? reg.name : dep!.name, areas, areaKind), faqSchema(faq)]}>
-  <PageHero h1={h1} lead={lead} img={img} trail={trail} alt={`${place} – antiquaire expert ${reg ? 'en ' + reg.name : dep!.in}`} />
+  <PageHero h1={h1} lead={lead} img={heroKey} trail={trail} alt={`${place} – antiquaire expert ${reg ? 'en ' + reg.name : dep!.in}`} />
 
   <section class="section" aria-labelledby="h-zone">
     <div class="wrap">
@@ -78,10 +84,10 @@ const siblings = dep ? deptsOf(dep.region).filter((d) => d.slug !== dep.slug) : 
           <h2 id="h-zone" class="h-section">{reg ? `Le patrimoine de ${reg.name}` : `Antiquités : ${dep!.name}`}</h2>
           <div style="margin-top:32px" class="measure-wide">{paragraphs.map((p) => <p>{p}</p>)}</div>
         </div>
-        <div class="b" data-reveal style="--i:1"><Pic k={reg ? (reg.slug === 'occitanie' ? 'albi' : 'perigord-chateau') : ['bronze-sculpture', 'tableau-corot', 'vase-porcelaine', 'montre-gousset', 'pendule-xviii'][Number(dep!.num) % 5]} ratio="3-4" sizes="(max-width: 860px) 70vw, 28vw" /></div>
+        <div class="b" data-reveal style="--i:1"><Pic k={pairKey} ratio="3-4" sizes="(max-width: 860px) 70vw, 28vw" /></div>
       </div>
 
-      <Band k={band} />
+      <Band k={bandKey} />
 
       {reg && (
         <Prose h={`Les ${children.length} départements`}>
@@ -111,7 +117,7 @@ const siblings = dep ? deptsOf(dep.region).filter((d) => d.slug !== dep.slug) : 
     </div>
   </section>
 
+  <CtaPhoto k={ctaKey} />
   <Faq items={faq} title={`Questions fréquentes : ${short}`} />
   <TallyForm title={`Estimation gratuite – ${short}`} />
-  <CtaPhoto k={reg ? img : band} />
 </Base>
