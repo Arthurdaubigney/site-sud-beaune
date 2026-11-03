@@ -5,6 +5,7 @@ import Pic from '../../components/Pic.astro';
 import TallyForm from '../../components/TallyForm.astro';
 import CtaPhoto from '../../components/CtaPhoto.astro';
 import { REGIONS, deptsOf, zoneUrl } from '../../data/territoires';
+import { IMG } from '../../lib/imageMap';
 import { faqSchema } from '../../lib/schema';
 import { FAQ_GENERAL } from '../../data/site';
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Zones d’intervention', path: '/zones-intervention/' }];
@@ -12,9 +13,9 @@ const trail = [{ name: 'Accueil', path: '/' }, { name: 'Zones d’intervention',
 <Base
   title="Antiquaire Sud-Ouest : zones d’intervention, 25 départements"
   description="Antiquaire et expert dans les 25 départements de Nouvelle-Aquitaine et d’Occitanie : estimation gratuite, rachat de succession et d’objets d’art à domicile."
-  ogImage="bordeaux-bourse" trail={trail} jsonLd={[faqSchema(FAQ_GENERAL.slice(0, 3))]}
+  ogImage={IMG('zones.hero')} trail={trail} jsonLd={[faqSchema(FAQ_GENERAL.slice(0, 3))]}
 >
-  <PageHero h1="Antiquaire dans tout le Sud-Ouest" lead="Nouvelle-Aquitaine et Occitanie : 25 départements, de la Charente-Maritime aux Pyrénées-Orientales. Choisissez le vôtre." img="rocamadour" trail={trail} alt="Village de Rocamadour accroché à la falaise – antiquaire expert dans le Sud-Ouest" />
+  <PageHero h1="Antiquaire dans tout le Sud-Ouest" lead="Nouvelle-Aquitaine et Occitanie : 25 départements, de la Charente-Maritime aux Pyrénées-Orientales. Choisissez le vôtre." img={IMG('zones.hero')} trail={trail} alt="Village de Rocamadour accroché à la falaise – antiquaire expert dans le Sud-Ouest" />
   {REGIONS.map((r, i) => (
     <section class="section" aria-labelledby={`h-${r.slug}`}>
       <div class="wrap">
@@ -29,10 +30,10 @@ const trail = [{ name: 'Accueil', path: '/' }, { name: 'Zones d’intervention',
             </ul>
           </div>
         </div>
-        <div class="grid" style="margin-top:72px"><div style="grid-column:7/13" data-reveal><Pic k={r.img} ratio="16-10" sizes="(max-width: 860px) 92vw, 40vw" /></div></div>
+        <div class="grid" style="margin-top:72px"><div style="grid-column:7/13" data-reveal><Pic k={IMG(`region.${r.slug}.hero`)} ratio="16-10" sizes="(max-width: 860px) 92vw, 40vw" /></div></div>
       </div>
     </section>
   ))}
-  <CtaPhoto k="cahors" />
+  <CtaPhoto k={IMG('zones.cta')} />
   <TallyForm />
 </Base>

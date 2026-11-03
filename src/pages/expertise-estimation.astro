@@ -8,6 +8,7 @@ import Faq from '../components/Faq.astro';
 import TallyForm from '../components/TallyForm.astro';
 import CtaPhoto from '../components/CtaPhoto.astro';
 import { SPECIALITES } from '../data/site';
+import { IMG } from '../lib/imageMap';
 import { serviceSchema, faqSchema } from '../lib/schema';
 const path = '/expertise-estimation/';
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Expertise et estimation', path }];
@@ -18,8 +19,8 @@ const faq = [
 ];
 const desc = 'Expertise d’objets d’art et estimation d’antiquités gratuite : tableaux, bronzes, bijoux, mobilier. Rapports écrits pour succession, assurance et partage.';
 ---
-<Base title="Expertise d’objets d’art et estimation d’antiquités" description={desc} ogImage="cabinet-curiosites" trail={trail} jsonLd={[serviceSchema('Expertise d’objets d’art et estimation d’antiquités', desc, path), faqSchema(faq)]}>
-  <PageHero h1="Expertise d’objets d’art et d’antiquités" lead="Datation, attribution, valeur de marché : des experts qui regardent vos objets de près et vous répondent par écrit." img="cabinet-curiosites" trail={trail} />
+<Base title="Expertise d’objets d’art et estimation d’antiquités" description={desc} ogImage={IMG('expertise.hero')} trail={trail} jsonLd={[serviceSchema('Expertise d’objets d’art et estimation d’antiquités', desc, path), faqSchema(faq)]}>
+  <PageHero h1="Expertise d’objets d’art et d’antiquités" lead="Datation, attribution, valeur de marché : des experts qui regardent vos objets de près et vous répondent par écrit." img={IMG('expertise.hero')} trail={trail} />
   <section class="section" aria-labelledby="e-0">
     <div class="wrap">
       <Prose h="Une méthode en trois temps" id="e-0">
@@ -29,14 +30,14 @@ const desc = 'Expertise d’objets d’art et estimation d’antiquités gratuit
       <Prose h="Nos domaines d’expertise">
         <ul class="related">{SPECIALITES.map((s) => <li><a class="chip" href={`/antiquites/${s.slug}/`}>{s.name}</a></li>)}</ul>
       </Prose>
-      <Band k="marqueterie-boulle" />
+      <Band k={IMG('expertise.band')} />
       <div class="grid pair pair-wide" style="margin-top:96px">
-        <div class="a" data-reveal><Pic k="commode-wallace" ratio="4-3" sizes="(max-width: 860px) 92vw, 58vw" /></div>
-        <div class="b" data-reveal style="--i:1"><Pic k="bibliotheque-chateau" ratio="4-3" sizes="(max-width: 860px) 70vw, 30vw" /></div>
+        <div class="a" data-reveal><Pic k={IMG('expertise.pairA')} ratio="4-3" sizes="(max-width: 860px) 92vw, 58vw" /></div>
+        <div class="b" data-reveal style="--i:1"><Pic k={IMG('expertise.pairB')} ratio="4-3" sizes="(max-width: 860px) 70vw, 30vw" /></div>
       </div>
     </div>
   </section>
-  <CtaPhoto k="biarritz" />
+  <CtaPhoto k={IMG('expertise.cta')} />
   <Faq items={faq} title="Questions fréquentes sur l’expertise d’objets d’art" />
   <TallyForm />
 </Base>

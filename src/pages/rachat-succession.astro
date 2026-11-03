@@ -8,6 +8,7 @@ import Faq from '../components/Faq.astro';
 import TallyForm from '../components/TallyForm.astro';
 import CtaPhoto from '../components/CtaPhoto.astro';
 import { REGIONS, FEATURED, zoneUrl } from '../data/territoires';
+import { IMG } from '../lib/imageMap';
 import { serviceSchema, faqSchema } from '../lib/schema';
 const path = '/rachat-succession/';
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Rachat de succession', path }];
@@ -19,8 +20,8 @@ const faq = [
 ];
 const desc = 'Rachat de succession et de contenu de maison : inventaire, estimation gratuite et paiement sécurisé en Nouvelle-Aquitaine et en Occitanie.';
 ---
-<Base title="Rachat de succession : antiquités et objets d’art à domicile" description={desc} ogImage="boutique-antiquites" trail={trail} jsonLd={[serviceSchema('Rachat de succession d’antiquités', desc, path), faqSchema(faq)]}>
-  <PageHero h1="Rachat de succession et de contenu de maison" lead="Une succession demande du temps et de la discrétion : nous inventorions, estimons et rachetons les objets d’art de la famille." img="boutique-antiquites" trail={trail} cta="Parler de ma succession" />
+<Base title="Rachat de succession : antiquités et objets d’art à domicile" description={desc} ogImage={IMG('rachat.hero')} trail={trail} jsonLd={[serviceSchema('Rachat de succession d’antiquités', desc, path), faqSchema(faq)]}>
+  <PageHero h1="Rachat de succession et de contenu de maison" lead="Une succession demande du temps et de la discrétion : nous inventorions, estimons et rachetons les objets d’art de la famille." img={IMG('rachat.hero')} trail={trail} cta="Parler de ma succession" />
   <section class="section" aria-labelledby="s-0">
     <div class="wrap">
       <Prose h="Un accompagnement pensé pour les familles" id="s-0">
@@ -31,9 +32,9 @@ const desc = 'Rachat de succession et de contenu de maison : inventaire, estimat
         <p>Mobilier ancien, tableaux, bronzes, sculptures, bijoux, montres, pendules, porcelaines, argenterie, livres anciens, tapis, souvenirs de famille et objets de collection.</p>
         <p><a href="/antiquites/">Voir toutes nos spécialités</a></p>
       </Prose>
-      <Band k="bastide-arcades" />
+      <Band k={IMG('rachat.band')} />
       <div class="grid pair" style="margin-top:96px">
-        <div class="a" data-reveal><Pic k="marqueterie-boulle" ratio="4-5" sizes="(max-width: 860px) 80vw, 33vw" /></div>
+        <div class="a" data-reveal><Pic k={IMG('rachat.pair')} ratio="4-5" sizes="(max-width: 860px) 80vw, 33vw" /></div>
         <div class="b" data-reveal style="--i:1">
           <h2 style="font-size:clamp(1.8rem,1.1rem + 2vw,2.75rem)">Une succession près de chez vous</h2>
           <ul class="related">
@@ -44,7 +45,7 @@ const desc = 'Rachat de succession et de contenu de maison : inventaire, estimat
       </div>
     </div>
   </section>
-  <CtaPhoto k="vezere" />
+  <CtaPhoto k={IMG('rachat.cta')} />
   <Faq items={faq} title="Questions fréquentes sur le rachat de succession" />
   <TallyForm title="Parlez-nous de votre succession" intro="Quelques lignes et des photographies : nous revenons vers vous." />
 </Base>

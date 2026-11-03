@@ -6,6 +6,7 @@ import Faq from '../../components/Faq.astro';
 import TallyForm from '../../components/TallyForm.astro';
 import CtaPhoto from '../../components/CtaPhoto.astro';
 import { SPECIALITES, FAQ_GENERAL } from '../../data/site';
+import { IMG } from '../../lib/imageMap';
 import { faqSchema } from '../../lib/schema';
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Spécialités', path: '/antiquites/' }];
 const faq = FAQ_GENERAL.slice(3, 6);
@@ -13,9 +14,9 @@ const faq = FAQ_GENERAL.slice(3, 6);
 <Base
   title="Antiquités à vendre ou estimer : tableaux, bronzes, bijoux"
   description="Expertise et rachat d’antiquités : tableaux anciens, bronzes, bijoux, montres, mobilier d’époque, porcelaines. Estimation gratuite dans tout le Sud-Ouest."
-  ogImage="salle-chateau" trail={trail} jsonLd={[faqSchema(faq)]}
+  ogImage={IMG('antiquites.hero')} trail={trail} jsonLd={[faqSchema(faq)]}
 >
-  <PageHero h1="Antiquités et objets d’art à estimer" lead="Tableau ancien, bronze, bijoux, mobilier d’époque ou porcelaine : chaque objet est examiné par un spécialiste." img="salle-chateau" trail={trail} />
+  <PageHero h1="Antiquités et objets d’art à estimer" lead="Tableau ancien, bronze, bijoux, mobilier d’époque ou porcelaine : chaque objet est examiné par un spécialiste." img={IMG('antiquites.hero')} trail={trail} />
   <section class="section" aria-labelledby="h-specs">
     <div class="wrap">
       <h2 class="h-section" id="h-specs" data-reveal style="margin-bottom:72px">Cinq familles d’objets</h2>
@@ -28,14 +29,14 @@ const faq = FAQ_GENERAL.slice(3, 6);
           </a>
         ))}
         <a class="mcard" href="/rachat-succession/" data-reveal title="Rachat de succession : inventaire, estimation et rachat">
-          <Pic k="boutique-antiquites" ratio="4-3" sizes="(max-width: 860px) 92vw, 40vw" />
+          <Pic k={IMG('antiquites.rachatCard')} ratio="4-3" sizes="(max-width: 860px) 92vw, 40vw" />
           <h3>Rachat de succession</h3>
           <p>Inventaire, partage et rachat du contenu complet d’une maison, avec règlement sécurisé et enlèvement assuré.</p>
         </a>
       </div>
     </div>
   </section>
-  <CtaPhoto k="perigueux" />
+  <CtaPhoto k={IMG('antiquites.cta')} />
   <Faq items={faq} />
   <TallyForm />
 </Base>

@@ -8,29 +8,30 @@ import Faq from '../components/Faq.astro';
 import TallyForm from '../components/TallyForm.astro';
 import CtaPhoto from '../components/CtaPhoto.astro';
 import { FAQ_GENERAL } from '../data/site';
+import { IMG } from '../lib/imageMap';
 import { faqSchema } from '../lib/schema';
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'À propos', path: '/a-propos/' }];
 const faq = FAQ_GENERAL.slice(0, 3);
 ---
-<Base title="À propos : antiquaires et experts d’art du Sud-Ouest" description="Antiquaires et experts en objets d’art présents dans toute la Nouvelle-Aquitaine et toute l’Occitanie : estimation gratuite, expertise et rachat de succession." ogImage="bibliotheque-chateau" trail={trail} jsonLd={[faqSchema(faq)]}>
-  <PageHero h1="Des antiquaires dans tout le Sud-Ouest" lead="Une équipe de spécialistes qui connaît les demeures, les ateliers et les marchés de la Nouvelle-Aquitaine et de l’Occitanie." img="bibliotheque-chateau" trail={trail} />
+<Base title="À propos : antiquaires et experts d’art du Sud-Ouest" description="Antiquaires et experts en objets d’art présents dans toute la Nouvelle-Aquitaine et toute l’Occitanie : estimation gratuite, expertise et rachat de succession." ogImage={IMG('a-propos.hero')} trail={trail} jsonLd={[faqSchema(faq)]}>
+  <PageHero h1="Des antiquaires dans tout le Sud-Ouest" lead="Une équipe de spécialistes qui connaît les demeures, les ateliers et les marchés de la Nouvelle-Aquitaine et de l’Occitanie." img={IMG('a-propos.hero')} trail={trail} />
   <section class="section" aria-labelledby="a-0">
     <div class="wrap">
       <Prose h="Notre engagement" id="a-0">
         <p>Estimer juste, expliquer clairement, racheter avec respect. Notre approche repose sur trois principes : la transparence de l’estimation, la discrétion et le sérieux de l’expertise.</p>
         <p>Lorsqu’un objet requiert un spécialiste précis (tableau, bronze, horlogerie, argenterie), nous sollicitons l’expert le plus pertinent de notre réseau.</p>
       </Prose>
-      <Band k="salle-chateau" />
+      <Band k={IMG('a-propos.band')} />
       <Prose h="Un territoire complet">
         <p>Nous intervenons dans les douze départements de Nouvelle-Aquitaine et les treize d’Occitanie : <a href="/zones-intervention/">consultez nos zones d’intervention</a>.</p>
       </Prose>
       <div class="grid pair" style="margin-top:96px">
-        <div class="a" data-reveal><Pic k="tableau-corot" ratio="4-3" sizes="(max-width: 860px) 80vw, 33vw" /></div>
-        <div class="b" data-reveal style="--i:1"><Pic k="boutique-antiquites" ratio="4-3" sizes="(max-width: 860px) 70vw, 30vw" /></div>
+        <div class="a" data-reveal><Pic k={IMG('a-propos.pairA')} ratio="4-3" sizes="(max-width: 860px) 80vw, 33vw" /></div>
+        <div class="b" data-reveal style="--i:1"><Pic k={IMG('a-propos.pairB')} ratio="4-3" sizes="(max-width: 860px) 70vw, 30vw" /></div>
       </div>
     </div>
   </section>
-  <CtaPhoto k="angouleme" />
+  <CtaPhoto k={IMG('a-propos.cta')} />
   <Faq items={faq} />
   <TallyForm />
 </Base>

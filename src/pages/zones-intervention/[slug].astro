@@ -11,6 +11,7 @@ import { SPECIALITES, FAQ_GENERAL } from '../../data/site';
 import { REGIONS, DEPTS, region, deptsOf, zoneUrl, fitText } from '../../data/territoires';
 import { zoneSchema, faqSchema } from '../../lib/schema';
 import { makePool } from '../../lib/pool';
+import { IMG } from '../../lib/imageMap';
 
 export function getStaticPaths() {
   return [...REGIONS.map((r) => ({ params: { slug: r.slug } })), ...DEPTS.map((d) => ({ params: { slug: d.slug } }))];
@@ -61,10 +62,10 @@ if (reg) {
 }
 
 const P = makePool();
-const heroKey = P.take(img);
-const pairKey = P.take(reg ? (reg.slug === 'occitanie' ? 'albi' : 'perigord-chateau') : undefined, reg ? 'place' : 'wide');
-const bandKey = P.take(reg ? band : undefined, 'wide');
-const ctaKey = P.take(reg ? (reg.slug === 'occitanie' ? 'collioure' : 'biarritz') : undefined, 'place');
+const heroKey = reg ? IMG(`region.${reg.slug}.hero`) : P.take(img);
+const pairKey = reg ? IMG(`region.${reg.slug}.pair`) : P.take(undefined, 'wide');
+const bandKey = reg ? IMG(`region.${reg.slug}.band`) : P.take(undefined, 'wide');
+const ctaKey = reg ? IMG(`region.${reg.slug}.cta`) : P.take(undefined, 'place');
 const path = zoneUrl(slug!);
 const trail = [
   { name: 'Accueil', path: '/' },
@@ -74,7 +75,7 @@ const trail = [
 ];
 const siblings = dep ? deptsOf(dep.region).filter((d) => d.slug !== dep.slug) : [];
 ---
-<Base title={titleTag} description={metaDesc} ogImage={img} trail={trail} jsonLd={[zoneSchema(slug!, reg ? reg.name : dep!.name, areas, areaKind), faqSchema(faq)]}>
+<Base title={titleTag} description={metaDesc} ogImage={heroKey} trail={trail} jsonLd={[zoneSchema(slug!, reg ? reg.name : dep!.name, areas, areaKind), faqSchema(faq)]}>
   <PageHero h1={h1} lead={lead} img={heroKey} trail={trail} alt={`${place} – antiquaire expert ${reg ? 'en ' + reg.name : dep!.in}`} />
 
   <section class="section" aria-labelledby="h-zone">
