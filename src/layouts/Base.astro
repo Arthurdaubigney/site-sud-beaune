@@ -63,6 +63,10 @@ if (trail && trail.length > 1) graph.push(breadcrumbSchema(trail));
           en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
         els.forEach(function (e) { io.observe(e); });
+        // Sélecteur de département
+        var fd = document.querySelector('[data-finder]');
+        if (fd) { fd.addEventListener('submit', function (e) { e.preventDefault(); var v = fd.querySelector('select').value; if (v) location.href = v; else location.href = '/zones-intervention/'; });
+          fd.querySelector('select').addEventListener('change', function (e) { if (e.target.value) location.href = e.target.value; }); }
         // Carrousel des étapes
         var row = document.querySelector('[data-steps]');
         if (row) {

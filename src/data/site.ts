@@ -69,7 +69,7 @@ export const SPECIALITES: Specialite[] = [
     ],
     points: ['Huiles sur toile et sur panneau', 'Portraits et scènes de genre', 'Paysages de l’école de Barbizon', 'Marines et vues de ports', 'Dessins, pastels et gravures'],
     faq: [
-      { q: 'Comment faire estimer un tableau ancien gratuitement ?', a: 'Envoyez des photographies du recto, du verso, de la signature et des cachets via notre formulaire. Nous vous répondons sous 48 heures avec une première fourchette de valeur.' },
+      { q: 'Comment faire estimer un tableau ancien gratuitement ?', a: 'Envoyez des photographies du recto, du verso, de la signature et des cachets via notre formulaire. Nous vous répondons avec une première fourchette de valeur.' },
       { q: 'Rachetez-vous les tableaux sans signature ?', a: 'Oui. De nombreuses œuvres anciennes ne sont pas signées. Nous les étudions à partir de leur style, de leur support et de leur histoire.' },
     ],
   },
@@ -164,7 +164,7 @@ export const SPECIALITES: Specialite[] = [
     ],
     points: ['Commodes et bureaux Louis XV et Louis XVI', 'Armoires et buffets provinciaux', 'Secrétaires et cabinets marquetés', 'Fauteuils, canapés et sièges estampillés', 'Mobilier de campagne et de gentilhommière'],
     faq: [
-      { q: 'Mon meuble ancien a-t-il encore de la valeur ?', a: 'Cela dépend de l’époque, de la qualité et de l’état. Une estimation gratuite à partir de photographies vous donne une première réponse sous 48 heures.' },
+      { q: 'Mon meuble ancien a-t-il encore de la valeur ?', a: 'Cela dépend de l’époque, de la qualité et de l’état. Une estimation gratuite à partir de photographies vous donne une première réponse.' },
       { q: 'Reprenez-vous le contenu complet d’une maison ?', a: 'Oui. Nous rachetons les pièces d’intérêt et pouvons organiser le débarras du reste dans le cadre d’une succession.' },
     ],
   },
@@ -195,7 +195,7 @@ export const SPECIALITES: Specialite[] = [
     ],
     points: ['Porcelaines de Chine et d’Europe', 'Faïences régionales', 'Cristal de Baccarat et de Saint-Louis', 'Argenterie et ménagères', 'Services complets de table'],
     faq: [
-      { q: 'Comment savoir si ma porcelaine est ancienne ?', a: 'Regardez le dessous de la pièce : marque, numéro, signature de manufacture. Envoyez-nous les photographies, nous vous répondons sous 48 heures.' },
+      { q: 'Comment savoir si ma porcelaine est ancienne ?', a: 'Regardez le dessous de la pièce : marque, numéro, signature de manufacture. Envoyez-nous les photographies, nous vous répondons.' },
       { q: 'Une pièce ébréchée peut-elle être rachetée ?', a: 'Oui, si la pièce présente un intérêt. L’estimation tient compte des accidents et des restaurations.' },
     ],
   },
@@ -206,6 +206,5 @@ export const FAQ_GENERAL = [
   { q: 'Dans quelles zones intervenez-vous ?', a: 'Nous couvrons toute la Nouvelle-Aquitaine (12 départements) et toute l’Occitanie (13 départements), de la Charente-Maritime aux Pyrénées-Orientales et de la Corrèze à la Gironde.' },
   { q: 'Comment se déroule le rachat d’une succession ?', a: 'Après un inventaire et une estimation écrite, nous vous remettons une proposition de rachat ferme. En cas d’accord, l’enlèvement est organisé et le paiement effectué par virement sécurisé.' },
   { q: 'Quels objets rachetez-vous ?', a: 'Mobilier ancien, tableaux, bronzes, sculptures, bijoux, montres, pendules, porcelaines, argenterie, livres anciens, tapis, objets de collection et d’art décoratif.' },
-  { q: 'Sous quel délai recevrai-je une réponse ?', a: 'Une première estimation est transmise sous 48 heures. La visite à domicile est généralement planifiée dans la semaine suivante.' },
   { q: 'Puis-je faire estimer des objets sans les vendre ?', a: 'Oui. Nous établissons des estimations pour assurance, partage successoral, donation ou simple curiosité.' },
 ];

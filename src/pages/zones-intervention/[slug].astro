@@ -44,7 +44,7 @@ if (reg) {
   h1 = `Antiquaire expert ${dep.in} (${dep.num})`;
   const titles = [`Antiquaire ${dep.name} (${dep.num}) : estimation gratuite, rachat`, `Antiquaire ${dep.name} (${dep.num}) : expertise et estimation gratuite`, `Antiquaire ${dep.name} (${dep.num}) : estimation et rachat gratuit`, `Antiquaire expert ${dep.name} (${dep.num}) : estimation gratuite`, `Antiquaire ${dep.name} (${dep.num}) : estimation gratuite`];
   titleTag = titles.filter((t) => t.length >= 50 && t.length <= 60)[0] ?? titles.sort((a, b) => Math.abs(a.length - 55) - Math.abs(b.length - 55))[0];
-  metaDesc = fitText(`Antiquaire et expert à ${c[0]}, ${c[1]} et ${c[2]} : estimation gratuite, rachat de succession et d’objets d’art ${dep.in} (${dep.num}).`, [' Réponse sous 48 h.', ' Déplacement gratuit.'], 140, 155);
+  metaDesc = fitText(`Antiquaire et expert à ${c[0]}, ${c[1]} et ${c[2]} : estimation gratuite, rachat de succession et d’objets d’art ${dep.in} (${dep.num}).`, [' Estimation sans engagement.', ' Déplacement gratuit.'], 140, 155);
   lead = `${dep.pref} et tout le département : nous estimons, expertisons et rachetons mobilier, tableaux, bronzes, bijoux et objets d’art ${dep.in}.`;
   paragraphs = [
     dep.heritage,

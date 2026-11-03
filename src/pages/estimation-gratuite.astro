@@ -9,11 +9,11 @@ import { FAQ_GENERAL } from '../data/site';
 import { faqSchema, serviceSchema } from '../lib/schema';
 const path = '/estimation-gratuite/';
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Estimation gratuite', path }];
-const desc = 'Demandez une estimation gratuite de vos antiquités et objets d’art : formulaire en ligne, réponse sous 48 h dans le Sud-Ouest, le Gard et l’Hérault.';
+const desc = 'Demandez une estimation gratuite de vos antiquités et objets d’art : formulaire en ligne, un expert vous répond en Nouvelle-Aquitaine et en Occitanie.';
 const faq = FAQ_GENERAL.slice(0, 4);
 ---
-<Base title="Estimation gratuite d’antiquités : formulaire, réponse 48 h" description={desc} ogImage="commode-louis-xv" trail={trail} jsonLd={[serviceSchema('Estimation gratuite d’antiquités', desc, path), faqSchema(faq)]}>
-  <PageHero h1="Estimation gratuite de vos antiquités" lead="Décrivez vos objets, joignez des photographies : un expert vous répond sous 48 heures, sans engagement." img="commode-louis-xv" ratio="4-5" trail={trail} cta="Remplir le formulaire" />
+<Base title="Estimation gratuite d’antiquités : formulaire en ligne" description={desc} ogImage="commode-louis-xv" trail={trail} jsonLd={[serviceSchema('Estimation gratuite d’antiquités', desc, path), faqSchema(faq)]}>
+  <PageHero h1="Estimation gratuite de vos antiquités" lead="Décrivez vos objets, joignez des photographies : un expert vous répond, sans engagement." img="commode-louis-xv" ratio="4-5" trail={trail} cta="Remplir le formulaire" />
   <TallyForm title="Votre demande d’estimation" heading="h2" />
   <section class="section" aria-label="Quelques objets que nous estimons">
     <div class="wrap">

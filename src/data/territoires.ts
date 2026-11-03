@@ -42,7 +42,7 @@ export const REGIONS: Region[] = [
     lead: 'De La Rochelle à Biarritz, de Limoges au Périgord : nous estimons, expertisons et rachetons les antiquités des douze départements de Nouvelle-Aquitaine.',
     paragraphs: [
       'La Nouvelle-Aquitaine est la plus vaste région de France, et son patrimoine mobilier est à l’image de sa diversité : hôtels d’armateurs de La Rochelle et de Bordeaux, châteaux du Périgord, demeures du Limousin, tapisseries d’Aubusson, porcelaines de Limoges, villas de Biarritz et fermes basques.',
-      'Notre équipe se déplace gratuitement dans les douze départements pour estimer vos objets d’art, organiser un inventaire de succession ou racheter une collection. Une première estimation à partir de photographies vous est remise sous 48 heures.',
+      'Notre équipe se déplace gratuitement dans les douze départements pour estimer vos objets d’art, organiser un inventaire de succession ou racheter une collection. Une première estimation à partir de photographies vous est remise gratuitement.',
     ],
   },
   {
