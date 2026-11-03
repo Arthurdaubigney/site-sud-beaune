@@ -10,8 +10,8 @@ const trail = [{ name: 'Accueil', path: '/' }, { name: 'Estimation gratuite', pa
 const desc = 'Demandez une estimation gratuite de vos antiquités et objets d’art : formulaire en ligne, un expert vous répond en Nouvelle-Aquitaine et en Occitanie.';
 const faq = FAQ_GENERAL.slice(0, 4);
 ---
-<Base title="Estimation gratuite d’antiquités : formulaire en ligne" description={desc} ogImage="commode-louis-xv" trail={trail} jsonLd={[serviceSchema('Estimation gratuite d’antiquités', desc, path), faqSchema(faq)]}>
-  <PageHero h1="Estimation gratuite de vos antiquités" lead="Décrivez vos objets, joignez des photographies : un expert vous répond, sans engagement." img="commode-louis-xv" trail={trail} cta="Remplir le formulaire" />
+<Base title="Estimation gratuite d’antiquités : formulaire en ligne" description={desc} ogImage="pendule-xviii" trail={trail} jsonLd={[serviceSchema('Estimation gratuite d’antiquités', desc, path), faqSchema(faq)]}>
+  <PageHero h1="Estimation gratuite de vos antiquités" lead="Décrivez vos objets, joignez des photographies : un expert vous répond, sans engagement." img="pendule-xviii" trail={trail} cta="Remplir le formulaire" />
   <TallyForm title="Votre demande d’estimation" heading="h2" />
   <Faq items={faq} />
 </Base>
