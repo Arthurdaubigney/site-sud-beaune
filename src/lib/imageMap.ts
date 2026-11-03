@@ -8,8 +8,8 @@
 import { SPECIALITES } from '../data/site';
 
 const OBJECTS = ['commode-wallace', 'pendule-xviii', 'marqueterie-boulle', 'tableau-paysage', 'vase-porcelaine', 'commode-louis-xv', 'bronze-sculpture', 'montre-gousset'];
-const WIDE = ['salle-chateau', 'cabinet-curiosites', 'bibliotheque-chateau', 'boutique-antiquites', 'bastide-arcades'];
-const PLACES = ['perigord-chateau', 'vezere', 'angouleme', 'perigueux', 'la-rochelle', 'bordeaux-bourse', 'biarritz', 'pays-basque', 'nimes', 'toulouse', 'albi', 'limoges', 'poitiers', 'pau', 'collioure', 'rocamadour', 'cahors', 'gavarnie', 'montpellier', 'agen', 'carcassonne', 'navacelles', 'bordeaux-gravure', 'saint-emilion', 'uzes', 'narbonne', 'conques', 'perpignan', 'cognac', 'rochefort', 'pilat', 'saint-jean-de-luz', 'sarlat', 'millau', 'foix', 'niort', 'montauban', 'mende'];
+const WIDE = ['salle-chateau', 'cabinet-curiosites', 'bibliotheque-chateau', 'boutique-antiquites'];
+const PLACES = ['perigord-chateau', 'vezere', 'angouleme', 'perigueux', 'la-rochelle', 'bordeaux-bourse', 'biarritz', 'pays-basque', 'nimes', 'toulouse', 'albi', 'limoges', 'poitiers', 'pau', 'collioure', 'rocamadour', 'cahors', 'gavarnie', 'montpellier', 'agen', 'carcassonne', 'bordeaux-gravure', 'saint-emilion', 'narbonne', 'conques', 'perpignan', 'cognac', 'rochefort', 'pilat', 'sarlat', 'millau', 'foix', 'niort', 'montauban', 'mende', 'nerac'];
 type Kind = 'object' | 'wide' | 'place';
 const LISTS: Record<Kind, string[]> = { object: OBJECTS, wide: WIDE, place: PLACES };
 
@@ -33,7 +33,7 @@ for (const s of SPECIALITES) take(`spec.${s.slug}.hero`, s.img, 'object');
 take('antiquites.rachatCard', 'boutique-antiquites', 'wide');
 // 2. Pages principales.
 const REQ: [string, string, Kind][] = [
-  ['a-propos.hero', 'bibliotheque-chateau', 'wide'], ['a-propos.band', 'bastide-arcades', 'wide'], ['a-propos.pairA', 'vezere', 'place'], ['a-propos.pairB', 'agen', 'place'], ['a-propos.cta', 'angouleme', 'place'],
+  ['a-propos.hero', 'bibliotheque-chateau', 'wide'], ['a-propos.band', 'wide'], ['a-propos.pairA', 'vezere', 'place'], ['a-propos.pairB', 'agen', 'place'], ['a-propos.cta', 'angouleme', 'place'],
   ['antiquites.hero', 'salle-chateau', 'wide'], ['antiquites.cta', 'nimes', 'place'],
   ['rachat.hero', 'perigord-chateau', 'place'], ['rachat.band', 'la-rochelle', 'place'], ['rachat.pair', 'marqueterie-boulle', 'object'], ['rachat.cta', 'bordeaux-gravure', 'place'],
   ['expertise.hero', 'cabinet-curiosites', 'wide'], ['expertise.band', 'albi', 'place'], ['expertise.pairA', 'commode-wallace', 'object'], ['expertise.pairB', 'pendule-xviii', 'object'], ['expertise.cta', 'pays-basque', 'place'],

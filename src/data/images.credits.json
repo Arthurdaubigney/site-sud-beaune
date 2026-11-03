@@ -278,15 +278,6 @@
   "page": "https://commons.wikimedia.org/wiki/File:Agen,_Lot-et-Garonne,_France.JPG",
   "via": "Wikimedia Commons"
  },
- "navacelles": {
-  "w": 1400,
-  "h": 422,
-  "title": "Cirque de Navacelles (3)",
-  "creator": "Krzysztof Golik",
-  "license": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Cirque_de_Navacelles_(3).jpg",
-  "via": "Wikimedia Commons"
- },
  "hero-urtubie": {
   "w": 1400,
   "h": 933,
@@ -332,15 +323,6 @@
   "page": "https://commons.wikimedia.org/wiki/File:A_Fine_Thing,_antiques_shop_(33181977861).jpg",
   "via": "Wikimedia Commons"
  },
- "bastide-arcades": {
-  "w": 1400,
-  "h": 933,
-  "title": "Monflanquin - Les arcades de la bastide",
-  "creator": "Renhour48",
-  "license": "CC0",
-  "page": "https://commons.wikimedia.org/wiki/File:Monflanquin_-_Les_arcades_de_la_bastide.jpg",
-  "via": "Wikimedia Commons"
- },
  "saint-emilion": {
   "w": 1400,
   "h": 660,
@@ -357,15 +339,6 @@
   "creator": "Benjamin Smith",
   "license": "CC BY-SA 4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Sarlat-la-Can%C3%A9da_-_Place_de_la_Libert%C3%A9_-_2.jpg",
-  "via": "Wikimedia Commons"
- },
- "uzes": {
-  "w": 1400,
-  "h": 596,
-  "title": "Uzès-Le Duché",
-  "creator": "Daniel VILLAFRUELA",
-  "license": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Uz%C3%A8s-Le_Duch%C3%A9.jpg",
   "via": "Wikimedia Commons"
  },
  "narbonne": {
@@ -440,15 +413,6 @@
   "page": "https://commons.wikimedia.org/wiki/File:Sommet_de_la_Dune_du_Pilat.jpg",
   "via": "Wikimedia Commons"
  },
- "saint-jean-de-luz": {
-  "w": 1400,
-  "h": 427,
-  "title": "Saint-Jean-de-Luz 64 Bassin port 2012",
-  "creator": "JLPC",
-  "license": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Saint-Jean-de-Luz_64_Bassin_port_2012.jpg",
-  "via": "Wikimedia Commons"
- },
  "niort": {
   "w": 1400,
   "h": 887,
@@ -474,6 +438,33 @@
   "creator": "User:civodule",
   "license": "CC BY-SA 3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Mende-cathedrale-1.JPG",
+  "via": "Wikimedia Commons"
+ },
+ "nerac": {
+  "w": 1400,
+  "h": 945,
+  "title": "Nérac - Château - 02",
+  "creator": "Benjism89",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:N%C3%A9rac_-_Ch%C3%A2teau_-_02.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "villeneuve": {
+  "w": 1400,
+  "h": 860,
+  "title": "Villeneuve-sur-Lot - Pont des Cieutats -116",
+  "creator": "MOSSOT",
+  "license": "CC BY 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Villeneuve-sur-Lot_-_Pont_des_Cieutats_-116.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "auch": {
+  "w": 1400,
+  "h": 917,
+  "title": "(Auch) La 2ème terrasse de l'escalier monumental",
+  "creator": "Didier Descouens",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:(Auch)_La_2%C3%A8me_terrasse_de_l%27escalier_monumental.jpg",
   "via": "Wikimedia Commons"
  }
 }

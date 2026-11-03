@@ -2,7 +2,7 @@ import { ALL_IMAGE_KEYS } from '../data/images';
 
 const OBJECTS = ['commode-louis-xv', 'bronze-sculpture', 'pendule-xviii', 'vase-porcelaine', 'montre-gousset', 'tableau-corot', 'tableau-paysage'];
 const WIDE = ['bibliotheque-chateau', 'salle-chateau', 'cabinet-curiosites', 'boutique-antiquites', 'marqueterie-boulle', 'commode-wallace'];
-const PLACES = ['vezere', 'perigord-chateau', 'angouleme', 'perigueux', 'la-rochelle', 'bordeaux-bourse', 'biarritz', 'pays-basque', 'nimes', 'toulouse', 'albi', 'limoges', 'poitiers', 'pau', 'collioure', 'rocamadour', 'cahors', 'gavarnie', 'montpellier', 'agen', 'carcassonne', 'navacelles', 'bordeaux-gravure', 'bastide-arcades', 'saint-emilion', 'uzes', 'narbonne', 'conques', 'perpignan', 'cognac', 'rochefort', 'pilat', 'saint-jean-de-luz', 'sarlat', 'millau', 'foix', 'niort', 'montauban', 'mende'];
+const PLACES = ['vezere', 'perigord-chateau', 'angouleme', 'perigueux', 'la-rochelle', 'bordeaux-bourse', 'biarritz', 'pays-basque', 'nimes', 'toulouse', 'albi', 'limoges', 'poitiers', 'pau', 'collioure', 'rocamadour', 'cahors', 'gavarnie', 'montpellier', 'agen', 'carcassonne', 'bordeaux-gravure', 'saint-emilion', 'narbonne', 'conques', 'perpignan', 'cognac', 'rochefort', 'pilat', 'sarlat', 'millau', 'foix', 'niort', 'montauban', 'mende', 'nerac'];
 
 /** Distribue des images sans jamais en répéter une sur la même page. */
 export function makePool() {
