@@ -289,14 +289,7 @@ details[open] .chev { transform: rotate(180deg); background: rgba(212, 175, 55, 
 
 /* ---------- pages intérieures ---------- */
 .page-hero { padding-top: clamp(20px, 3.5vw, 52px); }
-.page-hero .grid { row-gap: 44px; align-items: start; }
-.page-hero h1 { grid-column: 1 / 13; grid-row: 1; font-size: clamp(2.2rem, 1rem + 4.4vw, 5rem); line-height: 1.04; max-width: 20ch; }
-.page-hero .ph-copy { grid-column: 1 / 7; grid-row: 2; }
-.page-hero .ph-photo { grid-row: 2; align-self: start; }
-.page-hero .ph-photo.is-landscape, .page-hero .ph-photo.is-portrait { grid-column: 7 / 13; }
-.page-hero .ph-photo .pic { margin-top: 0; }
 .page-hero .ph-photo.is-portrait img { object-position: 50% 30%; }
-.page-hero .ph-copy .lead { margin-top: 0; }
 .crumbs { font-size: 0.875rem; color: var(--muted); padding-top: 10px; }
 .crumbs ol { display: flex; flex-wrap: wrap; gap: 4px 10px; }
 .crumbs li + li::before { content: '›'; margin-right: 10px; color: var(--gold); }
@@ -377,8 +370,7 @@ a.chip:hover { transform: translateY(-2px); background: #fff; border-color: var(
 @media (max-width: 860px) {
   :root { --space: clamp(72px, 18vw, 110px); }
   .grid > * { grid-column: 1 / -1 !important; grid-row: auto !important; }
-  .page-hero h1 { font-size: clamp(1.9rem, 8vw, 3rem); }
-  .page-hero .ph-photo { order: 3; width: 100%; }
+    .page-hero .ph-photo { order: 3; width: 100%; }
   .page-hero .ph-copy { order: 2; }
   .mosaic-photo .pic { aspect-ratio: 4 / 3; height: auto; min-height: 0; }
   .paper-block { position: static; max-width: none; margin-top: 14px; }
@@ -419,3 +411,18 @@ main > .page-hero:last-child { padding-bottom: 96px; }
 .page-hero .ph-copy .kicker { line-height: 1; margin-bottom: 22px; }
 .page-hero .ph-copy { padding-top: 0; }
 .page-hero .ph-copy .kicker { display: flex; }
+
+/* En-tête de page : texte à gauche, photo à droite, même hauteur */
+.ph-grid { margin-top: 36px; align-items: stretch; row-gap: 28px; }
+.ph-left { grid-column: 1 / 7; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding-right: clamp(0px, 2vw, 32px); }
+.ph-left h1 { font-size: clamp(2.1rem, 1rem + 3.4vw, 4.4rem); line-height: 1.05; max-width: 16ch; }
+.ph-copy .lead { margin: 0; max-width: 38ch; }
+.ph-copy .cta-row { margin-top: 28px; }
+.ph-photo { grid-column: 7 / 13; position: relative; min-height: 340px; }
+.ph-photo .pic { position: absolute; inset: 0; height: 100%; aspect-ratio: auto; }
+.ph-photo.is-portrait img { object-position: 50% 30%; }
+@media (max-width: 860px) {
+  .ph-left { padding-right: 0; gap: 24px; }
+  .ph-left h1 { font-size: clamp(1.9rem, 8vw, 3rem); max-width: none; }
+  .ph-photo { min-height: 0; aspect-ratio: 16 / 10; }
+}
