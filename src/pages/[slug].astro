@@ -55,7 +55,7 @@ if (svc) {
 const dep = cty ? DEPTS.find((d) => d.slug === cty.dep)! : null;
 ---
 <Base title={title} description={desc} ogImage={hero} trail={trail} jsonLd={ld}>
-  <PageHero h1={h1} lead={lead} img={hero} alt={heroAlt} trail={trail} cta={cta} />
+  <PageHero geo={!!cty} h1={h1} lead={lead} img={hero} alt={heroAlt} trail={trail} cta={cta} />
 
   {svc && (
     <section class="section" aria-labelledby="s-0">

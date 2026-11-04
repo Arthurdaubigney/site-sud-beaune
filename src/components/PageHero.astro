@@ -1,10 +1,11 @@
 ---
 import Pic from './Pic.astro';
 import { ESTIMATION_URL } from '../data/site';
-import { img as getImg } from '../data/images';
-interface Props { alt?: string; h1: string; lead: string; img: string; trail: { name: string; path: string }[]; cta?: string; }
-const { alt, h1, lead, img, trail, cta = 'Estimation gratuite' } = Astro.props;
+import { img as getImg, neutralAlt } from '../data/images';
+interface Props { geo?: boolean; alt?: string; h1: string; lead: string; img: string; trail: { name: string; path: string }[]; cta?: string; }
+const { geo = false, alt, h1, lead, img, trail, cta = 'Estimation gratuite' } = Astro.props;
 const meta = getImg(img);
+const heroAlt = alt;
 const portrait = meta.h > meta.w * 1.05;
 ---
 <section class="page-hero">
@@ -26,7 +27,7 @@ const portrait = meta.h > meta.w * 1.05;
           </div>
         </div>
       </div>
-      <div class:list={['ph-photo', portrait ? 'is-portrait' : 'is-landscape']} data-reveal><Pic k={img} alt={alt} eager sizes="(max-width: 860px) 92vw, 48vw" /></div>
+      <div class:list={['ph-photo', portrait ? 'is-portrait' : 'is-landscape']} data-reveal><Pic k={img} alt={heroAlt} full={geo} eager sizes="(max-width: 860px) 92vw, 48vw" /></div>
     </div>
   </div>
 </section>

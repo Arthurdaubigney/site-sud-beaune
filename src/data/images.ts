@@ -109,6 +109,13 @@ const META: Record<string, { alt: string; title: string }> = {
   'ours-steiff': { alt: "Ours en peluche ancien de type Steiff, jouet de collection à estimer", title: "Ours en peluche ancien – estimation de jouets de collection" },
   'lustre-murano': { alt: "Lustre ancien de Murano en verre soufflé à fleurs et pampilles, luminaire ancien à estimer", title: "Lustre de Murano – estimation de lustres et luminaires anciens" },
   'miroir-dore': { alt: "Miroir rococo en bois doré à glace gravée, miroir ancien à estimer", title: "Miroir ancien en bois doré – estimation de miroirs et trumeaux" },
+  'hossegor': { alt: "Lac d’Hossegor bordé de pins dans les Landes, antiquaire expert dans les Landes", title: "Hossegor – antiquaire expert dans les Landes" },
+  'landes-plage': { alt: "Plage et vagues sur la côte landaise, antiquaire expert dans les Landes", title: "Côte landaise – antiquaire expert dans les Landes" },
+  'limoges-cathedrale': { alt: "Cathédrale Saint-Étienne de Limoges et ses jardins, antiquaire expert à Limoges", title: "Limoges, cathédrale Saint-Étienne – antiquaire expert en Haute-Vienne" },
+  'limoges-pont': { alt: "Pont Saint-Étienne sur la Vienne à Limoges, antiquaire expert en Haute-Vienne", title: "Limoges, pont Saint-Étienne – antiquaire expert en Haute-Vienne" },
+  'pic-du-midi': { alt: "Observatoire et panorama du Pic du Midi de Bigorre dans les Pyrénées, antiquaire expert dans les Hautes-Pyrénées", title: "Pic du Midi de Bigorre – antiquaire expert dans les Hautes-Pyrénées" },
+  'toulouse-garonne': { alt: "La Garonne et la grande roue de Toulouse de nuit, antiquaire expert à Toulouse", title: "Toulouse, la Garonne – antiquaire expert en Haute-Garonne" },
+  'saint-sernin': { alt: "Nef de la basilique Saint-Sernin de Toulouse, antiquaire expert en Haute-Garonne", title: "Basilique Saint-Sernin – antiquaire expert en Haute-Garonne" },
   'angouleme': { alt: 'Hôtel de ville d’Angoulême et son parc fleuri, antiquaire expert en Charente', title: 'Angoulême, hôtel de ville – antiquaire expert en Charente' },
   'perigueux': { alt: 'Cathédrale Saint-Front de Périgueux et ses coupoles, antiquaire expert en Dordogne', title: 'Périgueux, cathédrale Saint-Front – antiquaire en Dordogne' },
 };
@@ -142,3 +149,7 @@ const FOCUS: Record<string, string> = {
   'cartes-postales': '50% 35%', 'malle-louis-vuitton': '50% 50%', 'ours-steiff': '50% 40%', 'miroir-dore': '50% 40%', 'lustre-murano': '50% 45%', 'art-asiatique': '50% 38%', 'design-vintage': '50% 45%', 'pieces-or': '50% 50%',
 };
 export const focus = (key: string) => FOCUS[key] ?? '50% 50%';
+
+/** Libellé neutre d'une photo de lieu, pour les pages qui ne sont pas géographiques. */
+export const neutralTitle = (key: string) => { const t = img(key).title.split(' – antiquaire')[0]; return t.length >= 14 ? t : neutralAlt(key); };
+export const neutralAlt = (key: string) => img(key).alt.split(', antiquaire')[0].split(' – antiquaire')[0];

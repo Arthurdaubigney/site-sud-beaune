@@ -13,7 +13,7 @@ import { OBJETS } from '../data/objets';
 import { DEPTS, REGIONS } from '../data/territoires';
 import { ALL_IMAGE_KEYS, img as imgMeta } from '../data/images';
 
-const OBJECTS = ['commode-wallace', 'pendule-xviii', 'marqueterie-boulle', 'tableau-paysage', 'vase-porcelaine', 'commode-louis-xv', 'bronze-sculpture', 'montre-gousset', 'tableau-corot', 'armoire-ancienne', 'bureau-louis-xv', 'horloges-comtoises', 'service-porcelaine', 'eventail', 'bague-ancienne', 'robe-vintage', 'fourrure', 'monnaies', 'pieces-or', 'medailles', 'verrerie-art', 'livres-anciens', 'cartes-postales', 'art-asiatique', 'instruments-marine', 'montres-collection', 'pendule-salon', 'design-vintage', 'malle-louis-vuitton', 'ours-steiff', 'lustre-murano', 'miroir-dore'];
+const OBJECTS = ['commode-wallace', 'pendule-xviii', 'marqueterie-boulle', 'tableau-paysage', 'vase-porcelaine', 'commode-louis-xv', 'bronze-sculpture', 'montre-gousset', 'tableau-corot', 'armoire-ancienne', 'bureau-louis-xv', 'horloges-comtoises', 'service-porcelaine', 'eventail', 'bague-ancienne', 'robe-vintage', 'fourrure', 'monnaies', 'pieces-or', 'medailles', 'verrerie-art', 'livres-anciens', 'cartes-postales', 'art-asiatique', 'instruments-marine', 'montres-collection', 'pendule-salon', 'design-vintage', 'malle-louis-vuitton', 'ours-steiff', 'lustre-murano', 'miroir-dore', 'hossegor', 'landes-plage', 'limoges-cathedrale', 'limoges-pont', 'pic-du-midi', 'toulouse-garonne', 'saint-sernin'];
 const WIDE = ['salle-chateau', 'cabinet-curiosites', 'bibliotheque-chateau', 'boutique-antiquites'];
 const PLACES = ['perigord-chateau', 'vezere', 'angouleme', 'perigueux', 'la-rochelle', 'bordeaux-bourse', 'biarritz', 'pays-basque', 'nimes', 'toulouse', 'albi', 'limoges', 'poitiers', 'pau', 'collioure', 'rocamadour', 'cahors', 'gavarnie', 'montpellier', 'agen', 'carcassonne', 'bordeaux-gravure', 'saint-emilion', 'narbonne', 'conques', 'perpignan', 'cognac', 'rochefort', 'pilat', 'sarlat', 'millau', 'foix', 'niort', 'montauban', 'mende', 'nerac', 'ales', 'aigues-mortes', 'bayonne', 'bergerac', 'beynac', 'beziers', 'brantome', 'brive', 'cap-ferret', 'castres', 'chauvigny', 'collonges', 'confolens', 'cordes-sur-ciel', 'figeac', 'gueret', 'hendaye', 'ile-de-re', 'jarnac', 'la-rochefoucauld', 'lectoure', 'gorges-du-tarn', 'mirepoix', 'moissac', 'oloron', 'pezenas', 'rodez', 'saint-cirq-lapopie', 'saintes', 'sete', 'thouars'];
 type Kind = 'object' | 'wide' | 'place';
@@ -50,6 +50,37 @@ function hero(slot: string, pref: string | undefined, kind: Kind | 'any' = 'any'
   if (!k) k = pref ?? ALL[0]; // plus aucune photo libre : réutilisation en dernier recours
   heroUsed.add(k); MAP[slot] = k; used.add(k); count.set(k, (count.get(k) ?? 0) + 1); protectedKeys.add(k);
 }
+// Pages géographiques : photo du bon territoire uniquement (jamais une photo d'un autre département).
+const GEO_CITY: Record<string, string[]> = {
+  'antiquaire-bordeaux': ['bordeaux-bourse', 'bordeaux-gravure'], 'antiquaire-toulouse': ['toulouse-garonne', 'toulouse'], 'antiquaire-montpellier': ['montpellier'],
+  'antiquaire-biarritz': ['biarritz'], 'antiquaire-bayonne': ['bayonne'], 'antiquaire-pau': ['pau'], 'antiquaire-perigueux': ['perigueux'],
+  'antiquaire-la-rochelle': ['la-rochelle'], 'antiquaire-angouleme': ['angouleme'], 'antiquaire-limoges': ['limoges-cathedrale', 'limoges'],
+  'antiquaire-poitiers': ['poitiers'], 'antiquaire-nimes': ['nimes'], 'antiquaire-perpignan': ['perpignan'], 'antiquaire-albi': ['albi'],
+  'antiquaire-cognac': ['cognac'], 'antiquaire-arcachon': ['pilat', 'cap-ferret'],
+};
+const GEO_DEPT: Record<string, string[]> = {
+  'ariege-09': ['foix', 'mirepoix'], 'aude-11': ['narbonne', 'carcassonne'], 'aveyron-12': ['millau', 'rodez', 'conques'],
+  'charente-16': ['confolens', 'jarnac', 'la-rochefoucauld', 'cognac'], 'charente-maritime-17': ['rochefort', 'ile-de-re', 'saintes', 'la-rochelle'],
+  'correze-19': ['collonges', 'brive'], 'creuse-23': ['gueret'], 'deux-sevres-79': ['niort', 'thouars'],
+  'dordogne-24': ['sarlat', 'bergerac', 'brantome', 'beynac', 'vezere'], 'gard-30': ['aigues-mortes', 'ales', 'nimes'], 'gers-32': ['auch', 'lectoure'],
+  'gironde-33': ['saint-emilion', 'cap-ferret', 'bordeaux-gravure', 'pilat'], 'haute-garonne-31': ['saint-sernin', 'toulouse', 'toulouse-garonne'],
+  'haute-vienne-87': ['limoges-pont', 'limoges', 'limoges-cathedrale'], 'hautes-pyrenees-65': ['pic-du-midi', 'gavarnie'],
+  'herault-34': ['beziers', 'sete', 'pezenas', 'montpellier'], 'landes-40': ['hossegor', 'landes-plage'],
+  'lot-46': ['figeac', 'saint-cirq-lapopie', 'cahors', 'rocamadour'], 'lot-et-garonne-47': ['villeneuve', 'nerac', 'agen'],
+  'lozere-48': ['mende', 'gorges-du-tarn'], 'pyrenees-atlantiques-64': ['oloron', 'hendaye', 'pays-basque', 'biarritz'],
+  'pyrenees-orientales-66': ['collioure', 'perpignan'], 'tarn-81': ['castres', 'cordes-sur-ciel', 'albi'], 'tarn-et-garonne-82': ['montauban', 'moissac'],
+  'vienne-86': ['chauvigny', 'poitiers'],
+};
+const GEO_REGION: Record<string, string[]> = { 'nouvelle-aquitaine': ['perigord-chateau', 'vezere', 'perigueux'], occitanie: ['carcassonne', 'cordes-sur-ciel', 'montpellier'] };
+function geoHero(slot: string, cands: string[]) {
+  const k = cands.find((c) => ALL.includes(c) && !heroUsed.has(c));
+  if (!k) throw new Error(`Plus de photo géographique libre pour ${slot}`);
+  heroUsed.add(k); MAP[slot] = k; used.add(k); count.set(k, (count.get(k) ?? 0) + 1); protectedKeys.add(k);
+}
+for (const [slug, c] of Object.entries(GEO_CITY)) geoHero(`city.${slug}.hero`, c);
+for (const d of DEPTS) geoHero(`dept.${d.slug}.hero`, GEO_DEPT[d.slug]);
+for (const r of REGIONS) geoHero(`region.${r.slug}.hero`, GEO_REGION[r.slug]);
+
 hero('a-propos.hero', 'vezere', 'place');
 hero('antiquites.hero', 'salle-chateau', 'wide');
 hero('expertise.hero', 'cabinet-curiosites', 'wide');
@@ -60,10 +91,6 @@ hero('zones.hero', 'rocamadour', 'place');
 hero('conseils.hero', 'saint-emilion', 'place');
 for (const s of SPECIALITES) hero(`spec.${s.slug}.hero`, s.img, 'object');
 for (const o of OBJETS) hero(`objet.${o.slug}.hero`, o.img, 'object');
-hero('region.nouvelle-aquitaine.hero', 'perigueux', 'place');
-hero('region.occitanie.hero', 'montpellier', 'place');
-for (const d of DEPTS) hero(`dept.${d.slug}.hero`, d.img, 'place');
-for (const c of CITIES) hero(`city.${c.slug}.hero`, c.img, 'place');
 for (const sv of SERVICES) hero(`service.${sv.slug}.hero`, undefined, 'any');
 for (const g of GUIDES) hero(`guide.${g.slug}.hero`, undefined, 'any');
 

@@ -1,7 +1,7 @@
 ---
-import { img, focus } from '../data/images';
-interface Props { k: string; ratio?: string; sizes?: string; eager?: boolean; class?: string; alt?: string; title?: string; }
-const { k, ratio, sizes = '(max-width: 860px) 92vw, 50vw', eager = false, class: cls = '', alt, title } = Astro.props;
+import { img, focus, neutralAlt, neutralTitle } from '../data/images';
+interface Props { k: string; ratio?: string; sizes?: string; eager?: boolean; class?: string; alt?: string; title?: string; full?: boolean; }
+const { k, ratio, sizes = '(max-width: 860px) 92vw, 50vw', eager = false, class: cls = '', alt, title, full = false } = Astro.props;
 const i = img(k);
 ---
 <div class:list={['pic', ratio && `r-${ratio}`, cls]}>
@@ -12,8 +12,8 @@ const i = img(k);
     width={i.w}
     height={i.h}
     style={`object-position:${focus(k)}`}
-    alt={alt ?? i.alt}
-    title={title ?? i.title}
+    alt={alt ?? (full ? i.alt : neutralAlt(k))}
+    title={title ?? (full ? i.title : neutralTitle(k))}
     loading={eager ? 'eager' : 'lazy'}
     decoding={eager ? 'sync' : 'async'}
     fetchpriority={eager ? 'high' : undefined}

@@ -79,7 +79,7 @@ const trail = [
 const siblings = dep ? deptsOf(dep.region).filter((d) => d.slug !== dep.slug) : [];
 ---
 <Base title={titleTag} description={metaDesc} ogImage={heroKey} trail={trail} jsonLd={[zoneSchema(slug!, reg ? reg.name : dep!.name, areas, areaKind), faqSchema(faq)]}>
-  <PageHero h1={h1} lead={lead} img={heroKey} trail={trail} alt={heroKey === img ? `${place} – antiquaire expert ${reg ? 'en ' + reg.name : dep!.in}` : undefined} />
+  <PageHero geo h1={h1} lead={lead} img={heroKey} trail={trail} alt={heroKey === img ? `${place} – antiquaire expert ${reg ? 'en ' + reg.name : dep!.in}` : undefined} />
 
   <section class="section" aria-labelledby="h-zone">
     <div class="wrap">

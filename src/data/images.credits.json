@@ -952,5 +952,68 @@
   "license": "CC0",
   "page": "https://commons.wikimedia.org/wiki/File:Venice_Mirror_with_Bellona.jpg",
   "via": "Wikimedia Commons"
+ },
+ "hossegor": {
+  "w": 1400,
+  "h": 843,
+  "title": "Hossegor lac",
+  "creator": "Remi Jouan",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hossegor_lac.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "landes-plage": {
+  "w": 1400,
+  "h": 1050,
+  "title": "Mimizan les plages (7)",
+  "creator": "PIERRE ANDRE LECLERCQ",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mimizan_les_plages_(7).jpg",
+  "via": "Wikimedia Commons"
+ },
+ "limoges-cathedrale": {
+  "w": 1400,
+  "h": 931,
+  "title": "Limoges; Cathédrale Saint-Etienne",
+  "creator": "Alex Hudghton",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Limoges;_Cath%C3%A9drale_Saint-Etienne.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "limoges-pont": {
+  "w": 1400,
+  "h": 931,
+  "title": "Limoges bridge Saint Etienne",
+  "creator": "Traumrune",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Limoges_bridge_Saint_Etienne.JPG",
+  "via": "Wikimedia Commons"
+ },
+ "pic-du-midi": {
+  "w": 1400,
+  "h": 521,
+  "title": "Pic du Midi de Bigorre cloudy Wikimedia Commons",
+  "creator": "Benh LIEU SONG",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pic_du_Midi_de_Bigorre_cloudy_Wikimedia_Commons.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "toulouse-garonne": {
+  "w": 1400,
+  "h": 533,
+  "title": "Panorama from pont Saint-Pierre in Toulouse - 2012-08-31",
+  "creator": "PierreSelim",
+  "license": "CC BY 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Panorama_from_pont_Saint-Pierre_in_Toulouse_-_2012-08-31.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "saint-sernin": {
+  "w": 1400,
+  "h": 1005,
+  "title": "North transepts - Basilique Saint-Sernin - fixed perspective (cropped)",
+  "creator": "PierreSelim",
+  "license": "CC BY 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:North_transepts_-_Basilique_Saint-Sernin_-_fixed_perspective_(cropped).jpg",
+  "via": "Wikimedia Commons"
  }
 }
