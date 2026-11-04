@@ -17,6 +17,19 @@ export const SITE = {
   foundingNote: 'Experts en objets d’art et antiquités depuis plusieurs générations',
 };
 
+/** Informations légales (registre national des entreprises, fournies par l'exploitant). */
+export const LEGAL = {
+  owner: 'François Secula',
+  status: 'Entrepreneur individuel',
+  siren: '529 601 486',
+  siret: '529 601 486 00010',
+  vat: 'FR51 5296 0148 6',
+  address: '21 rue du Docteur Tassin, 21200 Beaune',
+  email: 'francoisseculapub@gmail.com',
+  created: '20 janvier 2011',
+  host: 'Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis',
+};
+
 export const ESTIMATION_URL = '/estimation-gratuite/';
 
 export const NAV = [

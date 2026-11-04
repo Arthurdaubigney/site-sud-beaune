@@ -1,19 +1,46 @@
 ---
 import Base from '../layouts/Base.astro';
-import { SITE } from '../data/site';
+import { SITE, LEGAL } from '../data/site';
 ---
-<Base title="Mentions légales – Les Antiquités de Benjamin" description="Mentions légales, éditeur du site, hébergement, données personnelles et crédits des images du site des Les Antiquités de Benjamin." noindex>
-  <section class="page-hero"><div class="wrap">
-    <h1 style="font-size:clamp(2.2rem,1rem + 4vw,4.5rem)">Mentions légales</h1>
-    <div class="measure-wide" style="margin-top:48px">
-      <h2 style="font-size:1.75rem;margin-bottom:12px">Éditeur</h2>
-      <p>{SITE.name} – raison sociale, forme juridique, SIRET, adresse et directeur de la publication à compléter avant la mise en ligne.</p>
-      <h2 style="font-size:1.75rem;margin:36px 0 12px">Hébergement</h2>
-      <p>Hébergeur à compléter.</p>
-      <h2 style="font-size:1.75rem;margin:36px 0 12px">Données personnelles</h2>
-      <p>Les informations transmises via le formulaire d’estimation (Tally) sont utilisées uniquement pour répondre à votre demande. Vous disposez d’un droit d’accès, de rectification et de suppression.</p>
-      <h2 style="font-size:1.75rem;margin:36px 0 12px">Crédits photographiques</h2>
-      <p>Les images proviennent de Wikimedia Commons, du Metropolitan Museum of Art et de l’Art Institute of Chicago, sous licences libres (CC0, domaine public, CC BY, CC BY-SA). Le détail est indiqué en pied de page.</p>
+<Base title="Mentions légales – Les Antiquités de Benjamin" description="Mentions légales du site Les Antiquités de Benjamin : éditeur, hébergeur, données personnelles, propriété intellectuelle et crédits des photographies." noindex>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="kicker">Informations légales</span>
+      <h1 class="legal-title">Mentions légales</h1>
+      <div class="legal">
+        <h2>Éditeur du site</h2>
+        <p>Le site « {SITE.name} » est édité par <strong>Monsieur {LEGAL.owner}</strong>, {LEGAL.status.toLowerCase()}, exerçant sous l’enseigne « {SITE.name} ».</p>
+        <ul class="tick">
+          <li>Adresse : {LEGAL.address}</li>
+          <li>SIREN : {LEGAL.siren}</li>
+          <li>SIRET (siège) : {LEGAL.siret}</li>
+          <li>TVA intracommunautaire : {LEGAL.vat}</li>
+          <li>Date de création de l’entreprise : {LEGAL.created}</li>
+          <li>Contact : <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a></li>
+        </ul>
+        <p>Directeur de la publication : {LEGAL.owner}.</p>
+
+        <h2>Hébergement</h2>
+        <p>Le site est hébergé par {LEGAL.host}.</p>
+
+        <h2>Données personnelles</h2>
+        <p>Les informations que vous transmettez via le formulaire d’estimation (identité, coordonnées, description des objets, photographies) sont utilisées uniquement pour répondre à votre demande d’estimation et, le cas échéant, organiser une visite. Elles ne sont ni vendues ni cédées à des tiers.</p>
+        <p>Le formulaire est fourni par la société Tally (tally.so), qui agit comme sous-traitant pour la collecte des réponses. Responsable du traitement : {LEGAL.owner}.</p>
+        <p>Conformément au règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés, vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation et d’opposition sur vos données. Pour l’exercer, écrivez à <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>. Vous pouvez également introduire une réclamation auprès de la CNIL (cnil.fr).</p>
+        <p>Les données de demande sont conservées le temps nécessaire au traitement de votre dossier, puis supprimées ou archivées conformément aux obligations légales applicables.</p>
+
+        <h2>Cookies</h2>
+        <p>Ce site n’utilise pas de cookie publicitaire. Le formulaire intégré (Tally) peut déposer les traceurs strictement nécessaires à son fonctionnement.</p>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>Les textes, la mise en page et les éléments graphiques du site sont protégés par le droit d’auteur. Toute reproduction sans autorisation écrite est interdite.</p>
+
+        <h2>Crédits photographiques</h2>
+        <p>Les photographies proviennent de Wikimedia Commons, du Metropolitan Museum of Art et de l’Art Institute of Chicago, sous licences libres (CC0, domaine public, CC BY, CC BY-SA). Le détail des auteurs et des licences figure en pied de page, sous « Crédits photographiques ».</p>
+
+        <h2>Responsabilité</h2>
+        <p>Les estimations indiquées sur ce site et dans les guides sont données à titre informatif et ne constituent ni une offre ferme ni un conseil juridique ou fiscal. Pour toute question relative à une succession, rapprochez-vous de votre notaire.</p>
+      </div>
     </div>
-  </div></section>
+  </section>
 </Base>

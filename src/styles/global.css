@@ -467,3 +467,9 @@ main > .page-hero:last-child { padding-bottom: 96px; }
   .sticky-cta { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 70; justify-content: center; box-shadow: 0 18px 40px -10px rgba(0,0,0,.45), var(--glow-terra); }
   body { padding-bottom: 76px; }
 }
+
+.legal-title { font-size: clamp(2.2rem, 1rem + 4vw, 4.4rem); margin: 8px 0 40px; }
+.legal { max-width: 70ch; padding-bottom: 24px; }
+.legal h2 { font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem); margin: 44px 0 14px; }
+.legal p { line-height: 1.75; }
+.legal strong { color: var(--pine); }
