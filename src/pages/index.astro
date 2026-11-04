@@ -40,7 +40,6 @@ const steps = [
 ];
 const specs = SPECIALITES.map((s) => ({ href: `/antiquites/${s.slug}/`, name: s.name, k: s.img, text: s.lead.split(':')[0], title: `${s.name} : expertise et estimation gratuite` }));
 specs.push({ href: '/rachat-succession/', name: 'Rachat de succession', k: 'boutique-antiquites', text: 'Inventaire, partage et rachat du contenu d’une maison', title: 'Rachat de succession : inventaire, estimation et rachat' });
-const gallery = ['salle-chateau', 'cabinet-curiosites', 'bibliotheque-chateau', 'marqueterie-boulle', 'pendule-xviii', 'commode-wallace'];
 const trust = [
   { i: 'shield', b: 'Estimation gratuite', s: 'Sans engagement, à partir de vos photographies' },
   { i: 'truck', b: 'Déplacement gratuit', s: 'Partout en Nouvelle-Aquitaine et en Occitanie' },
@@ -169,19 +168,6 @@ const trust = [
             <div class="scard-body"><h3>{c.name}</h3><p>{c.text}</p><span class="more">Découvrir <span class="arr" aria-hidden="true">→</span></span></div>
           </a>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="h-gal">
-    <div class="wrap">
-      <div data-reveal>
-        <span class="kicker">Un regard d’antiquaire</span>
-        <h2 class="h-section" id="h-gal">Châteaux, bastides et belles demeures</h2>
-        <span class="ornament"></span>
-      </div>
-      <div class="gallery">
-        {gallery.map((k, i) => <div data-reveal style={`--i:${i % 3}`}><Pic k={k} ratio="4-3" sizes="(max-width: 520px) 92vw, (max-width: 800px) 46vw, 30vw" /></div>)}
       </div>
     </div>
   </section>
