@@ -55,7 +55,7 @@ if (trail && trail.length > 1) graph.push(breadcrumbSchema(trail));
     <Header />
     <main id="contenu"><slot /></main>
     <Footer />
-    {Astro.url.pathname !== '/estimation-gratuite/' && <a class="btn btn--terra sticky-cta" href="/estimation-gratuite/" data-sticky-cta>Estimation gratuite <span class="arr" aria-hidden="true">→</span></a>}
+    {!['/estimation-gratuite/', '/merci/'].includes(Astro.url.pathname) && <a class="btn btn--terra sticky-cta" href="/estimation-gratuite/" data-sticky-cta>Estimation gratuite <span class="arr" aria-hidden="true">→</span></a>}
     <script is:inline>
       (function () {
         var els = document.querySelectorAll('[data-reveal]');

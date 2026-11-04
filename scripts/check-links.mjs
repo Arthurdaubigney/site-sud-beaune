@@ -14,7 +14,7 @@ for (const f of pages) {
     if (!known.has(href) && !existsSync('dist' + href)) { bad++; console.log('✗ lien cassé', href, 'dans', f.replace('dist', '')); }
   }
 }
-const orphans = [...known].filter((p) => !linked.has(p) && p !== '/404.html' && p !== '/404');
+const orphans = [...known].filter((p) => !linked.has(p) && p !== '/404.html' && p !== '/404' && p !== '/merci/');
 if (orphans.length) console.log('Pages sans lien entrant :', orphans.join(', '));
 console.log(bad ? `${bad} lien(s) cassé(s)` : `✓ ${pages.length} pages, aucun lien interne cassé`);
 process.exit(bad ? 1 : 0);

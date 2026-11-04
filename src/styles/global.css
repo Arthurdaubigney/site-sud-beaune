@@ -485,3 +485,13 @@ main > .page-hero:last-child { padding-bottom: 96px; }
 @media (max-width: 860px) { .exp-cards { grid-template-columns: 1fr; margin-top: 40px; } }
 
 @media (min-width: 861px) and (max-width: 1100px) { .ph-photo { min-height: 300px; max-height: 420px; } }
+
+.merci { padding-bottom: 24px; }
+.merci-card { max-width: 820px; margin: 20px auto 0; padding: clamp(28px, 5vw, 64px); }
+.merci-card h1 { font-size: clamp(2rem, 1rem + 3.4vw, 3.6rem); margin: 6px 0 18px; }
+.merci-card h2 { font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem); margin: 44px 0 16px; }
+.merci-ico { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, var(--pine-2), var(--pine)); color: var(--gold-l); box-shadow: 0 0 0 6px rgba(212,175,55,.2); margin-bottom: 22px; }
+.merci-ico svg { width: 30px; height: 30px; }
+.merci-warn { margin-top: 30px; padding: 22px 26px; border-radius: var(--radius-sm); border: 1px solid var(--gold); background: rgba(212,175,55,.12); }
+.merci-warn b { font-family: var(--display); font-size: 1.25rem; color: var(--pine); display: block; margin-bottom: 6px; }
+.merci-warn p { margin: 0; }

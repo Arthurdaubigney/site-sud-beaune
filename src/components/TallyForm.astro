@@ -52,6 +52,10 @@ const src = formId ? `https://tally.so/embed/${formId}?alignLeft=1&hideTitle=1&t
   <script is:inline>
     (function () {
       if (window.__tallyInit) return; window.__tallyInit = true;
+      window.addEventListener('message', function (e) {
+        var d = e.data; if (typeof d === 'string') { try { d = JSON.parse(d); } catch (x) { return; } }
+        if (d && d.event === 'Tally.FormSubmitted') { window.location.href = '/merci/'; }
+      });
       var frames = function () { return document.querySelectorAll('iframe[data-tally-src]'); };
       var fallback = function () { frames().forEach(function (f) { if (!f.getAttribute('src')) f.setAttribute('src', f.getAttribute('data-tally-fallback')); }); };
       var load = function () {

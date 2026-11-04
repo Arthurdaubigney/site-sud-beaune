@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import RelatedGuides from '../components/RelatedGuides.astro';
+---
+<Base title="Merci, votre demande est bien reçue" description="Votre demande d’estimation a bien été reçue. Merci de ne pas renvoyer le formulaire : nous revenons vers vous personnellement." noindex>
+  <section class="page-hero merci">
+    <div class="wrap">
+      <div class="merci-card card" data-reveal>
+        <span class="merci-ico"><Icon name="shield" /></span>
+        <span class="kicker">Demande envoyée</span>
+        <h1>Merci, nous avons bien reçu votre demande</h1>
+        <p class="lead">Un expert étudie votre dossier et revient vers vous personnellement, par e-mail ou par téléphone selon les coordonnées indiquées.</p>
+
+        <div class="merci-warn">
+          <b>Merci de ne pas renvoyer le formulaire.</b>
+          <p>Envoyer plusieurs demandes identiques peut faire classer nos réponses dans vos courriers indésirables, et ralentit le traitement de votre dossier. Une seule demande suffit.</p>
+        </div>
+
+        <h2>Et maintenant ?</h2>
+        <ol class="exp-steps">
+          <li><b>Étude de votre demande.</b> Nous examinons vos informations et vos photographies.</li>
+          <li><b>Première estimation.</b> Nous vous répondons avec un premier avis, gratuit et sans engagement.</li>
+          <li><b>Visite si nécessaire.</b> Nous convenons ensemble d’un rendez-vous à votre domicile.</li>
+        </ol>
+
+        <h2>En attendant notre réponse</h2>
+        <ul class="tick">
+          <li>Surveillez votre boîte de réception, et pensez à regarder vos courriers indésirables.</li>
+          <li>Ne nettoyez, ne réparez et ne déplacez pas vos objets.</li>
+          <li>Rassemblez les documents utiles : factures, certificats, inventaires, photographies de la maison.</li>
+        </ul>
+
+        <div class="cta-row" style="margin-top:36px">
+          <a class="btn" href="/">Retour à l’accueil</a>
+          <a class="link" href="/conseils/">Lire nos conseils d’antiquaire</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <RelatedGuides slugs={['photographier-ses-objets-pour-une-estimation', 'estimer-le-mobilier-d-une-succession', 'combien-vaut-un-meuble-ancien']} title="Pour bien préparer la suite" />
+</Base>
