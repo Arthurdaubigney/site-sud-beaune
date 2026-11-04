@@ -33,10 +33,10 @@ export const LEGAL = {
 export const ESTIMATION_URL = '/estimation-gratuite/';
 
 export const NAV = [
-  { href: '/zones-intervention/', label: 'Zones' },
   { href: '/objets/', label: 'Objets' },
-  { href: '/rachat-succession/', label: 'Succession' },
   { href: '/expertise-estimation/', label: 'Expertise' },
+  { href: '/zones-intervention/', label: 'Zones' },
+  { href: '/rachat-succession/', label: 'Succession' },
   { href: '/conseils/', label: 'Conseils' },
   { href: '/a-propos/', label: 'À propos' },
 ];
