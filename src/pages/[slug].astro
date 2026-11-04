@@ -43,9 +43,9 @@ if (svc) {
   cta = 'Estimation gratuite ' + cty.prep.replace('à ', 'à ');
   hero = cty.img; heroAlt = `${cty.place[0].toUpperCase() + cty.place.slice(1)} – antiquaire expert ${cty.prep}`;
   faq = [
-    { q: `Intervenez-vous ${cty.prep} et dans les communes voisines ?`, a: `Oui. Je me déplace ${cty.prep} et dans toute l’agglomération, notamment à ${cty.nearby.slice(0, -1).join(', ')} et ${cty.nearby[cty.nearby.length - 1]}. Le déplacement est gratuit.` },
+    { q: `Intervenez-vous ${cty.prep} et dans les communes voisines ?`, a: `Oui. Nous nous déplaçons ${cty.prep} et dans toute l’agglomération, notamment à ${cty.nearby.slice(0, -1).join(', ')} et ${cty.nearby[cty.nearby.length - 1]}. Le déplacement est gratuit.` },
     { q: `L’estimation d’antiquités ${cty.prep} est-elle gratuite ?`, a: `Oui. L’estimation à partir de photographies et la première visite à domicile sont gratuites et sans engagement.` },
-    { q: `Rachetez-vous le contenu d’une succession ${cty.prep} ?`, a: `Oui. Après inventaire et estimation, je peux racheter les pièces d’intérêt ou l’ensemble du contenu, avec paiement direct et enlèvement.` },
+    { q: `Rachetez-vous le contenu d’une succession ${cty.prep} ?`, a: `Oui. Après inventaire et estimation, nous pouvons racheter les pièces d’intérêt ou l’ensemble du contenu, avec paiement direct et enlèvement.` },
     FAQ_GENERAL[3],
   ];
   trail.push({ name: 'Zones d’intervention', path: '/zones-intervention/' }, { name: `${dep.name} (${dep.num})`, path: zoneUrl(dep.slug) }, { name: cty.name, path });
@@ -82,7 +82,7 @@ const dep = cty ? DEPTS.find((d) => d.slug === cty.dep)! : null;
         <Prose h={`Le patrimoine ${cty.prep}`} id="c-0">
           {cty.heritage.map((p) => <p>{p}</p>)}
         </Prose>
-        <Prose h={`Ce que j’estime et rachète ${cty.prep}`}>
+        <Prose h={`Ce que nous estimons et rachetons ${cty.prep}`}>
           <ul class="tick">{cty.objects.map((o) => <li>{o}</li>)}</ul>
           <p style="margin-top:18px">Retrouvez aussi nos pages <a href="/rachat-succession/">rachat de succession</a> et <a href="/rachat-antiquites-a-domicile/">rachat d’antiquités à domicile</a>.</p>
         </Prose>

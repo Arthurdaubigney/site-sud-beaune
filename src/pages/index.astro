@@ -31,12 +31,12 @@ const mapPts = [
   { n: 'Perpignan', lon: 2.9, lat: 42.7, d: 'pyrenees-orientales-66', a: 'start' },
 ].map((p) => ({ ...p, ...proj(p.lon, p.lat) }));
 const steps = [
-  { t: 'Vous m’écrivez', d: 'Quelques lignes et des photographies suffisent : décrivez vos objets, leur origine, leur lieu.', i: 'camera' },
-  { t: 'J’estime', d: 'J’examine vos clichés et vous remets une première fourchette de valeur, gratuitement.', i: 'search' },
-  { t: 'Je viens chez vous', d: 'Visite à domicile sans engagement, à l’heure qui vous convient, dans tout le Grand Sud-Ouest.', i: 'door' },
-  { t: 'J’expertise', d: 'Inventaire, datation, attribution : un rapport écrit si vous le souhaitez, pour votre notaire ou votre assurance.', i: 'seal' },
-  { t: 'Je vous propose un rachat', d: 'Offre ferme, objet par objet ou en bloc. Vous décidez, sans pression.', i: 'coins' },
-  { t: 'Je règle et j’enlève', d: 'Paiement direct, enlèvement et transport assurés par mes soins.', i: 'truck' },
+  { t: 'Vous nous écrivez', d: 'Quelques lignes et des photographies suffisent : décrivez vos objets, leur origine, leur lieu.', i: 'camera' },
+  { t: 'Nous estimons', d: 'Nous examinons vos clichés et vous remets une première fourchette de valeur, gratuitement.', i: 'search' },
+  { t: 'Nous venons chez vous', d: 'Visite à domicile sans engagement, à l’heure qui vous convient, dans tout le Grand Sud-Ouest.', i: 'door' },
+  { t: 'Nous expertisons', d: 'Inventaire, datation, attribution : un rapport écrit si vous le souhaitez, pour votre notaire ou votre assurance.', i: 'seal' },
+  { t: 'Nous vous proposons un rachat', d: 'Offre ferme, objet par objet ou en bloc. Vous décidez, sans pression.', i: 'coins' },
+  { t: 'Nous réglons et enlevons', d: 'Paiement direct, enlèvement et transport assurés par nos soins.', i: 'truck' },
 ];
 const specs = SPECIALITES.map((s) => ({ href: `/antiquites/${s.slug}/`, name: s.name, k: s.img, text: s.lead.split(':')[0], title: `${s.name} : expertise et estimation gratuite` }));
 specs.push({ href: '/rachat-succession/', name: 'Rachat de succession', k: 'boutique-antiquites', text: 'Inventaire, partage et rachat du contenu d’une maison', title: 'Rachat de succession : inventaire, estimation et rachat' });
@@ -88,7 +88,7 @@ const trust = [
       <div class="grid mosaic">
         <div class="mosaic-photo" data-reveal>
           <Pic k="vezere" sizes="(max-width: 860px) 92vw, 48vw" />
-          <div class="paper-block"><p>De la Charente-Maritime aux Pyrénées-Orientales, je connais les demeures, les ateliers et les marchés de chaque territoire. J’estime vos objets d’art avec la rigueur d’un cabinet d’expertise.</p></div>
+          <div class="paper-block"><p>De la Charente-Maritime aux Pyrénées-Orientales, nous connaissons les demeures, les ateliers et les marchés de chaque territoire. Nous estimons vos objets d’art avec la rigueur d’un cabinet d’expertise.</p></div>
         </div>
         <div class="mosaic-side" data-reveal style="--i:1">
           <div class="tile">
@@ -136,7 +136,7 @@ const trust = [
     <div class="wrap">
       <div class="steps-top" data-reveal>
         <div>
-          <span class="kicker">Ma méthode</span>
+          <span class="kicker">Notre méthode</span>
           <h2 class="h-section" id="h-steps">De votre message au règlement</h2>
         </div>
         <div class="ctrl"><button class="sq" data-dir="-1" aria-label="Étape précédente">←</button><button class="sq" data-dir="1" aria-label="Étape suivante">→</button></div>
@@ -158,7 +158,7 @@ const trust = [
     <div class="wrap">
       <div data-reveal>
         <span class="kicker">Spécialités</span>
-        <h2 class="h-section" id="h-spec">Ce que j’expertise</h2>
+        <h2 class="h-section" id="h-spec">Ce que nous expertisons</h2>
         <span class="ornament"></span>
       </div>
       <div class="scards">
@@ -241,7 +241,7 @@ const trust = [
             <p>{CITIES.map((c, n) => (<><a href={`/${c.slug}/`}>{c.name}</a>{n < CITIES.length - 1 ? ', ' : '.'}</>))}</p>
           </div>
           <div class="card" data-reveal style="--i:1">
-            <h3>Ce que je fais pour vous</h3>
+            <h3>Ce que nous faisons pour vous</h3>
             <p>{SERVICES.map((x, n) => (<><a href={`/${x.slug}/`}>{x.h1}</a>{n < SERVICES.length - 1 ? ', ' : '.'}</>))}</p>
           </div>
         </div>
@@ -249,7 +249,7 @@ const trust = [
     </div>
   </section>
 
-  <CtaPhoto k="perigord-chateau" title="Une succession à régler ?" text="Je rachète le contenu complet d’une maison : mobilier, tableaux, bijoux et objets d’art. Estimation gratuite, discrétion assurée." label="Parler de ma succession" href="/rachat-succession/" />
+  <CtaPhoto k="perigord-chateau" title="Une succession à régler ?" text="Nous rachetons le contenu complet d’une maison : mobilier, tableaux, bijoux et objets d’art. Estimation gratuite, discrétion assurée." label="Parler de ma succession" href="/rachat-succession/" />
   <Faq items={faq} title="Vos questions sur l’estimation" />
   <TallyForm />
 </Base>

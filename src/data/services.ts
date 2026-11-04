@@ -26,18 +26,18 @@ export const SERVICES: Service[] = [
     title: 'Rachat d’antiquités à domicile : estimation gratuite',
     desc: 'Antiquaire acheteur à domicile en Nouvelle-Aquitaine et Occitanie : estimation gratuite, offre ferme, paiement direct et enlèvement. Meubles, tableaux, bijoux.',
     h1: 'Rachat d’antiquités à domicile',
-    lead: 'Je me déplace chez vous pour estimer et racheter meubles anciens, tableaux, bronzes, bijoux et objets d’art. Estimation gratuite, offre ferme, paiement direct.',
+    lead: 'Nous nous déplaçons chez vous pour estimer et racheter meubles anciens, tableaux, bronzes, bijoux et objets d’art. Estimation gratuite, offre ferme, paiement direct.',
     cta: 'Demander un rachat à domicile',
     sections: [
       {
         h: 'Un antiquaire acheteur qui vient à vous',
         p: [
           'Faire venir un professionnel à domicile évite les transports, les emballages et les intermédiaires. L’examen des objets dans leur contexte permet aussi de mieux les dater et de repérer des détails qu’une photographie ne montre pas : estampilles, étiquettes, signatures, marques de fabrique.',
-          'Je couvre l’ensemble de la Nouvelle-Aquitaine et de l’Occitanie, des villes comme des campagnes. Que vous ayez une pièce à faire estimer ou le contenu complet d’une maison, la démarche reste la même : un échange par photos, une visite, une estimation écrite, puis une proposition de rachat ferme.',
+          'Nous couvrons l’ensemble de la Nouvelle-Aquitaine et de l’Occitanie, des villes comme des campagnes. Que vous ayez une pièce à faire estimer ou le contenu complet d’une maison, la démarche reste la même : un échange par photos, une visite, une estimation écrite, puis une proposition de rachat ferme.',
         ],
       },
       {
-        h: 'Ce que je rachète',
+        h: 'Ce que nous rachetons',
         p: ['Tout ce qui relève de l’art et de l’ancien, avec une attention particulière aux pièces d’époque et aux objets de qualité :'],
         ul: ['Mobilier ancien : commodes, armoires, bureaux, secrétaires, buffets, fauteuils', 'Tableaux, dessins, gravures, cadres anciens', 'Bronzes, sculptures, pendules, horlogerie', 'Bijoux anciens, montres, argenterie, orfèvrerie', 'Porcelaines, faïences, cristal, objets de collection, livres anciens'],
       },
@@ -50,9 +50,9 @@ export const SERVICES: Service[] = [
     ],
     steps: [
       { t: 'Vous envoyez des photos', d: 'Décrivez vos objets via le formulaire.' },
-      { t: 'J’estime gratuitement', d: 'Première fourchette de valeur, sans engagement.' },
-      { t: 'Je viens chez vous', d: 'Visite à domicile, examen détaillé.' },
-      { t: 'Offre ferme et paiement', d: 'Vous décidez, je règle et j’enlève.' },
+      { t: 'Nous estimons gratuitement', d: 'Première fourchette de valeur, sans engagement.' },
+      { t: 'Nous venons chez vous', d: 'Visite à domicile, examen détaillé.' },
+      { t: 'Offre ferme et paiement', d: 'Vous décidez, nous réglons et enlevons.' },
     ],
     faq: [
       { q: 'Le déplacement est-il vraiment gratuit ?', a: 'Oui, la visite d’estimation est gratuite et sans engagement dans toute la Nouvelle-Aquitaine et toute l’Occitanie.' },
@@ -61,7 +61,7 @@ export const SERVICES: Service[] = [
     ],
     guides: ['ou-vendre-des-meubles-anciens', 'que-faire-des-meubles-apres-un-deces'],
     tallyTitle: 'Demandez un rachat à domicile',
-    tallyIntro: 'Décrivez vos objets et joignez des photos : je vous réponds personnellement.',
+    tallyIntro: 'Décrivez vos objets et joignez des photos : nous vous répondons personnellement.',
   },
   {
     slug: 'vendre-meubles-anciens',
@@ -86,7 +86,7 @@ export const SERVICES: Service[] = [
       {
         h: 'Vendre sans vous déplacer',
         p: [
-          'Après une estimation à partir de photographies, je me rends chez vous pour examiner le meuble. Si vous acceptez ma proposition, le paiement est direct et l’enlèvement assuré. Aucun frais n’est à votre charge.',
+          'Après une estimation à partir de photographies, nous nous rendons chez vous pour examiner le meuble. Si vous acceptez notre proposition, le paiement est direct et l’enlèvement assuré. Aucun frais n’est à votre charge.',
         ],
       },
     ],
@@ -114,26 +114,26 @@ export const SERVICES: Service[] = [
         ],
       },
       {
-        h: 'Comment je procède',
+        h: 'Comment nous procédons',
         p: [
-          'Je visite la maison, repère les pièces d’intérêt (mobilier, tableaux, bronzes, bijoux, argenterie, livres, objets de collection), remets une estimation écrite et propose un rachat des pièces retenues, avec enlèvement. Le reste du contenu peut ensuite être trié, donné ou confié à une entreprise de débarras.',
+          'Nous visitons la maison, repérons les pièces d’intérêt (mobilier, tableaux, bronzes, bijoux, argenterie, livres, objets de collection), remets une estimation écrite et propose un rachat des pièces retenues, avec enlèvement. Le reste du contenu peut ensuite être trié, donné ou confié à une entreprise de débarras.',
         ],
         ul: ['Visite et inventaire des pièces de valeur', 'Estimation écrite pour le notaire et les héritiers', 'Rachat des pièces retenues, paiement direct', 'Enlèvement des objets achetés'],
       },
       {
         h: 'Un accompagnement discret et respectueux',
         p: [
-          'La vente d’une maison de famille est un moment sensible. J’interviens avec tact, dans le respect des souhaits des héritiers, et je m’adapte à votre calendrier et à celui du notaire.',
+          'La vente d’une maison de famille est un moment sensible. Nous intervenons avec tact, dans le respect des souhaits des héritiers, et nous nous adaptons à votre calendrier et à celui du notaire.',
         ],
       },
     ],
     faq: [
-      { q: 'Assurez-vous le débarras complet de la maison ?', a: 'Je rachète et enlève les pièces d’intérêt. Pour le mobilier courant sans valeur, je vous oriente vers des solutions adaptées (don, association, entreprise de débarras).' },
+      { q: 'Assurez-vous le débarras complet de la maison ?', a: 'Nous rachetons et enlevons les pièces d’intérêt. Pour le mobilier courant sans valeur, nous vous orientons vers des solutions adaptées (don, association, entreprise de débarras).' },
       { q: 'Peut-on faire estimer pendant la procédure de succession ?', a: 'Oui, et c’est même conseillé : l’estimation écrite aide le notaire et les héritiers. Veillez à ne rien disperser sans l’accord de tous.' },
     ],
     guides: ['que-faire-des-meubles-apres-un-deces', 'estimer-le-mobilier-d-une-succession'],
     tallyTitle: 'Faire estimer avant un débarras',
-    tallyIntro: 'Indiquez la commune, le type de bien et joignez quelques photos : je vous recontacte.',
+    tallyIntro: 'Indiquez la commune, le type de bien et joignez quelques photos : nous vous recontactons.',
   },
   {
     slug: 'inventaire-succession-estimation',
@@ -147,7 +147,7 @@ export const SERVICES: Service[] = [
       {
         h: 'Un document exploitable par le notaire',
         p: [
-          'Je remets une estimation écrite, objet par objet : description, époque, matériaux, état, valeur ou fourchette de valeur, photographies. Ce document peut servir à la déclaration de succession, au partage ou à l’assurance.',
+          'Nous remettons une estimation écrite, objet par objet : description, époque, matériaux, état, valeur ou fourchette de valeur, photographies. Ce document peut servir à la déclaration de succession, au partage ou à l’assurance.',
         ],
       },
       {
@@ -168,7 +168,7 @@ export const SERVICES: Service[] = [
     ],
     guides: ['estimer-le-mobilier-d-une-succession', 'que-faire-des-meubles-apres-un-deces'],
     tallyTitle: 'Demandez un inventaire de succession',
-    tallyIntro: 'Indiquez la localisation du bien et le type de contenu : je vous recontacte.',
+    tallyIntro: 'Indiquez la localisation du bien et le type de contenu : nous vous recontactons.',
   },
   {
     slug: 'estimation-antiquites-par-photos',
@@ -181,7 +181,7 @@ export const SERVICES: Service[] = [
     sections: [
       {
         h: 'Comment ça marche ?',
-        p: ['Le formulaire est simple : vous décrivez vos objets, joignez vos photographies et laissez vos coordonnées. Je vous réponds avec une première fourchette de valeur et, si nécessaire, une proposition de visite.'],
+        p: ['Le formulaire est simple : vous décrivez vos objets, joignez vos photographies et laissez vos coordonnées. Nous vous répondons avec une première fourchette de valeur et, si nécessaire, une proposition de visite.'],
         ul: ['Meubles : vue d’ensemble, détails, intérieur des tiroirs', 'Tableaux : recto, verso, signature, cadre', 'Bijoux : poinçons, pierres, boîte', 'Objets d’art : toutes les faces, marques, dessous'],
       },
       {
@@ -213,18 +213,18 @@ export const SERVICES: Service[] = [
     cta: 'Faire estimer ma collection',
     sections: [
       {
-        h: 'Collections que je prends en charge',
+        h: 'Collections que nous prenons en charge',
         p: ['Collections d’objets d’art, de bronzes, de porcelaines, de bibelots, de livres anciens, d’instruments, d’armes anciennes, de pendules et d’horlogerie, d’argenterie ou d’objets régionaux.'],
       },
       {
         h: 'Inventaire, estimation, proposition',
         p: [
-          'Je commence par un inventaire détaillé, puis une estimation d’ensemble. Je propose ensuite le rachat en bloc ou le conseil pour une vente par lots, selon l’intérêt de la collection.',
+          'Nous commençons par un inventaire détaillé, puis une estimation d’ensemble. Nous proposons ensuite le rachat en bloc ou le conseil pour une vente par lots, selon l’intérêt de la collection.',
         ],
       },
       {
         h: 'Discrétion et continuité',
-        p: ['La vente d’une collection engage souvent une histoire personnelle. J’interviens avec discrétion et dans le respect de la mémoire du collectionneur.'],
+        p: ['La vente d’une collection engage souvent une histoire personnelle. Nous intervenons avec discrétion et dans le respect de la mémoire du collectionneur.'],
       },
     ],
     faq: [
@@ -245,17 +245,17 @@ export const SERVICES: Service[] = [
     cta: 'Confier un dossier',
     sections: [
       {
-        h: 'Ce que je propose aux professionnels du droit',
+        h: 'Ce que nous proposons aux professionnels du droit',
         p: ['Des estimations écrites et détaillées, des inventaires de mobilier meublant et d’objets d’art, des avis pour le partage et la déclaration de succession, et, si les héritiers le souhaitent, un rachat des pièces retenues.'],
         ul: ['Intervention rapide sur le territoire', 'Rapport écrit, daté et signé', 'Respect de la confidentialité du dossier', 'Rachat possible, paiement direct'],
       },
       {
         h: 'Un accompagnement des familles',
-        p: ['J’explique aux héritiers la démarche, les options de vente et les étapes. Les familles apprécient de disposer d’un document clair, utile à la discussion avec le notaire.'],
+        p: ['Nous expliquons aux héritiers la démarche, les options de vente et les étapes. Les familles apprécient de disposer d’un document clair, utile à la discussion avec le notaire.'],
       },
       {
-        h: 'Comment me confier un dossier',
-        p: ['Remplissez le formulaire en précisant la commune, le type de bien et vos contraintes de calendrier. Je vous recontacte pour organiser la visite.'],
+        h: 'Comment nous confier un dossier',
+        p: ['Remplissez le formulaire en précisant la commune, le type de bien et vos contraintes de calendrier. Nous vous recontactons pour organiser la visite.'],
       },
     ],
     faq: [
@@ -263,7 +263,7 @@ export const SERVICES: Service[] = [
       { q: 'Pouvez-vous produire un rapport pour la succession ?', a: 'Oui, un rapport d’estimation détaillé peut être remis au notaire.' },
     ],
     guides: ['estimer-le-mobilier-d-une-succession', 'que-faire-des-meubles-apres-un-deces'],
-    tallyTitle: 'Confiez-moi un dossier',
+    tallyTitle: 'Confiez-nous un dossier',
     tallyIntro: 'Indiquez la commune, la nature du bien et vos échéances.',
   },
 ];
