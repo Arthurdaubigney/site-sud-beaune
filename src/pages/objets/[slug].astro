@@ -20,9 +20,10 @@ const path = `/objets/${o.slug}/`;
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Objets recherchés', path: '/objets/' }, { name: o.name, path }];
 const faq = [...o.faq, { q: 'Où estimer et vendre ce type d’objet dans le Sud-Ouest ?', a: 'Nous nous déplaçons gratuitement en Nouvelle-Aquitaine et en Occitanie pour estimer et racheter vos objets, avec paiement direct.' }, FAQ_GENERAL[1]];
 const rel = o.related.map(objet);
+const hero = IMG(`objet.${o.slug}.hero`);
 ---
-<Base title={o.title} description={o.desc} ogImage={o.img} trail={trail} jsonLd={[serviceSchema(o.h1, o.desc, path), faqSchema(faq)]}>
-  <PageHero h1={o.h1} lead={o.lead} img={o.img} trail={trail} cta="Estimer mon objet" />
+<Base title={o.title} description={o.desc} ogImage={hero} trail={trail} jsonLd={[serviceSchema(o.h1, o.desc, path), faqSchema(faq)]}>
+  <PageHero h1={o.h1} lead={o.lead} img={hero} trail={trail} cta="Estimer mon objet" />
   <section class="section" aria-labelledby="o-0">
     <div class="wrap">
       {o.sections.map((sec, i) => (
@@ -44,7 +45,7 @@ const rel = o.related.map(objet);
     </div>
   </section>
   {o.guides && <RelatedGuides slugs={o.guides} title="Notre guide" />}
-  <CtaPhoto k={different(IMG(`objet.${o.slug}.cta`), o.img)} title="Faites estimer votre objet" text="Envoyez quelques photos : estimation gratuite, sans engagement, déplacement et paiement direct si nous achetons." />
+  <CtaPhoto k={different(IMG(`objet.${o.slug}.cta`), hero)} title="Faites estimer votre objet" text="Envoyez quelques photos : estimation gratuite, sans engagement, déplacement et paiement direct si nous achetons." />
   <Faq items={faq} title={`Questions fréquentes : ${o.name.toLowerCase()}`} />
   <TallyForm title="Estimez votre objet" intro="Décrivez l’objet et joignez des photos : nous revenons vers vous." />
 </Base>

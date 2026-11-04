@@ -41,7 +41,7 @@ if (svc) {
   desc = fitText(`Antiquaire et expert ${cty.prep} : estimation gratuite de meubles anciens, tableaux, bijoux et objets d’art, rachat de succession à domicile (${dep.num}).`, [' Déplacement gratuit.', ' Paiement direct.'], 140, 155);
   lead = cty.intro;
   cta = 'Estimation gratuite ' + cty.prep.replace('à ', 'à ');
-  hero = cty.img; heroAlt = `${cty.place[0].toUpperCase() + cty.place.slice(1)} – antiquaire expert ${cty.prep}`;
+  hero = IMG(`city.${cty.slug}.hero`); heroAlt = hero === cty.img ? `${cty.place[0].toUpperCase() + cty.place.slice(1)} – antiquaire expert ${cty.prep}` : undefined;
   faq = [
     { q: `Intervenez-vous ${cty.prep} et dans les communes voisines ?`, a: `Oui. Nous nous déplaçons ${cty.prep} et dans toute l’agglomération, notamment à ${cty.nearby.slice(0, -1).join(', ')} et ${cty.nearby[cty.nearby.length - 1]}. Le déplacement est gratuit.` },
     { q: `L’estimation d’antiquités ${cty.prep} est-elle gratuite ?`, a: `Oui. L’estimation à partir de photographies et la première visite à domicile sont gratuites et sans engagement.` },

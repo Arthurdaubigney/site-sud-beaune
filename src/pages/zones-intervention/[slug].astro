@@ -12,7 +12,7 @@ import { REGIONS, DEPTS, region, deptsOf, zoneUrl, fitText } from '../../data/te
 import { zoneSchema, faqSchema } from '../../lib/schema';
 import { CITIES } from '../../data/cities';
 import { makePool } from '../../lib/pool';
-import { IMG } from '../../lib/imageMap';
+import { IMG, uniquer } from '../../lib/imageMap';
 
 export function getStaticPaths() {
   return [...REGIONS.map((r) => ({ params: { slug: r.slug } })), ...DEPTS.map((d) => ({ params: { slug: d.slug } }))];
@@ -63,10 +63,12 @@ if (reg) {
 }
 
 const P = makePool();
-const heroKey = reg ? IMG(`region.${reg.slug}.hero`) : P.take(img);
+const heroKey = reg ? IMG(`region.${reg.slug}.hero`) : IMG(`dept.${dep!.slug}.hero`);
 const pairKey = reg ? IMG(`region.${reg.slug}.pair`) : P.take(undefined, 'wide');
-const bandKey = reg ? IMG(`region.${reg.slug}.band`) : P.take(undefined, 'wide');
-const ctaKey = reg ? IMG(`region.${reg.slug}.cta`) : P.take(undefined, 'place');
+const U = uniquer();
+const bandKey0 = reg ? IMG(`region.${reg.slug}.band`) : P.take(undefined, 'wide');
+const ctaKey0 = reg ? IMG(`region.${reg.slug}.cta`) : P.take(undefined, 'place');
+const heroKey1 = U(heroKey); const pairKey1 = U(pairKey); const bandKey = U(bandKey0); const ctaKey = U(ctaKey0);
 const path = zoneUrl(slug!);
 const trail = [
   { name: 'Accueil', path: '/' },
@@ -77,7 +79,7 @@ const trail = [
 const siblings = dep ? deptsOf(dep.region).filter((d) => d.slug !== dep.slug) : [];
 ---
 <Base title={titleTag} description={metaDesc} ogImage={heroKey} trail={trail} jsonLd={[zoneSchema(slug!, reg ? reg.name : dep!.name, areas, areaKind), faqSchema(faq)]}>
-  <PageHero h1={h1} lead={lead} img={heroKey} trail={trail} alt={`${place} – antiquaire expert ${reg ? 'en ' + reg.name : dep!.in}`} />
+  <PageHero h1={h1} lead={lead} img={heroKey} trail={trail} alt={heroKey === img ? `${place} – antiquaire expert ${reg ? 'en ' + reg.name : dep!.in}` : undefined} />
 
   <section class="section" aria-labelledby="h-zone">
     <div class="wrap">
@@ -86,7 +88,7 @@ const siblings = dep ? deptsOf(dep.region).filter((d) => d.slug !== dep.slug) : 
           <h2 id="h-zone" class="h-section">{reg ? `Le patrimoine de ${reg.name}` : `Antiquités : ${dep!.name}`}</h2>
           <div style="margin-top:32px" class="measure-wide">{paragraphs.map((p) => <p>{p}</p>)}</div>
         </div>
-        <div class="b" data-reveal style="--i:1"><Pic k={pairKey} ratio="4-3" sizes="(max-width: 860px) 70vw, 28vw" /></div>
+        <div class="b" data-reveal style="--i:1"><Pic k={pairKey1} ratio="4-3" sizes="(max-width: 860px) 70vw, 28vw" /></div>
       </div>
 
       <Band k={bandKey} />

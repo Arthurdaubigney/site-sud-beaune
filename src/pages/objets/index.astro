@@ -23,7 +23,7 @@ const hero = IMG('objets.hero');
         <div class="scards">
           {OBJETS.filter((o) => o.group === g).map((o, i) => (
             <a class="scard" href={`/objets/${o.slug}/`} data-reveal style={`--i:${i % 3}`} title={`${o.name} : estimation et rachat`}>
-              <Pic k={o.img} ratio="4-3" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 30vw" />
+              <Pic k={IMG(`objet.${o.slug}.hero`)} ratio="4-3" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 30vw" />
               <div class="scard-body"><h3>{o.name}</h3><p>{o.lead.split('.')[0]}.</p><span class="more">Estimer <span class="arr" aria-hidden="true">→</span></span></div>
             </a>
           ))}

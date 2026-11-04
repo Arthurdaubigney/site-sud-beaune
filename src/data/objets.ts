@@ -214,7 +214,7 @@ export const OBJETS: Objet[] = [
     related: ['rachat-bijoux-anciens-or', 'rachat-pendules-horloges-anciennes', 'rachat-sacs-malles-maroquinerie-luxe'],
   },
   {
-    slug: 'rachat-pendules-horloges-anciennes', name: 'Pendules et horloges', group: 'bijoux', img: 'pendule-salon',
+    slug: 'rachat-pendules-horloges-anciennes', name: 'Pendules et horloges', group: 'bijoux', img: 'horloges-comtoises',
     kw: 'estimation pendule ancienne',
     title: 'Pendule ancienne : estimation, rachat de pendules et horloges',
     desc: 'Estimer une pendule de cheminée, un cartel, une comtoise ou une pendule Napoléon III : signatures, mouvements et valeur. Rachat à domicile dans le Sud-Ouest.',
@@ -250,7 +250,7 @@ export const OBJETS: Objet[] = [
     related: ['rachat-luminaires-lustres-anciens', 'rachat-miroirs-anciens-trumeaux', 'rachat-sacs-malles-maroquinerie-luxe'],
   },
   {
-    slug: 'rachat-luminaires-lustres-anciens', name: 'Lustres et luminaires anciens', group: 'mobilier', img: 'bibliotheque-chateau',
+    slug: 'rachat-luminaires-lustres-anciens', name: 'Lustres et luminaires anciens', group: 'mobilier', img: 'pendule-salon',
     kw: 'estimation lustre ancien cristal',
     title: 'Lustre ancien : estimation de lustres, lampes et appliques',
     desc: 'Estimer et vendre un lustre en cristal, des appliques en bronze, des lampes anciennes et des luminaires Art déco : critères de valeur et rachat à domicile.',
@@ -268,7 +268,7 @@ export const OBJETS: Objet[] = [
     related: ['rachat-verrerie-art-galle-daum', 'rachat-miroirs-anciens-trumeaux', 'rachat-pendules-horloges-anciennes'],
   },
   {
-    slug: 'rachat-miroirs-anciens-trumeaux', name: 'Miroirs et trumeaux anciens', group: 'mobilier', img: 'salle-chateau',
+    slug: 'rachat-miroirs-anciens-trumeaux', name: 'Miroirs et trumeaux anciens', group: 'mobilier', img: 'commode-wallace',
     kw: 'estimation miroir ancien doré trumeau',
     title: 'Miroir ancien et trumeau doré : estimation et rachat',
     desc: 'Estimer un miroir ancien à parecloses, un trumeau de cheminée ou une glace en bois doré : époque, mercure, sculpture. Rachat à domicile en Sud-Ouest.',
@@ -286,7 +286,7 @@ export const OBJETS: Objet[] = [
     related: ['rachat-luminaires-lustres-anciens', 'rachat-verrerie-art-galle-daum', 'rachat-design-vintage-xxe-siecle'],
   },
   {
-    slug: 'rachat-vetements-haute-couture-vintage', name: 'Haute couture et vêtements vintage', group: 'mode', img: 'boutique-antiquites',
+    slug: 'rachat-vetements-haute-couture-vintage', name: 'Haute couture et vêtements vintage', group: 'mode', img: 'robe-vintage',
     kw: 'rachat vêtements haute couture vintage',
     title: 'Haute couture et vêtements vintage : estimation et rachat',
     desc: 'Vendre des vêtements de haute couture, des robes vintage et des pièces de créateurs (Chanel, Dior, Saint Laurent) : estimation gratuite et rachat.',
@@ -304,7 +304,7 @@ export const OBJETS: Objet[] = [
     related: ['rachat-manteau-de-fourrure', 'rachat-sacs-malles-maroquinerie-luxe', 'rachat-bijoux-anciens-or'],
   },
   {
-    slug: 'rachat-sacs-malles-maroquinerie-luxe', name: 'Sacs, malles et maroquinerie de luxe', group: 'mode', img: 'cabinet-curiosites',
+    slug: 'rachat-sacs-malles-maroquinerie-luxe', name: 'Sacs, malles et maroquinerie de luxe', group: 'mode', img: 'eventail',
     kw: 'rachat sac Hermès malle Louis Vuitton',
     title: 'Malle Louis Vuitton, sac Hermès : estimation et rachat',
     desc: 'Vendre une malle Louis Vuitton ancienne, un sac Hermès, Chanel ou Goyard, une valise ou un accessoire de luxe : estimation gratuite et rachat à domicile.',
@@ -322,7 +322,7 @@ export const OBJETS: Objet[] = [
     related: ['rachat-vetements-haute-couture-vintage', 'rachat-manteau-de-fourrure', 'rachat-montres-de-collection'],
   },
   {
-    slug: 'rachat-jouets-anciens-poupees', name: 'Jouets anciens et poupées', group: 'collection', img: 'bronze-sculpture',
+    slug: 'rachat-jouets-anciens-poupees', name: 'Jouets anciens et poupées', group: 'collection', img: 'boutique-antiquites',
     kw: 'rachat jouets anciens poupées',
     title: 'Jouets anciens, poupées Jumeau : estimation et rachat',
     desc: 'Estimer et vendre des jouets anciens, poupées Jumeau, trains miniatures et soldats de plomb : critères de valeur et rachat à domicile en Sud-Ouest.',
@@ -340,7 +340,7 @@ export const OBJETS: Objet[] = [
     related: ['rachat-timbres-cartes-postales-anciennes', 'rachat-pieces-de-monnaie-anciennes', 'rachat-livres-anciens-reliures'],
   },
   {
-    slug: 'rachat-bijoux-anciens-or', name: 'Bijoux anciens en or', group: 'bijoux', img: 'montre-gousset',
+    slug: 'rachat-bijoux-anciens-or', name: 'Bijoux anciens en or', group: 'bijoux', img: 'bague-ancienne',
     kw: 'rachat bijoux anciens or',
     title: 'Rachat de bijoux anciens en or : bagues, broches, parures',
     desc: 'Vendre des bijoux anciens en or, argent ou platine (bagues, broches, or cassé) : poinçons, valeur au poids ou de collection, rachat à domicile.',

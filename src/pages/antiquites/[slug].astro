@@ -22,8 +22,8 @@ const second = IMG(`spec.${s.slug}.pair`);
 const bandKey = IMG(`spec.${s.slug}.band`);
 const ctaKey = IMG(`spec.${s.slug}.cta`);
 ---
-<Base title={s.titleTag} description={s.metaDesc} ogImage={s.img} trail={trail} jsonLd={[serviceSchema(s.h1, s.metaDesc, path), faqSchema(faq)]}>
-  <PageHero h1={s.h1} lead={s.lead} img={s.img} trail={trail} />
+<Base title={s.titleTag} description={s.metaDesc} ogImage={IMG(`spec.${s.slug}.hero`)} trail={trail} jsonLd={[serviceSchema(s.h1, s.metaDesc, path), faqSchema(faq)]}>
+  <PageHero h1={s.h1} lead={s.lead} img={IMG(`spec.${s.slug}.hero`)} trail={trail} />
   <section class="section" aria-labelledby="sec-0">
     <div class="wrap">
       {s.sections.map((sec, i) => (

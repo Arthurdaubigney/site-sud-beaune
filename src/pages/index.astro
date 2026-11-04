@@ -12,6 +12,7 @@ import { CITIES } from '../data/cities';
 import { GUIDES } from '../data/guides';
 import { SERVICES } from '../data/services';
 import { OBJETS } from '../data/objets';
+import { IMG } from '../lib/imageMap';
 
 const faq = FAQ_GENERAL;
 // Projection simple longitude/latitude -> SVG (viewBox 300 x 262)
@@ -217,7 +218,7 @@ const trust = [
       <div class="scards">
         {OBJETS.filter((o) => ['rachat-manteau-de-fourrure','rachat-pieces-de-monnaie-anciennes','rachat-pieces-or-napoleon-louis-d-or','rachat-montres-de-collection','rachat-verrerie-art-galle-daum','rachat-sacs-malles-maroquinerie-luxe'].includes(o.slug)).map((o, i) => (
           <a class="scard" href={`/objets/${o.slug}/`} data-reveal style={`--i:${i % 3}`} title={`${o.name} : estimation et rachat`}>
-            <Pic k={o.img} ratio="4-3" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 30vw" />
+            <Pic k={IMG(`objet.${o.slug}.hero`)} ratio="4-3" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 30vw" />
             <div class="scard-body"><h3>{o.name}</h3><p>{o.lead.split('.')[0]}.</p><span class="more">Estimer <span class="arr" aria-hidden="true">→</span></span></div>
           </a>
         ))}

@@ -8,11 +8,13 @@ import Faq from '../components/Faq.astro';
 import TallyForm from '../components/TallyForm.astro';
 import CtaPhoto from '../components/CtaPhoto.astro';
 import { REGIONS, FEATURED, zoneUrl } from '../data/territoires';
-import { IMG } from '../lib/imageMap';
+import { IMG, uniquer } from '../lib/imageMap';
 import InlineCta from '../components/InlineCta.astro';
 import RelatedGuides from '../components/RelatedGuides.astro';
 import { serviceSchema, faqSchema } from '../lib/schema';
 const path = '/rachat-succession/';
+const U = uniquer(IMG('rachat.hero'));
+const bandK = U(IMG('rachat.band')), pairK = U(IMG('rachat.pair')), ctaK = U(IMG('rachat.cta'));
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Rachat de succession', path }];
 const faq = [
   { q: 'Combien rachetez-vous le contenu d’une maison ?', a: 'Le prix dépend de la nature, de l’époque et de l’état des objets : il est établi après estimation, objet par objet. Une estimation gratuite à partir de photos permet d’avoir un premier ordre d’idée.' },
@@ -49,9 +51,9 @@ const desc = 'Rachat de succession et de contenu de maison : inventaire, estimat
         <p>Pour aller plus loin : <a href="/debarras-maison-succession/">estimer avant un débarras</a>, <a href="/inventaire-succession-estimation/">inventaire de succession</a>, <a href="/notaires-heritiers-estimation-mobilier/">service notaires et héritiers</a>.</p>
       </Prose>
       <InlineCta title="Une succession à régler ?" text="Parlez-nous de votre dossier : estimation gratuite, sans engagement, en toute discrétion." label="Parler de ma succession" />
-      <Band k={IMG('rachat.band')} />
+      <Band k={bandK} />
       <div class="grid pair" style="margin-top:96px">
-        <div class="a" data-reveal><Pic k={IMG('rachat.pair')} ratio="4-5" sizes="(max-width: 860px) 80vw, 33vw" /></div>
+        <div class="a" data-reveal><Pic k={pairK} ratio="4-5" sizes="(max-width: 860px) 80vw, 33vw" /></div>
         <div class="b" data-reveal style="--i:1">
           <h2 style="font-size:clamp(1.8rem,1.1rem + 2vw,2.75rem)">Une succession près de chez vous</h2>
           <ul class="related">
@@ -63,7 +65,7 @@ const desc = 'Rachat de succession et de contenu de maison : inventaire, estimat
     </div>
   </section>
   <RelatedGuides slugs={['que-faire-des-meubles-apres-un-deces', 'estimer-le-mobilier-d-une-succession', 'vendre-une-collection-heritee']} title="Guides pour les héritiers" />
-  <CtaPhoto k={IMG('rachat.cta')} />
+  <CtaPhoto k={ctaK} />
   <Faq items={faq} title="Questions fréquentes sur le rachat de succession" />
   <TallyForm title="Parlez-nous de votre succession" intro="Quelques lignes et des photographies : nous revenons vers vous." />
 </Base>

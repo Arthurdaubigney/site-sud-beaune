@@ -100,3 +100,6 @@ Aucun outil de volume (Keyword Planner, Semrush, Ahrefs, Search Console) n'est d
    différenciation face aux annuaires.
 4. Pages croisées « objet + ville » (ex. rachat pièces de monnaie Bordeaux) **uniquement** pour les objets qui performent,
    avec un contenu réellement local pour éviter le contenu dupliqué.
+
+## Photos
+Chaque page a une photo d'en-tête unique sur tout le site (hors accueil) : registre `src/lib/imageMap.ts`, contrôle `node scripts/check-heroes.mjs`. Réserve : ~100 photos libres de droits, crédits en pied de page.

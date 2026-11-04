@@ -11,6 +11,7 @@ npm run build                 # génère dist/
 node scripts/check-seo.mjs    # contrôle title, description, h1 unique, alt/title, JSON-LD
 node scripts/check-images.mjs # aucune photo en double sur une page
 node scripts/check-links.mjs  # liens internes
+node scripts/check-heroes.mjs # photo d'en-tête unique par page
 
 ```
 

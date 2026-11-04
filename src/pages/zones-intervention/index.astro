@@ -5,9 +5,12 @@ import Pic from '../../components/Pic.astro';
 import TallyForm from '../../components/TallyForm.astro';
 import CtaPhoto from '../../components/CtaPhoto.astro';
 import { REGIONS, deptsOf, zoneUrl } from '../../data/territoires';
-import { IMG } from '../../lib/imageMap';
+import { IMG, uniquer } from '../../lib/imageMap';
 import { faqSchema } from '../../lib/schema';
 import { FAQ_GENERAL } from '../../data/site';
+const U = uniquer(IMG('zones.hero'));
+const regK = Object.fromEntries(REGIONS.map((r) => [r.slug, U(IMG(`region.${r.slug}.hero`))]));
+const ctaK = U(IMG('zones.cta'));
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Zones d’intervention', path: '/zones-intervention/' }];
 ---
 <Base
@@ -30,10 +33,10 @@ const trail = [{ name: 'Accueil', path: '/' }, { name: 'Zones d’intervention',
             </ul>
           </div>
         </div>
-        <div class="grid" style="margin-top:72px"><div style="grid-column:7/13" data-reveal><Pic k={IMG(`region.${r.slug}.hero`)} ratio="16-10" sizes="(max-width: 860px) 92vw, 40vw" /></div></div>
+        <div class="grid" style="margin-top:72px"><div style="grid-column:7/13" data-reveal><Pic k={regK[r.slug]} ratio="16-10" sizes="(max-width: 860px) 92vw, 40vw" /></div></div>
       </div>
     </section>
   ))}
-  <CtaPhoto k={IMG('zones.cta')} />
+  <CtaPhoto k={ctaK} />
   <TallyForm />
 </Base>
