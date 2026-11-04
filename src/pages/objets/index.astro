@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Pic from '../../components/Pic.astro';
+import Faq from '../../components/Faq.astro';
+import TallyForm from '../../components/TallyForm.astro';
+import CtaPhoto from '../../components/CtaPhoto.astro';
+import { OBJETS, OBJET_GROUPS } from '../../data/objets';
+import { FAQ_GENERAL } from '../../data/site';
+import { IMG, different } from '../../lib/imageMap';
+import { faqSchema } from '../../lib/schema';
+const trail = [{ name: 'Accueil', path: '/' }, { name: 'Objets recherchés', path: '/objets/' }];
+const groups = Object.keys(OBJET_GROUPS) as (keyof typeof OBJET_GROUPS)[];
+const faq = FAQ_GENERAL.slice(3, 6);
+const hero = IMG('objets.hero');
+---
+<Base title="Objets rachetés : fourrures, monnaies, montres, art" description="Liste des objets que nous estimons et rachetons : manteaux de fourrure, pièces de monnaie et d’or, médailles, montres, verrerie d’art, livres, design vintage." ogImage={hero} trail={trail} jsonLd={[faqSchema(faq)]}>
+  <PageHero h1="Les objets que nous estimons et rachetons" lead="Au-delà du mobilier ancien : fourrures, pièces de monnaie, montres, verrerie d’art, livres, design, maroquinerie de luxe. Choisissez votre objet." img={hero} trail={trail} />
+  {groups.map((g) => (
+    <section class="section" aria-labelledby={`og-${g}`}>
+      <div class="wrap">
+        <h2 class="h-section" id={`og-${g}`} data-reveal>{OBJET_GROUPS[g]}</h2>
+        <div class="scards">
+          {OBJETS.filter((o) => o.group === g).map((o, i) => (
+            <a class="scard" href={`/objets/${o.slug}/`} data-reveal style={`--i:${i % 3}`} title={`${o.name} : estimation et rachat`}>
+              <Pic k={o.img} ratio="4-3" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 30vw" />
+              <div class="scard-body"><h3>{o.name}</h3><p>{o.lead.split('.')[0]}.</p><span class="more">Estimer <span class="arr" aria-hidden="true">→</span></span></div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+  <CtaPhoto k={different(IMG('objets.cta'), hero)} title="Un objet que vous ne trouvez pas ?" text="Décrivez-le-nous : nous estimons aussi les objets rares, les collections et les lots variés." />
+  <Faq items={faq} />
+  <TallyForm />
+</Base>

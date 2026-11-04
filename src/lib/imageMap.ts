@@ -9,6 +9,7 @@ import { SPECIALITES } from '../data/site';
 import { SERVICES } from '../data/services';
 import { GUIDES } from '../data/guides';
 import { CITIES } from '../data/cities';
+import { OBJETS } from '../data/objets';
 
 const OBJECTS = ['commode-wallace', 'pendule-xviii', 'marqueterie-boulle', 'tableau-paysage', 'vase-porcelaine', 'commode-louis-xv', 'bronze-sculpture', 'montre-gousset'];
 const WIDE = ['salle-chateau', 'cabinet-curiosites', 'bibliotheque-chateau', 'boutique-antiquites'];
@@ -58,6 +59,8 @@ protecting = false;
 take('conseils.hero', undefined, 'wide'); take('conseils.cta', undefined, 'wide');
 for (const sv of SERVICES) { take(`service.${sv.slug}.hero`, undefined, 'wide'); take(`service.${sv.slug}.cta`, undefined, 'wide'); }
 for (const g of GUIDES) { take(`guide.${g.slug}.hero`, undefined, g.cluster === 'meubles' || g.cluster === 'objets' ? 'object' : 'wide'); take(`guide.${g.slug}.cta`, undefined, 'wide'); }
+take('objets.hero', undefined, 'wide'); take('objets.cta', undefined, 'wide');
+for (const o of OBJETS) take(`objet.${o.slug}.cta`, undefined, 'wide');
 for (const c of CITIES) take(`city.${c.slug}.cta`, undefined, 'wide');
 
 export const IMG = (slot: string) => {

@@ -11,6 +11,7 @@ import { faqSchema } from '../lib/schema';
 import { CITIES } from '../data/cities';
 import { GUIDES } from '../data/guides';
 import { SERVICES } from '../data/services';
+import { OBJETS } from '../data/objets';
 
 const faq = FAQ_GENERAL;
 // Projection simple longitude/latitude -> SVG (viewBox 300 x 262)
@@ -203,6 +204,25 @@ const trust = [
           ))}
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-objets">
+    <div class="wrap">
+      <div data-reveal>
+        <span class="kicker">Au-delà du mobilier</span>
+        <h2 class="h-section" id="h-objets">Fourrures, monnaies, montres, art : nous rachetons aussi</h2>
+        <span class="ornament"></span>
+      </div>
+      <div class="scards">
+        {OBJETS.filter((o) => ['rachat-manteau-de-fourrure','rachat-pieces-de-monnaie-anciennes','rachat-pieces-or-napoleon-louis-d-or','rachat-montres-de-collection','rachat-verrerie-art-galle-daum','rachat-sacs-malles-maroquinerie-luxe'].includes(o.slug)).map((o, i) => (
+          <a class="scard" href={`/objets/${o.slug}/`} data-reveal style={`--i:${i % 3}`} title={`${o.name} : estimation et rachat`}>
+            <Pic k={o.img} ratio="4-3" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 30vw" />
+            <div class="scard-body"><h3>{o.name}</h3><p>{o.lead.split('.')[0]}.</p><span class="more">Estimer <span class="arr" aria-hidden="true">→</span></span></div>
+          </a>
+        ))}
+      </div>
+      <p class="band-note" style="margin-top:28px"><a class="link" href="/objets/">Voir les {OBJETS.length} familles d’objets que nous rachetons →</a></p>
     </div>
   </section>
 

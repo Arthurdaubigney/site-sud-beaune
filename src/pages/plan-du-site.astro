@@ -4,6 +4,7 @@ import { SPECIALITES } from '../data/site';
 import { REGIONS, DEPTS, zoneUrl } from '../data/territoires';
 import { SERVICES } from '../data/services';
 import { CITIES } from '../data/cities';
+import { OBJETS } from '../data/objets';
 import { GUIDES } from '../data/guides';
 ---
 <Base title="Plan du site – antiquaires et experts d’art Sud-Ouest" description="Plan du site : zones d’intervention, spécialités d’expertise, rachat de succession et estimation gratuite en Nouvelle-Aquitaine et en Occitanie.">
@@ -27,6 +28,10 @@ import { GUIDES } from '../data/guides';
           <li style="padding:4px 0"><a href="/a-propos/">À propos</a></li>
           {SERVICES.map((x) => <li style="padding:4px 0"><a href={`/${x.slug}/`}>{x.h1}</a></li>)}
         </ul>
+      </div>
+      <div style="grid-column:span 4">
+        <h2 style="font-size:1.6rem;margin-bottom:12px"><a href="/objets/">Objets recherchés</a></h2>
+        <ul>{OBJETS.map((o) => <li style="padding:4px 0"><a href={`/objets/${o.slug}/`}>{o.name}</a></li>)}</ul>
       </div>
       <div style="grid-column:span 4">
         <h2 style="font-size:1.6rem;margin-bottom:12px"><a href="/conseils/">Conseils</a></h2>

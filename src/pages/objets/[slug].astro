@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Prose from '../../components/Prose.astro';
+import Faq from '../../components/Faq.astro';
+import TallyForm from '../../components/TallyForm.astro';
+import CtaPhoto from '../../components/CtaPhoto.astro';
+import InlineCta from '../../components/InlineCta.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import { OBJETS, objet } from '../../data/objets';
+import { CITIES } from '../../data/cities';
+import { FAQ_GENERAL } from '../../data/site';
+import { IMG, different } from '../../lib/imageMap';
+import { serviceSchema, faqSchema } from '../../lib/schema';
+
+export function getStaticPaths() { return OBJETS.map((o) => ({ params: { slug: o.slug } })); }
+const { slug } = Astro.params;
+const o = objet(slug!);
+const path = `/objets/${o.slug}/`;
+const trail = [{ name: 'Accueil', path: '/' }, { name: 'Objets recherchés', path: '/objets/' }, { name: o.name, path }];
+const faq = [...o.faq, { q: 'Où estimer et vendre ce type d’objet dans le Sud-Ouest ?', a: 'Nous nous déplaçons gratuitement en Nouvelle-Aquitaine et en Occitanie pour estimer et racheter vos objets, avec paiement direct.' }, FAQ_GENERAL[1]];
+const rel = o.related.map(objet);
+---
+<Base title={o.title} description={o.desc} ogImage={o.img} trail={trail} jsonLd={[serviceSchema(o.h1, o.desc, path), faqSchema(faq)]}>
+  <PageHero h1={o.h1} lead={o.lead} img={o.img} trail={trail} cta="Estimer mon objet" />
+  <section class="section" aria-labelledby="o-0">
+    <div class="wrap">
+      {o.sections.map((sec, i) => (
+        <Prose h={sec.h} id={i === 0 ? 'o-0' : undefined}>
+          {sec.p.map((p) => <p>{p}</p>)}
+          {sec.ul && <ul class="tick">{sec.ul.map((li) => <li>{li}</li>)}</ul>}
+        </Prose>
+      ))}
+      <InlineCta title="Un objet à faire estimer ?" text="Estimation gratuite à partir de photos, sans engagement. Déplacement et paiement direct si nous achetons." label="Estimer mon objet" />
+      <Prose h="Estimation et rachat près de chez vous">
+        <p>Nous nous déplaçons dans les 25 départements de Nouvelle-Aquitaine et d’Occitanie, notamment à :</p>
+        <ul class="related">{CITIES.slice(0, 10).map((c) => <li><a class="chip" href={`/${c.slug}/`}>{c.name}</a></li>)}</ul>
+        <p style="margin-top:20px">Voir toutes nos <a href="/zones-intervention/">zones d’intervention</a>, ou notre page <a href="/rachat-antiquites-a-domicile/">rachat à domicile</a>.</p>
+      </Prose>
+      <Prose h="Sur le même thème">
+        <ul class="related">{rel.map((r) => <li><a class="chip" href={`/objets/${r.slug}/`}>{r.name}</a></li>)}</ul>
+        <p style="margin-top:20px">Tous les <a href="/objets/">objets que nous estimons et rachetons</a>.</p>
+      </Prose>
+    </div>
+  </section>
+  {o.guides && <RelatedGuides slugs={o.guides} title="Notre guide" />}
+  <CtaPhoto k={different(IMG(`objet.${o.slug}.cta`), o.img)} title="Faites estimer votre objet" text="Envoyez quelques photos : estimation gratuite, sans engagement, déplacement et paiement direct si nous achetons." />
+  <Faq items={faq} title={`Questions fréquentes : ${o.name.toLowerCase()}`} />
+  <TallyForm title="Estimez votre objet" intro="Décrivez l’objet et joignez des photos : nous revenons vers vous." />
+</Base>

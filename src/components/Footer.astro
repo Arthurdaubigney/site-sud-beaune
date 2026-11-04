@@ -2,6 +2,7 @@
 import { SITE, SPECIALITES, ESTIMATION_URL } from '../data/site';
 import { REGIONS, zoneUrl } from '../data/territoires';
 import { CITIES } from '../data/cities';
+import { OBJETS } from '../data/objets';
 import { creditLines, ALL_IMAGE_KEYS } from '../data/images';
 const credits = creditLines(ALL_IMAGE_KEYS);
 ---
@@ -16,8 +17,8 @@ const credits = creditLines(ALL_IMAGE_KEYS);
         </ul>
       </div>
       <div>
-        <b>Spécialités</b>
-        <ul>{SPECIALITES.map((s) => <li><a href={`/antiquites/${s.slug}/`}>{s.name}</a></li>)}</ul>
+        <b>Objets rachetés</b>
+        <ul>{OBJETS.slice(0, 6).map((o) => <li><a href={`/objets/${o.slug}/`}>{o.name}</a></li>)}<li><a href="/objets/">Tous les objets →</a></li></ul>
       </div>
       <div>
         <b>Services</b>

@@ -34,6 +34,7 @@ export const ESTIMATION_URL = '/estimation-gratuite/';
 
 export const NAV = [
   { href: '/zones-intervention/', label: 'Zones' },
+  { href: '/objets/', label: 'Objets' },
   { href: '/antiquites/', label: 'Spécialités' },
   { href: '/rachat-succession/', label: 'Succession' },
   { href: '/expertise-estimation/', label: 'Expertise' },
