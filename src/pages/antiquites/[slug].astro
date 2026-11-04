@@ -10,7 +10,7 @@ import CtaPhoto from '../../components/CtaPhoto.astro';
 import { SPECIALITES, FAQ_GENERAL } from '../../data/site';
 import { REGIONS, FEATURED, zoneUrl } from '../../data/territoires';
 import { serviceSchema, faqSchema } from '../../lib/schema';
-import { IMG } from '../../lib/imageMap';
+import { IMG, uniquer } from '../../lib/imageMap';
 
 export function getStaticPaths() { return SPECIALITES.map((s) => ({ params: { slug: s.slug } })); }
 const { slug } = Astro.params;
@@ -18,9 +18,10 @@ const s = SPECIALITES.find((x) => x.slug === slug)!;
 const faq = [...s.faq, FAQ_GENERAL[1]];
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Spécialités', path: '/antiquites/' }, { name: s.name, path: `/antiquites/${s.slug}/` }];
 const path = `/antiquites/${s.slug}/`;
-const second = IMG(`spec.${s.slug}.pair`);
-const bandKey = IMG(`spec.${s.slug}.band`);
-const ctaKey = IMG(`spec.${s.slug}.cta`);
+const U = uniquer(IMG(`spec.${s.slug}.hero`));
+const second = U(IMG(`spec.${s.slug}.pair`));
+const bandKey = U(IMG(`spec.${s.slug}.band`));
+const ctaKey = U(IMG(`spec.${s.slug}.cta`));
 ---
 <Base title={s.titleTag} description={s.metaDesc} ogImage={IMG(`spec.${s.slug}.hero`)} trail={trail} jsonLd={[serviceSchema(s.h1, s.metaDesc, path), faqSchema(faq)]}>
   <PageHero h1={s.h1} lead={s.lead} img={IMG(`spec.${s.slug}.hero`)} trail={trail} />

@@ -19,6 +19,8 @@ const PLACES = ['perigord-chateau', 'vezere', 'angouleme', 'perigueux', 'la-roch
 type Kind = 'object' | 'wide' | 'place';
 const LISTS: Record<Kind, string[]> = { object: OBJECTS, wide: WIDE, place: PLACES };
 
+/** Photos acceptables en bandeau large : paysages et intérieurs uniquement (pas d'objets sur fond blanc). */
+const bandOk = (x: string) => (WIDE.includes(x) || PLACES.includes(x)) && imgMeta(x).w / imgMeta(x).h >= 1.3;
 const used = new Set<string>();
 const count = new Map<string, number>();
 const protectedKeys = new Set<string>(); // photos des pages principales : jamais réutilisées en repli
@@ -26,12 +28,13 @@ const MAP: Record<string, string> = {};
 let protecting = true;
 function take(slot: string, pref: string | undefined, kind: Kind) {
   const needW = /\.(band|cta)$/.test(slot);
-  const wideOk = (x: string) => !needW || imgMeta(x).w / imgMeta(x).h >= 1.3;
+  const wideOk = (x: string) => !needW || bandOk(x);
   let k: string | undefined = pref && !used.has(pref) && wideOk(pref) ? pref : LISTS[kind].find((x) => !used.has(x) && wideOk(x));
   if (!k) {
     // Réserve épuisée : on réutilise la photo la moins employée parmi celles qui ne sont pas protégées.
     const needWide = /\.(band|cta)$/.test(slot);
-    const all = [...new Set([...LISTS[kind], ...ALL])].filter((x) => !needWide || imgMeta(x).w / imgMeta(x).h >= 1.3);
+    
+    const all = [...new Set([...LISTS[kind], ...ALL])].filter((x) => !needWide || bandOk(x));
     k = all.sort((x, y) => (count.get(x) ?? 0) - (count.get(y) ?? 0))[0];
   }
   used.add(k); count.set(k, (count.get(k) ?? 0) + 1); MAP[slot] = k;
@@ -106,8 +109,7 @@ export function uniquer(...seen: string[]) {
   const s = new Set(seen);
   return (k: string) => {
     if (!s.has(k)) { s.add(k); return k; }
-    const wide = (x: string) => { const m = imgMeta(x); return m.w / m.h >= 1.3; };
-    const alt = [...ALL].filter(wide).sort((a, b) => (count.get(a) ?? 0) - (count.get(b) ?? 0)).find((x) => !s.has(x)) ?? k;
+    const alt = [...ALL].filter(bandOk).sort((a, b) => (count.get(a) ?? 0) - (count.get(b) ?? 0)).find((x) => !s.has(x)) ?? k;
     s.add(alt); return alt;
   };
 }
