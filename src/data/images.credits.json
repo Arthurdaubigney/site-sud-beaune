@@ -916,5 +916,41 @@
   "license": "CC BY-SA 3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Thouars_-_Hotel_de_Ville_02.jpg",
   "via": "Wikimedia Commons"
+ },
+ "malle-louis-vuitton": {
+  "w": 1400,
+  "h": 1086,
+  "title": "LV Steamer Trunk",
+  "creator": "Louisvuittontrunks",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:LV_Steamer_Trunk.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "ours-steiff": {
+  "w": 1400,
+  "h": 2071,
+  "title": "Antique Steiff Teddy bear Steiger Munich 2",
+  "creator": "Oberlehrer Erbsenzähler I used a picture of Edelmauswaldgeist",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Antique_Steiff_Teddy_bear_Steiger_Munich_2.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "lustre-murano": {
+  "w": 1400,
+  "h": 1211,
+  "title": "Lampadario in vetro di Murano - Ca' Rezzonico, Venice",
+  "creator": "Didier Descouens",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Lampadario_in_vetro_di_Murano_-_Ca%27_Rezzonico,_Venice.jpg",
+  "via": "Wikimedia Commons"
+ },
+ "miroir-dore": {
+  "w": 1400,
+  "h": 2543,
+  "title": "Mirror with Bellona, Roman goddess of war.",
+  "creator": "Anonymous ( Venice ) Unknown author",
+  "license": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Venice_Mirror_with_Bellona.jpg",
+  "via": "Wikimedia Commons"
  }
 }

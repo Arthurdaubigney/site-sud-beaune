@@ -105,6 +105,10 @@ const META: Record<string, { alt: string; title: string }> = {
   'service-porcelaine': { alt: "Coupe en porcelaine blanche à décor rocaille, porcelaine ancienne à estimer", title: "Porcelaine blanche – estimation de services et de pièces anciennes" },
   'sete': { alt: "Barques catalanes sur le canal de Sète, antiquaire expert dans l’Hérault", title: "Sète – antiquaire expert dans l’Hérault" },
   'thouars': { alt: "Château de Thouars et ses jardins dans les Deux-Sèvres, antiquaire expert dans les Deux-Sèvres", title: "Thouars – antiquaire expert dans les Deux-Sèvres" },
+  'malle-louis-vuitton': { alt: "Malle de voyage Louis Vuitton ancienne en toile monogramme avec coins en laiton, malle de luxe à estimer", title: "Malle Louis Vuitton ancienne – estimation de malles et maroquinerie de luxe" },
+  'ours-steiff': { alt: "Ours en peluche ancien de type Steiff, jouet de collection à estimer", title: "Ours en peluche ancien – estimation de jouets de collection" },
+  'lustre-murano': { alt: "Lustre ancien de Murano en verre soufflé à fleurs et pampilles, luminaire ancien à estimer", title: "Lustre de Murano – estimation de lustres et luminaires anciens" },
+  'miroir-dore': { alt: "Miroir rococo en bois doré à glace gravée, miroir ancien à estimer", title: "Miroir ancien en bois doré – estimation de miroirs et trumeaux" },
   'angouleme': { alt: 'Hôtel de ville d’Angoulême et son parc fleuri, antiquaire expert en Charente', title: 'Angoulême, hôtel de ville – antiquaire expert en Charente' },
   'perigueux': { alt: 'Cathédrale Saint-Front de Périgueux et ses coupoles, antiquaire expert en Dordogne', title: 'Périgueux, cathédrale Saint-Front – antiquaire en Dordogne' },
 };
@@ -135,6 +139,6 @@ const FOCUS: Record<string, string> = {
   'commode-wallace': '50% 40%', 'commode-louis-xv': '50% 45%', 'pendule-xviii': '50% 38%', 'fourrure': '50% 30%',
   'robe-vintage': '50% 28%', 'bronze-sculpture': '50% 30%', 'montres-collection': '50% 40%', 'vase-porcelaine': '50% 42%',
   'marqueterie-boulle': '50% 42%', 'pays-basque': '50% 35%', 'tableau-corot': '50% 45%', 'montre-gousset': '50% 45%',
-  'cartes-postales': '50% 35%', 'art-asiatique': '50% 38%', 'design-vintage': '50% 45%', 'pieces-or': '50% 50%',
+  'cartes-postales': '50% 35%', 'malle-louis-vuitton': '50% 50%', 'ours-steiff': '50% 40%', 'miroir-dore': '50% 40%', 'lustre-murano': '50% 45%', 'art-asiatique': '50% 38%', 'design-vintage': '50% 45%', 'pieces-or': '50% 50%',
 };
 export const focus = (key: string) => FOCUS[key] ?? '50% 50%';
