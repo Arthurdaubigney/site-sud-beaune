@@ -25,10 +25,13 @@ const protectedKeys = new Set<string>(); // photos des pages principales : jamai
 const MAP: Record<string, string> = {};
 let protecting = true;
 function take(slot: string, pref: string | undefined, kind: Kind) {
-  let k: string | undefined = pref && !used.has(pref) ? pref : LISTS[kind].find((x) => !used.has(x));
+  const needW = /\.(band|cta)$/.test(slot);
+  const wideOk = (x: string) => !needW || imgMeta(x).w / imgMeta(x).h >= 1.3;
+  let k: string | undefined = pref && !used.has(pref) && wideOk(pref) ? pref : LISTS[kind].find((x) => !used.has(x) && wideOk(x));
   if (!k) {
     // Réserve épuisée : on réutilise la photo la moins employée parmi celles qui ne sont pas protégées.
-    const all = [...new Set([...LISTS[kind], ...ALL])];
+    const needWide = /\.(band|cta)$/.test(slot);
+    const all = [...new Set([...LISTS[kind], ...ALL])].filter((x) => !needWide || imgMeta(x).w / imgMeta(x).h >= 1.3);
     k = all.sort((x, y) => (count.get(x) ?? 0) - (count.get(y) ?? 0))[0];
   }
   used.add(k); count.set(k, (count.get(k) ?? 0) + 1); MAP[slot] = k;
