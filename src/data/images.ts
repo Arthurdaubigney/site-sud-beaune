@@ -129,3 +129,12 @@ export function creditLines(keys: Iterable<string>) {
     }));
 }
 export const ALL_IMAGE_KEYS = Object.keys(C);
+
+/** Point focal des photos (object-position) : évite que le sujet soit coupé quand le cadre change de format. */
+const FOCUS: Record<string, string> = {
+  'commode-wallace': '50% 40%', 'commode-louis-xv': '50% 45%', 'pendule-xviii': '50% 38%', 'fourrure': '50% 30%',
+  'robe-vintage': '50% 28%', 'bronze-sculpture': '50% 30%', 'montres-collection': '50% 40%', 'vase-porcelaine': '50% 42%',
+  'marqueterie-boulle': '50% 42%', 'pays-basque': '50% 35%', 'tableau-corot': '50% 45%', 'montre-gousset': '50% 45%',
+  'cartes-postales': '50% 35%', 'art-asiatique': '50% 38%', 'design-vintage': '50% 45%', 'pieces-or': '50% 50%',
+};
+export const focus = (key: string) => FOCUS[key] ?? '50% 50%';

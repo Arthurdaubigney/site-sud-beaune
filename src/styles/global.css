@@ -289,7 +289,7 @@ details[open] .chev { transform: rotate(180deg); background: rgba(212, 175, 55, 
 
 /* ---------- pages intérieures ---------- */
 .page-hero { padding-top: clamp(20px, 3.5vw, 52px); }
-.page-hero .ph-photo.is-portrait img { object-position: 50% 30%; }
+
 .crumbs { font-size: 0.875rem; color: var(--muted); padding-top: 10px; }
 .crumbs ol { display: flex; flex-wrap: wrap; gap: 4px 10px; }
 .crumbs li + li::before { content: '›'; margin-right: 10px; color: var(--gold); }
@@ -420,7 +420,7 @@ main > .page-hero:last-child { padding-bottom: 96px; }
 .ph-copy .cta-row { margin-top: 28px; }
 .ph-photo { grid-column: 7 / 13; position: relative; min-height: 340px; }
 .ph-photo .pic { position: absolute; inset: 0; height: 100%; aspect-ratio: auto; }
-.ph-photo.is-portrait img { object-position: 50% 30%; }
+
 @media (max-width: 860px) {
   .ph-left { padding-right: 0; gap: 24px; }
   .ph-left h1 { font-size: clamp(1.9rem, 8vw, 3rem); max-width: none; }
@@ -483,3 +483,5 @@ main > .page-hero:last-child { padding-bottom: 96px; }
 .exp-steps li::before { content: counter(st); position: absolute; left: 16px; top: 50%; margin-top: -17px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--pine); color: var(--gold-l); font-family: var(--display); font-weight: 600; }
 .exp-steps b { color: var(--pine); }
 @media (max-width: 860px) { .exp-cards { grid-template-columns: 1fr; margin-top: 40px; } }
+
+@media (min-width: 861px) and (max-width: 1100px) { .ph-photo { min-height: 300px; max-height: 420px; } }

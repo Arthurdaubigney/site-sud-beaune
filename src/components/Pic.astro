@@ -1,5 +1,5 @@
 ---
-import { img } from '../data/images';
+import { img, focus } from '../data/images';
 interface Props { k: string; ratio?: string; sizes?: string; eager?: boolean; class?: string; alt?: string; title?: string; }
 const { k, ratio, sizes = '(max-width: 860px) 92vw, 50vw', eager = false, class: cls = '', alt, title } = Astro.props;
 const i = img(k);
@@ -11,6 +11,7 @@ const i = img(k);
     sizes={sizes}
     width={i.w}
     height={i.h}
+    style={`object-position:${focus(k)}`}
     alt={alt ?? i.alt}
     title={title ?? i.title}
     loading={eager ? 'eager' : 'lazy'}
