@@ -53,9 +53,10 @@ const desc = 'Rachat de succession et de contenu de maison : inventaire, estimat
       <InlineCta title="Une succession à régler ?" text="Parlez-nous de votre dossier : estimation gratuite, sans engagement, en toute discrétion." label="Parler de ma succession" />
       <Band k={bandK} />
       <div class="grid pair" style="margin-top:96px">
-        <div class="a" data-reveal><Pic k={pairK} ratio="4-5" sizes="(max-width: 860px) 80vw, 33vw" /></div>
+        <div class="a" data-reveal><Pic k={pairK} ratio="4-3" sizes="(max-width: 860px) 92vw, 48vw" /></div>
         <div class="b" data-reveal style="--i:1">
           <h2 style="font-size:clamp(1.8rem,1.1rem + 2vw,2.75rem)">Une succession près de chez vous</h2>
+          <p style="margin-top:18px">Nous nous déplaçons gratuitement dans les 25 départements de Nouvelle-Aquitaine et d’Occitanie. Choisissez votre zone pour voir les villes desservies :</p>
           <ul class="related">
             {REGIONS.map((r) => <li><a class="chip" href={zoneUrl(r.slug)}>Succession {r.name}</a></li>)}
             {FEATURED.map((d) => <li><a class="chip" href={zoneUrl(d.slug)}>Succession {d.name}</a></li>)}

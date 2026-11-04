@@ -11,7 +11,7 @@ import { GUIDES } from '../data/guides';
 import { CITIES } from '../data/cities';
 import { OBJETS } from '../data/objets';
 import { DEPTS, REGIONS } from '../data/territoires';
-import { ALL_IMAGE_KEYS } from '../data/images';
+import { ALL_IMAGE_KEYS, img as imgMeta } from '../data/images';
 
 const OBJECTS = ['commode-wallace', 'pendule-xviii', 'marqueterie-boulle', 'tableau-paysage', 'vase-porcelaine', 'commode-louis-xv', 'bronze-sculpture', 'montre-gousset', 'tableau-corot', 'armoire-ancienne', 'bureau-louis-xv', 'horloges-comtoises', 'service-porcelaine', 'eventail', 'bague-ancienne', 'robe-vintage', 'fourrure', 'monnaies', 'pieces-or', 'medailles', 'verrerie-art', 'livres-anciens', 'cartes-postales', 'art-asiatique', 'instruments-marine', 'montres-collection', 'pendule-salon', 'design-vintage'];
 const WIDE = ['salle-chateau', 'cabinet-curiosites', 'bibliotheque-chateau', 'boutique-antiquites'];
@@ -103,7 +103,8 @@ export function uniquer(...seen: string[]) {
   const s = new Set(seen);
   return (k: string) => {
     if (!s.has(k)) { s.add(k); return k; }
-    const alt = [...ALL].sort((a, b) => (count.get(a) ?? 0) - (count.get(b) ?? 0)).find((x) => !s.has(x)) ?? k;
+    const wide = (x: string) => { const m = imgMeta(x); return m.w / m.h >= 1.3; };
+    const alt = [...ALL].filter(wide).sort((a, b) => (count.get(a) ?? 0) - (count.get(b) ?? 0)).find((x) => !s.has(x)) ?? k;
     s.add(alt); return alt;
   };
 }
