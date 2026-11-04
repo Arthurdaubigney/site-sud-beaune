@@ -8,35 +8,78 @@ import Faq from '../components/Faq.astro';
 import TallyForm from '../components/TallyForm.astro';
 import CtaPhoto from '../components/CtaPhoto.astro';
 import { SPECIALITES } from '../data/site';
+import InlineCta from '../components/InlineCta.astro';
+import RelatedGuides from '../components/RelatedGuides.astro';
 import { IMG } from '../lib/imageMap';
 import { serviceSchema, faqSchema } from '../lib/schema';
 const path = '/expertise-estimation/';
 const trail = [{ name: 'Accueil', path: '/' }, { name: 'Expertise et estimation', path }];
 const faq = [
+  { q: 'Combien coûte une expertise écrite ?', a: 'La première estimation à partir de photographies est gratuite. Un rapport d’expertise formalisé dépend de la nature et du nombre d’objets : nous vous remettons un devis avant toute prestation.' },
+  { q: 'Votre rapport est-il accepté par un notaire ou un assureur ?', a: 'Le rapport est daté, signé et détaillé objet par objet, ce qui le rend exploitable. Le notaire ou l’assureur reste libre d’en apprécier la portée : renseignez-vous auprès de lui.' },
+  { q: 'Peut-on faire expertiser des objets sans les vendre ?', a: 'Oui : pour une assurance, une donation, un partage ou par simple curiosité.' },
   { q: 'Quelle différence entre estimation et expertise ?', a: 'L’estimation donne une fourchette de valeur ; l’expertise approfondit l’identification, la datation et l’attribution et peut faire l’objet d’un rapport écrit.' },
   { q: 'Puis-je obtenir un rapport pour mon assurance ?', a: 'Oui. Nous établissons des rapports d’expertise détaillés pour l’assurance, la donation ou le partage.' },
   { q: 'L’estimation sur photographies est-elle fiable ?', a: 'Elle donne une première fourchette. Elle est confirmée lors de l’examen de l’objet, sans engagement.' },
 ];
 const desc = 'Expertise d’objets d’art et estimation d’antiquités gratuite : tableaux, bronzes, bijoux, mobilier. Rapports écrits pour succession, assurance et partage.';
 ---
-<Base title="Expertise d’objets d’art et estimation d’antiquités" description={desc} ogImage={IMG('expertise.hero')} trail={trail} jsonLd={[serviceSchema('Expertise d’objets d’art et estimation d’antiquités', desc, path), faqSchema(faq)]}>
+<Base title="Expertise d’objets d’art : rapport écrit, estimation" description={desc} ogImage={IMG('expertise.hero')} trail={trail} jsonLd={[serviceSchema('Expertise d’objets d’art et estimation d’antiquités', desc, path), faqSchema(faq)]}>
   <PageHero h1="Expertise d’objets d’art et d’antiquités" lead="Datation, attribution, valeur de marché : des experts qui regardent vos objets de près et vous répondent par écrit." img={IMG('expertise.hero')} trail={trail} />
   <section class="section" aria-labelledby="e-0">
     <div class="wrap">
-      <Prose h="Une méthode en trois temps" id="e-0">
-        <p>Nous examinons l’objet (matière, fabrication, marques), le comparons aux références du marché, puis vous remettons une estimation motivée.</p>
-        <p>Pour une succession, une assurance ou une donation, un rapport d’expertise écrit et détaillé peut être produit.</p>
+      <Prose h="Estimation ou expertise : que choisir ?" id="e-0">
+        <p>Les deux démarches répondent à des besoins différents. L’<strong>estimation</strong> donne une fourchette de valeur : elle suffit pour savoir si un objet mérite d’être vendu ou conservé. L’<strong>expertise écrite</strong> va plus loin : identification, datation, attribution, état de conservation et valeur, consignés dans un rapport signé que l’on peut présenter à un notaire, à un assureur ou à des cohéritiers.</p>
+        <p>La première estimation à partir de photographies est gratuite et sans engagement. Un rapport formalisé pour un dossier particulier peut faire l’objet d’un devis.</p>
       </Prose>
-      <Prose h="Nos domaines d’expertise">
-        <ul class="related">{SPECIALITES.map((s) => <li><a class="chip" href={`/antiquites/${s.slug}/`}>{s.name}</a></li>)}</ul>
-      </Prose>
-      <Band k={IMG('expertise.band')} />
-      <div class="grid pair pair-wide" style="margin-top:96px">
-        <div class="a" data-reveal><Pic k={IMG('expertise.pairA')} ratio="4-3" sizes="(max-width: 860px) 92vw, 58vw" /></div>
-        <div class="b" data-reveal style="--i:1"><Pic k={IMG('expertise.pairB')} ratio="4-3" sizes="(max-width: 860px) 70vw, 30vw" /></div>
+
+      <div class="exp-cards" data-reveal>
+        <article class="card exp-card"><h3>Estimation</h3><p>Une fourchette de valeur, à partir de photos ou d’une visite.</p><ul class="tick"><li>Gratuite, sans engagement</li><li>Réponse personnalisée</li><li>Pour vendre ou y voir clair</li></ul></article>
+        <article class="card exp-card"><h3>Expertise écrite</h3><p>Un rapport détaillé, objet par objet, daté et signé.</p><ul class="tick"><li>Description, époque, matériaux, état</li><li>Valeur de marché motivée</li><li>Photographies jointes</li></ul></article>
+        <article class="card exp-card"><h3>Rachat</h3><p>Une proposition ferme si vous souhaitez vendre.</p><ul class="tick"><li>Objet par objet ou en bloc</li><li>Paiement direct</li><li>Enlèvement assuré</li></ul></article>
       </div>
+
+      <Prose h="Dans quels cas demander une expertise ?">
+        <ul class="tick">
+          <li><strong>Succession :</strong> inventaire du mobilier et des objets d’art pour la déclaration et le partage.</li>
+          <li><strong>Partage entre héritiers :</strong> une valeur neutre pour répartir sans conflit.</li>
+          <li><strong>Assurance :</strong> déclarer une valeur juste, ou justifier une indemnisation après un sinistre ou un vol.</li>
+          <li><strong>Donation :</strong> évaluer des biens que l’on transmet de son vivant.</li>
+          <li><strong>Vente :</strong> connaître la valeur avant de choisir entre rachat, enchères ou dépôt-vente.</li>
+          <li><strong>Curiosité :</strong> savoir ce que vaut un objet de famille, sans rien vendre.</li>
+        </ul>
+      </Prose>
+
+      <Prose h="Ce que nous examinons">
+        <p>Nous observons l’objet avec la même méthode, quelle que soit sa nature : la matière et la fabrication, les marques, signatures, poinçons et estampilles, le style et l’époque, l’état de conservation et les restaurations, la provenance quand elle est connue. Nous comparons ensuite avec les références du marché réel, pas avec des prix d’annonces.</p>
+        <ul class="tick"><li>Matériaux, techniques de fabrication, assemblages</li><li>Marques, poinçons, signatures, cachets, étiquettes</li><li>Style, époque, région de fabrication</li><li>État, accidents, restaurations, remplacements</li><li>Provenance, documents, histoire familiale</li></ul>
+      </Prose>
+
+      <Prose h="Le déroulé d’une expertise">
+        <ol class="exp-steps">
+          <li><b>Premier contact.</b> Vous décrivez vos objets et joignez des photos via le formulaire.</li>
+          <li><b>Première estimation.</b> Nous vous donnons un premier avis, gratuitement.</li>
+          <li><b>Visite sur place.</b> Nous nous déplaçons pour examiner les objets dans leur contexte.</li>
+          <li><b>Inventaire et rapport.</b> Si vous le souhaitez, un rapport écrit est établi, objet par objet.</li>
+          <li><b>Proposition.</b> Si vous voulez vendre, nous formulons une offre de rachat ferme, sans obligation.</li>
+        </ol>
+      </Prose>
+
+      <Prose h="Ce que contient un rapport d’expertise">
+        <ul class="tick"><li>Désignation et description de chaque objet (dimensions, matériaux, état)</li><li>Époque, style, attribution ou provenance</li><li>Valeur ou fourchette de valeur motivée</li><li>Photographies</li><li>Date, nom et signature de l’expert</li></ul>
+        <p style="margin-top:18px">Ce document peut être remis au notaire, à l’assureur ou aux héritiers. Il ne remplace pas le conseil juridique ou fiscal de votre notaire.</p>
+      </Prose>
+
+      <Prose h="Les objets que nous expertisons">
+        <p>Mobilier ancien, tableaux, bronzes, bijoux et montres, porcelaines et argenterie, mais aussi pièces de monnaie, fourrures, verrerie d’art, livres anciens, design du XXe siècle. Retrouvez la liste complète sur la page <a href="/objets/">objets rachetés</a>.</p>
+        <ul class="related">{SPECIALITES.map((s) => <li><a class="chip" href={`/antiquites/${s.slug}/`}>{s.name}</a></li>)}<li><a class="chip" href="/objets/">Tous les objets</a></li></ul>
+      </Prose>
+
+      <InlineCta title="Un objet ou un lot à faire expertiser ?" text="Envoyez quelques photos : première estimation gratuite, rapport écrit sur demande." label="Demander une expertise" />
+      <Band k={IMG('expertise.band')} />
     </div>
   </section>
+  <RelatedGuides slugs={['estimer-le-mobilier-d-une-succession', 'photographier-ses-objets-pour-une-estimation', 'combien-vaut-un-meuble-ancien']} title="Guides pour bien préparer l’expertise" />
   <CtaPhoto k={IMG('expertise.cta')} />
   <Faq items={faq} title="Questions fréquentes sur l’expertise d’objets d’art" />
   <TallyForm />

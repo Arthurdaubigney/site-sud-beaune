@@ -473,3 +473,13 @@ main > .page-hero:last-child { padding-bottom: 96px; }
 .legal h2 { font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem); margin: 44px 0 14px; }
 .legal p { line-height: 1.75; }
 .legal strong { color: var(--pine); }
+
+.exp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin: 64px 0 24px; }
+.exp-card { padding: 28px; }
+.exp-card h3 { font-size: 1.5rem; }
+.exp-card p { color: var(--muted); margin: 8px 0 4px; }
+.exp-steps { counter-reset: st; display: grid; gap: 14px; }
+.exp-steps li { counter-increment: st; position: relative; padding: 16px 20px 16px 62px; background: rgba(255,255,255,.72); border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.exp-steps li::before { content: counter(st); position: absolute; left: 16px; top: 50%; margin-top: -17px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--pine); color: var(--gold-l); font-family: var(--display); font-weight: 600; }
+.exp-steps b { color: var(--pine); }
+@media (max-width: 860px) { .exp-cards { grid-template-columns: 1fr; margin-top: 40px; } }
