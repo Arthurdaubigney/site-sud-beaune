@@ -49,6 +49,15 @@ if (trail && trail.length > 1) graph.push(breadcrumbSchema(trail));
     {preloadHero && <link rel="preload" as="image" href="/img/hero-urtubie-1400.webp" imagesrcset="/img/hero-urtubie-1400.webp 1400w, /img/hero-urtubie-2400.webp 2400w" imagesizes="100vw" fetchpriority="high" />}
     {graph.map((g) => <script type="application/ld+json" set:html={JSON.stringify(g)} />)}
     <script is:inline>document.documentElement.classList.add('js');</script>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-18503417665"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18503417665');
+    </script>
   </head>
   <body>
     <a class="skip" href="#contenu">Aller au contenu</a>
