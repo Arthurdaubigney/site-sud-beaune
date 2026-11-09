@@ -10,7 +10,7 @@ const META: Record<string, { alt: string; title: string }> = {
   'pendule-xviii': { alt: 'Cartel mural en bois doré du XVIIIe siècle, pendule ancienne expertisée par nos antiquaires', title: 'Cartel ancien en bois doré – expertise de pendules et horlogerie' },
   'vase-porcelaine': { alt: 'Vase en porcelaine de Chine au dragon, objet d’art asiatique estimé par nos experts', title: 'Vase en porcelaine ancienne – estimation d’objets d’art' },
   'marqueterie-boulle': { alt: 'Meuble à tiroirs en marqueterie Boulle orné de bronzes, mobilier d’époque expertisé', title: 'Marqueterie Boulle – expertise de mobilier ancien' },
-  'montre-gousset': { alt: 'Montre de gousset ancienne sur un coussin de velours vert, bijou et horlogerie à estimer', title: 'Montre de gousset ancienne – expertise de bijoux et horlogerie' },
+  'montre-gousset': { alt: 'Montre à gousset ancienne sur un coussin de velours vert, bijou et horlogerie à estimer', title: 'Montre à gousset ancienne – expertise de bijoux et horlogerie' },
   'bronze-sculpture': { alt: 'Statuette en bronze à patine verte, bronze ancien estimé dans le Sud-Ouest', title: 'Statuette en bronze ancien – estimation de sculptures' },
   'tableau-corot': { alt: 'Tableau ancien, huile sur toile de Camille Corot représentant un paysage, expertise de peinture', title: 'Tableau ancien de l’école de Barbizon – expertise de peintures' },
   'tableau-paysage': { alt: 'Tableau ancien : paysage de colline avec maisons et ciel nuageux par Camille Pissarro, huile sur toile', title: 'Paysage de Pissarro – expertise de tableaux et de peintures anciennes' },

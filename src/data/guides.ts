@@ -377,7 +377,7 @@ export const GUIDES: Guide[] = [
     title: 'Vendre des bijoux anciens : or, pierres, poinçons, prix',
     desc: 'Vendre un bijou ancien en or : lire les poinçons, distinguer valeur au poids et valeur de collection, choisir le bon acheteur. Conseils d’un expert.',
     h1: 'Vendre des bijoux anciens : ce qu’il faut savoir',
-    lead: 'Bague de famille, broche Art nouveau, montre de gousset : un bijou ancien peut valoir bien plus que son poids d’or. Voici comment ne pas se tromper.',
+    lead: 'Bague de famille, broche Art nouveau, montre à gousset : un bijou ancien peut valoir bien plus que son poids d’or. Voici comment ne pas se tromper.',
     minutes: 5,
     sections: [
       {
@@ -401,7 +401,7 @@ export const GUIDES: Guide[] = [
       {
         h: 'Montres et horlogerie',
         p: [
-          'Une montre de gousset ou un chronomètre de marque peut conserver une valeur importante, même s’il ne fonctionne plus. Conservez la boîte, les papiers et les accessoires.',
+          'Une montre à gousset ou un chronomètre de marque peut conserver une valeur importante, même s’il ne fonctionne plus. Conservez la boîte, les papiers et les accessoires.',
         ],
       },
     ],

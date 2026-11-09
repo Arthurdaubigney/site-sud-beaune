@@ -128,9 +128,9 @@ export const SPECIALITES: Specialite[] = [
     h1: 'Expertise de bijoux anciens et de montres',
     titleTag: 'Bijoux anciens et montres : expertise et rachat à domicile',
     metaDesc:
-      'Expertise gratuite de bijoux anciens, montres de gousset et pendules : or, diamants, signatures. Rachat à domicile en Charente, Périgord, Gironde, Pays basque.',
+      'Expertise gratuite de bijoux anciens, montres à gousset et pendules : or, diamants, signatures. Rachat à domicile en Charente, Périgord, Gironde, Pays basque.',
     lead:
-      'Bagues, broches, parures, montres de gousset, pendules : nous expertisons les bijoux et l’horlogerie anciens, signés ou non.',
+      'Bagues, broches, parures, montres à gousset, pendules : nous expertisons les bijoux et l’horlogerie anciens, signés ou non.',
     sections: [
       {
         h: 'Bijoux anciens : métal, pierres, poinçons',
@@ -139,13 +139,13 @@ export const SPECIALITES: Specialite[] = [
         ],
       },
       {
-        h: 'Montres de gousset, pendules et horlogerie',
+        h: 'Montres à gousset, pendules et horlogerie',
         p: [
           'Le mouvement, la signature du cadran et les complications déterminent la valeur d’une montre. Pour les pendules de cheminée et les cartels, nous examinons le mouvement, le décor et les dorures.',
         ],
       },
     ],
-    points: ['Bijoux or, platine et argent', 'Diamants et pierres de couleur', 'Parures Art nouveau et Art déco', 'Montres de gousset et de poignet', 'Pendules, cartels et horloges'],
+    points: ['Bijoux or, platine et argent', 'Diamants et pierres de couleur', 'Parures Art nouveau et Art déco', 'Montres à gousset et de poignet', 'Pendules, cartels et horloges'],
     faq: [
       { q: 'Faites-vous une estimation de bijoux sans engagement ?', a: 'Oui. L’estimation est gratuite et sans obligation de vendre. Vous recevez une fourchette de valeur par écrit.' },
       { q: 'Une montre en panne a-t-elle de la valeur ?', a: 'Souvent oui. Une montre ancienne signée peut conserver une valeur importante même si elle ne fonctionne plus.' },
